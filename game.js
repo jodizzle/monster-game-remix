@@ -4,6 +4,9 @@ var canvas = document.getElementById('test');
 var context = canvas.getContext('2d');
 var raf;
 
+var leftPressed = false
+var rightPressed = false
+
 var square = {
 	x: 10,
 	y: 10,
@@ -31,6 +34,7 @@ window.addEventListener('keydown',function(e) {
 	switch (e.which) {
 		case 37:
 			square.vx = -5;
+			leftPressed = true;
 			console.log('left');
 			break;
 		case 38:
@@ -39,6 +43,7 @@ window.addEventListener('keydown',function(e) {
 			break;
 		case 39:
 			square.vx = 5;
+			rightPressed = true;
 			console.log('right');
 			break;
 		case 40:
@@ -59,12 +64,18 @@ window.addEventListener('keyup',function(e){
 	// 	square.vy = 0;
 	// 	console.log('stop vertical');
 	// }
-	horizOff = false;
-	vertOff = false;
+	// horizOff = false;
+	// vertOff = false;
 	switch (e.which) {
 		case 37:
-			square.vx = 0;
+			if(rightPressed) {
+				square.vx = 5;
+			}
+			else {
+				square.vx = 0;
+			}
 			//horizOff = true;
+			leftPressed = false;
 			console.log('left');
 			break;
 		case 38:
@@ -73,6 +84,13 @@ window.addEventListener('keyup',function(e){
 			console.log('up');
 			break;
 		case 39:
+			if(leftPressed) {
+				square.vx = -5;
+			}
+			else {
+				square.vx = 0;
+			}
+			rightPressed = false;
 			square.vx = 0;
 			//horizOff = true;
 			console.log('right');
