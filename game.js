@@ -91,7 +91,6 @@ window.addEventListener('keyup',function(e){
 				square.vx = 0;
 			}
 			rightPressed = false;
-			square.vx = 0;
 			//horizOff = true;
 			console.log('right');
 			break;
