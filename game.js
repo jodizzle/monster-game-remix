@@ -27,17 +27,40 @@ var square = {
 	}
 };
 
-var platform = {
-	x: 250,
-	y: 400,
-	width: 80,
-	height: 10,
-	color: 'green',
-	draw: function() {
-		context.fillStyle = this.color;
-		context.fillRect(this.x,this.y,this.width,this.height);
-	}
+// var platform = {
+// 	x: 250,
+// 	y: 400,
+// 	width: 80,
+// 	height: 10,
+// 	color: 'green',
+// 	draw: function() {
+// 		context.fillStyle = this.color;
+// 		context.fillRect(this.x,this.y,this.width,this.height);
+// 	}
+// };
+// var Platform = {
+// 	constructor(x,y,width,height,color) {
+// 		this.x = x;
+// 		this.y = y;
+// 		this.width = width;
+// 		this.height = height;
+// 		this.color = color;
+// 	}
+// 	draw: function() {
+// 		context.fillStyle = this.color;
+// 		context.fillRect(this.x,this.y,this.width,this.height);
+// 	}
+// };
+function Platform(x,y,width,height,color) {
+	this.x = x; this.y = y; this.width = width; this.height = height; this.color = color;
+}
+
+Platform.prototype.draw = function(){
+	context.fillStyle = this.color;
+ 	context.fillRect(this.x,this.y,this.width,this.height);
 };
+
+var platform = new Platform(250,400,80,10,'green');
 
 function draw() {
 	context.clearRect(0,0,canvas.width,canvas.height);
