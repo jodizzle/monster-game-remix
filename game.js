@@ -22,7 +22,6 @@ var square = {
 function draw() {
 	//console.log('drawing')
 	context.clearRect(0,0,canvas.width,canvas.height);
-	//context.save();
 	square.draw()
 	square.x += square.vx;
 	square.y += square.vy;
@@ -30,7 +29,6 @@ function draw() {
 }
 
 window.addEventListener('keydown',function(e) {
-	//raf = window.requestAnimationFrame(draw);
 	switch (e.which) {
 		case 37:
 			square.vx = -5;
@@ -54,18 +52,6 @@ window.addEventListener('keydown',function(e) {
 });
 
 window.addEventListener('keyup',function(e){
-	//window.cancelAnimationFrame(raf);
-	// console.log('keyup')
-	// if (e == 37 || e == 39) {
-	// 	square.vx = 0;
-	// 	console.log('stop horizontal');
-	// }
-	// if (e == 38 || e == 40) {
-	// 	square.vy = 0;
-	// 	console.log('stop vertical');
-	// }
-	// horizOff = false;
-	// vertOff = false;
 	switch (e.which) {
 		case 37:
 			if(rightPressed) {
@@ -100,17 +86,6 @@ window.addEventListener('keyup',function(e){
 			console.log('down');
 			break;
 	}
-
-
-	// //doesnt seem to fix much...
-	// if(horizOff) {
-	// 	console.log('horizontal off');
-	// 	square.vx = 0;
-	// }
-	// if(vertOff) {
-	// 	console.log('vertical off');
-	// 	square.vy = 0;
-	// }
 });
 
 function init() {
