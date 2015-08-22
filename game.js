@@ -61,6 +61,17 @@ function update() {
 	}
 	square.x += square.vx;
 
+	if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+		if(square.vx > 0) {
+			square.x = platform.x-square.width;
+		 	square.vx = 0;
+		}
+		else if (square.vx < 0) {
+			square.x = platform.x+platform.width;
+	 	 	square.vx = 0;
+		}
+	}
+
 	if(upPressed && onGround) {
 		square.vy = -10;
 		onGround = false;
@@ -68,7 +79,19 @@ function update() {
 	else {
 		square.vy += gravity;
 	}
+	
 	square.y += square.vy;
+
+	if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+		if(square.vy > 0) {
+			square.y = platform.y-square.height;
+		 	square.vy = 0;
+		}
+		else if (square.vy < 0) {
+			square.y = platform.y+platform.height;
+	 	 	square.vy = 0;
+		}
+	}
 
 	if(square.x+square.width > canvas.width) {
 		square.x = canvas.width-square.width;
@@ -104,24 +127,52 @@ function update() {
 	// 	console.log('first if triggered');
 	// }
 	// console.log(square.x)
-	if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
-		if(square.vx > 0) { //left
-			square.x = platform.x-square.width;
-			square.vx = 0;
-		}
-		else if(square.vx < 0) { //right
-			square.x = platform.x+platform.width;
-			square.vx = 0;
-		}
-		if(square.vy > 0) { //top
-			square.vy = platform.y-square.height;
-			square.vy = 0;
-		}
-		else if(square.vy < 0) { //bottom
-			square.vy = platform.y+platform.width;
-			square.vy = 0;
-		}
-	}
+
+	// if(square.vx > 0) {
+	// 	if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+	// 		square.x = platform.x-square.width;
+	//  		square.vx = 0;
+	// 	}
+	// }
+
+	// if(square.vx < 0) {
+	// 	if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+	// 		square.x = platform.x+platform.width;
+	// 	 	square.vx = 0;
+	// 	}
+	// }
+
+	// else if(square.vy > 0) {
+	// 	if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+	// 		square.vy = platform.y-square.height;
+	// 	 	square.vy = 0;
+	// 	}
+	// }
+
+	// if(square.vy < 0) {
+	// 	if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+	// 		square.vy = platform.y+platform.width;
+	// 	 	square.vy = 0;
+	// 	}
+	// }
+	// if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+	// 	if(square.vx > 0) { //left
+	// 		square.x = platform.x-square.width;
+	// 		square.vx = 0;
+	// 	}
+		// else if(square.vx < 0) { //right
+		// 	square.x = platform.x+platform.width;
+		// 	square.vx = 0;
+		// }
+		// if(square.vy > 0) { //top
+		// 	square.vy = platform.y-square.height;
+		// 	square.vy = 0;
+		// }
+		// else if(square.vy < 0) { //bottom
+		// 	square.vy = platform.y+platform.width;
+		// 	square.vy = 0;
+		// }
+	//}
 	// else if(square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
 	// 	square.y = platform.y+platform.height-square.height;
 	// 	square.vy = 0;
