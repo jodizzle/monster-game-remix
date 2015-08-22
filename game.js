@@ -11,8 +11,8 @@ var gravity = 0.2 //acceleration
 var onGround = false
 
 var square = {
-	x: 10,
-	y: 10,
+	x: 50,
+	y: 50,
 	width: 50,
 	height: 50,
 	vx: 0,
@@ -28,11 +28,15 @@ function draw() {
 	//console.log('drawing')
 	context.clearRect(0,0,canvas.width,canvas.height);
 	square.draw();
+	if((square.x+square.width) + square.vx > canvas.width || (square.x-square.width) + square.vx < 0) {
+		square.vx = 0;
+	}
 	square.x += square.vx;
+	
 	if(!onGround) {
 		square.vy += gravity;
 	}
-	if((square.y+square.height) + square.vy > canvas.height || (square.y+square.height) + square.vy < 0) {
+	if((square.y+square.height) + square.vy > canvas.height || (square.y-square.height) + square.vy + gravity < 0) {
 		square.vy = 0;
 		onGround = true;
 	}
@@ -52,7 +56,7 @@ window.addEventListener('keydown',function(e) {
 			break;
 		case 38:
 			if(onGround) {
-				square.vy = -5;
+				square.vy = -10;
 				onGround = false;
 			}
 			console.log('up');
