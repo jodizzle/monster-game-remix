@@ -26,10 +26,23 @@ var square = {
 	}
 };
 
+var platform = {
+	x: 250,
+	y: 400,
+	width: 80,
+	height: 10,
+	color: 'green',
+	draw: function() {
+		context.fillStyle = this.color;
+		context.fillRect(this.x,this.y,this.width,this.height);
+	}
+};
+
 function draw() {
 	//console.log('drawing')
 	context.clearRect(0,0,canvas.width,canvas.height);
 	square.draw();
+	platform.draw();
 }
 
 function update() {
@@ -83,6 +96,29 @@ function update() {
 	// 	onGround = false;
 	// }
 	//square.y += square.vy;
+//&& square.x+square.width > platform.x && square.x < platform.x+platform.width
+	//platform detection:
+	// if(square.y+square.height < platform.y && square.y > platform.y+platform.height && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+	// 	square.y = platform.y-square.height;
+	// 	square.vy = 0;
+	// 	console.log('first if triggered');
+	// }
+
+	else if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+		if(square.y > platform.y) {
+			square.y = platform.y+platform.height;
+		}
+		else if (square.y < platform.y) {
+			square.y = platform.y-square.height;
+		}
+		square.vy = 0;
+	}
+	// else if(square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+	// 	square.y = platform.y+platform.height-square.height;
+	// 	square.vy = 0;
+	// }
+
+	//if(square.x+square.width > platform.x)
 }
 
 window.addEventListener('keydown',function(e) {
