@@ -28,7 +28,12 @@ function draw() {
 	//console.log('drawing')
 	context.clearRect(0,0,canvas.width,canvas.height);
 	square.draw();
-	if((square.x+square.width) + square.vx > canvas.width || (square.x-square.width) + square.vx < 0) {
+	if(square.x+square.width > canvas.width) {
+		square.x = canvas.width-square.width;
+		square.vx = 0;
+	}
+	else if(square.x < 0) {
+		square.x = 0;
 		square.vx = 0;
 	}
 	square.x += square.vx;
@@ -36,9 +41,13 @@ function draw() {
 	if(!onGround) {
 		square.vy += gravity;
 	}
-	if((square.y+square.height) + square.vy > canvas.height || (square.y-square.height) + square.vy + gravity < 0) {
+	if(square.y+square.height > canvas.height) {
+		square.y = canvas.height-square.height;
 		square.vy = 0;
 		onGround = true;
+	}
+	else if(square.y < 0) {
+		square.y = 0;
 	}
 	// else {
 	// 	onGround = false;
@@ -56,7 +65,7 @@ window.addEventListener('keydown',function(e) {
 			break;
 		case 38:
 			if(onGround) {
-				square.vy = -10;
+				square.vy = -20;
 				onGround = false;
 			}
 			console.log('up');
