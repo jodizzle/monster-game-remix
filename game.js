@@ -28,6 +28,9 @@ function draw() {
 	//console.log('drawing')
 	context.clearRect(0,0,canvas.width,canvas.height);
 	square.draw();
+}
+
+function update() {
 	if(square.x+square.width > canvas.width) {
 		square.x = canvas.width-square.width;
 		square.vx = 0;
@@ -37,7 +40,7 @@ function draw() {
 		square.vx = 0;
 	}
 	square.x += square.vx;
-	
+
 	if(!onGround) {
 		square.vy += gravity;
 	}
@@ -54,7 +57,6 @@ function draw() {
 	// 	onGround = false;
 	// }
 	square.y += square.vy;
-	raf = window.requestAnimationFrame(draw);
 }
 
 window.addEventListener('keydown',function(e) {
@@ -120,8 +122,14 @@ window.addEventListener('keyup',function(e){
 	}
 });
 
-function init() {
+function mainLoop() {
+	update();
 	draw();
+	raf = window.requestAnimationFrame(mainLoop);
+}
+
+function init() {
+	mainLoop()
 }
 
 init();
