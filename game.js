@@ -103,15 +103,24 @@ function update() {
 	// 	square.vy = 0;
 	// 	console.log('first if triggered');
 	// }
-
-	else if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
-		if(square.y > platform.y) {
-			square.y = platform.y+platform.height;
+	// console.log(square.x)
+	if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+		if(square.vx > 0) { //left
+			square.x = platform.x-square.width;
+			square.vx = 0;
 		}
-		else if (square.y < platform.y) {
-			square.y = platform.y-square.height;
+		else if(square.vx < 0) { //right
+			square.x = platform.x+platform.width;
+			square.vx = 0;
 		}
-		square.vy = 0;
+		if(square.vy > 0) { //top
+			square.vy = platform.y-square.height;
+			square.vy = 0;
+		}
+		else if(square.vy < 0) { //bottom
+			square.vy = platform.y+platform.width;
+			square.vy = 0;
+		}
 	}
 	// else if(square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
 	// 	square.y = platform.y+platform.height-square.height;
