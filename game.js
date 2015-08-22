@@ -4,8 +4,10 @@ var canvas = document.getElementById('test');
 var context = canvas.getContext('2d');
 var raf;
 
-var leftPressed = false
-var rightPressed = false
+var leftPressed = false;
+var rightPressed = false;
+var upPressed = false;
+var inAir = false;
 
 var gravity = 0.2 //acceleration 
 var onGround = false
@@ -31,6 +33,30 @@ function draw() {
 }
 
 function update() {
+	if(leftPressed) {
+		square.vx = -5;
+		console.log('left has been pressed')
+	}
+	// else {
+	// 	square.vx = 0;
+	// }
+	else if(rightPressed) {
+		square.vx = 5;
+	}
+	else {
+		square.vx = 0;
+	}
+	square.x += square.vx;
+
+	if(upPressed && onGround) {
+		square.vy = -10;
+		onGround = false;
+	}
+	else {
+		square.vy += gravity;
+	}
+	square.y += square.vy;
+
 	if(square.x+square.width > canvas.width) {
 		square.x = canvas.width-square.width;
 		square.vx = 0;
@@ -39,11 +65,11 @@ function update() {
 		square.x = 0;
 		square.vx = 0;
 	}
-	square.x += square.vx;
+	//square.x += square.vx;
 
-	if(!onGround) {
-		square.vy += gravity;
-	}
+	// if(!onGround) {
+	// 	square.vy += gravity;
+	// }
 	if(square.y+square.height > canvas.height) {
 		square.y = canvas.height-square.height;
 		square.vy = 0;
@@ -56,25 +82,26 @@ function update() {
 	// else {
 	// 	onGround = false;
 	// }
-	square.y += square.vy;
+	//square.y += square.vy;
 }
 
 window.addEventListener('keydown',function(e) {
 	switch (e.which) {
 		case 37:
-			square.vx = -5;
+			//square.vx = -5;
 			leftPressed = true;
 			console.log('left');
 			break;
 		case 38:
-			if(onGround) {
-				square.vy = -20;
-				onGround = false;
-			}
+			// if(onGround) {
+			// 	square.vy = -20;
+			// 	onGround = false;
+			// }
+			upPressed = true;
 			console.log('up');
 			break;
 		case 39:
-			square.vx = 5;
+			//square.vx = 5;
 			rightPressed = true;
 			console.log('right');
 			break;
@@ -88,28 +115,30 @@ window.addEventListener('keydown',function(e) {
 window.addEventListener('keyup',function(e){
 	switch (e.which) {
 		case 37:
-			if(rightPressed) {
-				square.vx = 5;
-			}
-			else {
-				square.vx = 0;
-			}
+			// if(rightPressed) {
+			// 	//square.vx = 5;
+			// 	rightPressed = false;
+			// }
+			// else {
+			// 	square.vx = 0;
+			// }
 			//horizOff = true;
 			leftPressed = false;
 			console.log('left');
 			break;
-		// case 38:
-		// 	square.vy = 0;
-		// 	//vertOff = true;
-		// 	console.log('up');
-		// 	break;
+		case 38:
+			//square.vy = 0;
+			upPressed = false;
+			//vertOff = true;
+			console.log('up');
+			break;
 		case 39:
-			if(leftPressed) {
-				square.vx = -5;
-			}
-			else {
-				square.vx = 0;
-			}
+			// if(leftPressed) {
+			// 	square.vx = -5;
+			// }
+			// else {
+			// 	square.vx = 0;
+			// }
 			rightPressed = false;
 			//horizOff = true;
 			console.log('right');
