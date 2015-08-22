@@ -60,12 +60,15 @@ Platform.prototype.draw = function(){
  	context.fillRect(this.x,this.y,this.width,this.height);
 };
 
-var platform = new Platform(250,400,80,10,'green');
+// var platform = new Platform(250,400,80,10,'green');
+var platforms = [new Platform(250,400,80,10,'green'), new Platform(200,200,80,10,'blue'), new Platform(150,300,80,10,'orange')]
 
 function draw() {
 	context.clearRect(0,0,canvas.width,canvas.height);
 	square.draw();
-	platform.draw();
+	for(var platform of platforms) {
+		platform.draw();
+	}
 }
 
 function update() {
@@ -82,19 +85,21 @@ function update() {
 	}
 	square.x += square.vx;
 
-	if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
-		if(square.vx > 0) {
-			square.x = platform.x-square.width;
-		 	square.vx = 0;
-		}
-		else if (square.vx < 0) {
-			square.x = platform.x+platform.width;
-	 	 	square.vx = 0;
+	for(var platform of platforms) {
+		if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+			if(square.vx > 0) {
+				square.x = platform.x-square.width;
+			 	square.vx = 0;
+			}
+			else if (square.vx < 0) {
+				square.x = platform.x+platform.width;
+		 	 	square.vx = 0;
+			}
 		}
 	}
 
 	if(upPressed && onGround && !jumping) {
-		square.vy = -10;
+		square.vy = -7;
 		onGround = false;
 		jumping = true;
 	}
@@ -104,16 +109,18 @@ function update() {
 
 	square.y += square.vy;
 
-	if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
-		if(square.vy > 0) {
-			square.y = platform.y-square.height;
-		 	square.vy = 0;
-		 	onGround = true;
-		 	jumping = false;
-		}
-		else if (square.vy < 0) {
-			square.y = platform.y+platform.height;
-	 	 	square.vy = 0;
+	for(var platform of platforms) {
+		if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
+			if(square.vy > 0) {
+				square.y = platform.y-square.height;
+			 	square.vy = 0;
+			 	onGround = true;
+			 	jumping = false;
+			}
+			else if (square.vy < 0) {
+				square.y = platform.y+platform.height;
+		 	 	square.vy = 0;
+			}
 		}
 	}
 
