@@ -11,6 +11,7 @@ var inAir = false;
 
 var gravity = 0.2
 var onGround = false
+var jumping = false
 
 var square = {
 	x: 50,
@@ -69,9 +70,10 @@ function update() {
 		}
 	}
 
-	if(upPressed && onGround) {
+	if(upPressed && onGround && !jumping) {
 		square.vy = -10;
 		onGround = false;
+		jumping = true;
 	}
 	else {
 		square.vy += gravity;
@@ -83,6 +85,8 @@ function update() {
 		if(square.vy > 0) {
 			square.y = platform.y-square.height;
 		 	square.vy = 0;
+		 	onGround = true;
+		 	jumping = false;
 		}
 		else if (square.vy < 0) {
 			square.y = platform.y+platform.height;
@@ -103,6 +107,7 @@ function update() {
 		square.y = canvas.height-square.height;
 		square.vy = 0;
 		onGround = true;
+		jumping = false;
 	}
 	else if(square.y < 0) {
 		square.y = 0;
@@ -118,6 +123,7 @@ window.addEventListener('keydown',function(e) {
 			break;
 		case 38:
 			upPressed = true;
+			jumping = true;
 			console.log('up');
 			break;
 		case 39:
