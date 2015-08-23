@@ -32,6 +32,10 @@ var rightSpeed = 5;
 //Scoring//
 var points = 0;
 
+//Loss condition//
+var loseKill = false; //Lose by touching ("killing") a falling object
+var loseWall = false; //Lose by touching the leftside of the canvas
+
 //Spawn definitions//
 function Spawn(x,y,vx,vy,width,height,color) {
 	this.x = x; this.y = y; this.vx = 0; this.vy = 0; this.width = width; this.height = height; this.color = color;
@@ -95,6 +99,7 @@ Spawn.prototype.update = function(){
 //Platform definitions//
 function Platform(x,y,width,height,color) {
 	this.x = x; this.y = y; this.width = width; this.height = height; this.color = color;
+	this.removeNow = false;
 }
 Platform.prototype.draw = function(){
 	context.fillStyle = this.color;
@@ -182,7 +187,12 @@ var player = {
 			spawn = spawns[i];
 			if(player.y < spawn.y+spawn.height && player.y+player.height > spawn.y && player.x+player.width > spawn.x && player.x < spawn.x+spawn.width) {
 				spawn.touched = true;
-				points += 1;
+				if(spawn.onGround) {
+					points += 1;
+				}
+				else {
+					loseKill = true;
+				}
 			}
 		}
 
@@ -195,6 +205,7 @@ var player = {
 		else if(player.x < 0) {
 			player.x = 0;
 			player.vx = 0;
+			loseWall = true;
 		}
 
 		//Bottomside canvas collision detection//
@@ -218,10 +229,23 @@ var platforms = [new Platform(250,400,80,10,'green'),new Platform(200,200,80,10,
 var spawns = [];
 
 //Main loop functions//
+
+//Displays the score//
+function displayScore() {
+	context.fillStyle = "orange";
+	context.font = "48px serif";
+	context.textAlign = "center";
+	context.fillText("final score: " + points, canvas.width/2, canvas.height/2);
+}
 //Checks to see if an object is off screen//
 function canDespawn(object){
 	if(object instanceof Spawn) {
 		if(object.touched) {
+			return true;
+		}
+	}
+	if(object instanceof Platform) {
+		if(object.removeNow) {
 			return true;
 		}
 	}
@@ -274,25 +298,52 @@ function removeObjects(objectArray) {
 function draw() {
 	context.clearRect(0,0,canvas.width,canvas.height); //Clears the screen every frame
 
-	//Draws objects//
 	player.draw();
-	for(var i=0; i<spawns.length; i++) {
-		spawns[i].draw();
+	//Display text//
+	context.fillStyle = "orange";
+	context.font = "48px serif";
+	context.textAlign = "start";
+	if(loseKill) {
+		context.fillText("u r the monster", 10, 50);
+		displayScore();
 	}
-	for(var i=0; i<platforms.length; i++) {
-		platforms[i].draw();
+	else if(loseWall) {
+		context.fillText("the army got u", 10, 50);
+		displayScore();
+	}
+	else {
+		context.fillText(points, 10, 50);
+		//Draws objects//
+		for(var i=0; i<spawns.length; i++) {
+			spawns[i].draw();
+		}
+		for(var i=0; i<platforms.length; i++) {
+			platforms[i].draw();
+		}
 	}
 }
 function update() {
 	//Updates objects//
 	player.update();
-	removeObjects(spawns);
-	for(var i=0; i<spawns.length; i++) {
-		spawns[i].update();
+	if(!loseKill && !loseWall) {
+		removeObjects(spawns);
+		for(var i=0; i<spawns.length; i++) {
+			spawns[i].update();
+		}
+		removeObjects(platforms);
+		for(var i=0; i<platforms.length; i++) {
+			platforms[i].update();
+		}
 	}
-	removeObjects(platforms);
-	for(var i=0; i<platforms.length; i++) {
-		platforms[i].update();
+	else {
+		//Empty arrays
+		platforms.splice(0,platforms.length);
+		spawns.splice(0,spawns.length);
+		//Remove scrolling
+		scrollSpeed = 0;
+		//Teleport player
+		// player.x = canvas.width/2;
+		// player.y = canvas.height/2;
 	}
 }
 function mainLoop() {
