@@ -18,7 +18,15 @@ var jumping = false;
 //Global values//
 var gravity = 0.2;
 var spawnGravity = 2;
-var scrollSpeed = -1;
+var playerScrollSpeed = -1;
+var platformScrollSpeed = -1;
+var spawnScrollSpeed = -1;
+
+//Timers//
+var gameScalingTimerShort = 0; //makes game harder with time
+var gameScalingTargetShort = 900; //15 seconds
+var gameScalingTimerLong = 0;
+var gameScalingTargetLong = 1800; //30 seconds
 var spawnCounter = 0;
 var spawnCounterTarget = 120;
 var platformCounter = 0;
@@ -54,7 +62,7 @@ Spawn.prototype.draw = function(){
 Spawn.prototype.update = function(){
 	//Horizontal movement//
 	if(this.onGround) {
-		this.x += scrollSpeed
+		this.x += spawnScrollSpeed
 	}
 
 	//Horizontal platform collision detection//
@@ -103,7 +111,7 @@ Platform.prototype.draw = function(){
  	context.fillRect(this.x,this.y,this.width,this.height);
 }
 Platform.prototype.update = function(){
-	this.x += scrollSpeed;
+	this.x += playerScrollSpeed;
 }
 
 var monsterImage = new Image();
@@ -135,7 +143,7 @@ var player = {
 	},
 	update: function() {
 		//Default horizontal scrolling//
-		player.x += scrollSpeed;
+		player.x += playerScrollSpeed;
 
 		//Horizontal movement//
 		if(leftPressed) {
@@ -268,7 +276,7 @@ function canDespawn(object){
 //Spawns objects to the screen//
 function spawnObjects() {
 	//Spawn spawns (lol)//
-	if(spawnCounter == spawnCounterTarget) {
+	if(spawnCounter >= spawnCounterTarget) {
 		randX = getRandomNumber(0,canvas.width);
 		//randY = getRandomNumber(0,canvas.height/4); //Only spawn on top fourth of canvas screen
 		spawns.push(new Spawn(randX,0,0,0,23,23,'yellow'));
@@ -347,6 +355,25 @@ function draw() {
 }
 function update() {
 	//Updates objects//
+	if(gameScalingTimerShort == gameScalingTargetShort) {
+		if(spawnCounterTarget > 10) {
+			spawnCounterTarget -= 10; //faster spawns
+		}
+		spawnGravity += 0.5; //faster falling spawns
+		gameScalingTimerShort = 0;
+	}
+	else {
+		gameScalingTimerShort += 1;
+	}
+	if(gameScalingTimerLong == gameScalingTargetLong) {
+		platformScrollSpeed -= 0.5;
+		spawnScrollSpeed -= 0.5;
+		gameScalingTargetLong = 0;
+	}
+	else {
+		gameScalingTargetLong += 1;
+	}
+
 	player.update();
 	if(!loseKill && !loseWall) {
 		removeObjects(spawns);
@@ -363,7 +390,9 @@ function update() {
 		platforms.splice(0,platforms.length);
 		spawns.splice(0,spawns.length);
 		//Remove scrolling
-		scrollSpeed = 0;
+		playerScrollSpeed = 0;
+		platformScrollSpeed = 0;
+		spawnScrollSpeed = 0;
 		//Teleport player
 		// player.x = canvas.width/2;
 		// player.y = canvas.height/2;
