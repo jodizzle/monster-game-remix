@@ -29,12 +29,16 @@ var upSpeed = -8;
 var leftSpeed = -5;
 var rightSpeed = 5;
 
+//Scoring//
+var points = 0;
+
 //Spawn definitions//
 function Spawn(x,y,vx,vy,width,height,color) {
 	this.x = x; this.y = y; this.vx = 0; this.vy = 0; this.width = width; this.height = height; this.color = color;
 	this.onGround = false;
+	this.touched = false;
 }
-// Spawn.prototype.isOffScreen = function(){
+// Spawn.prototype.canDespawn = function(){
 // 	if(this.x+this.width < 0) { //Similar to a leftside canvas collision
 // 		return true;
 // 	}
@@ -173,6 +177,15 @@ var player = {
 			}
 		}
 
+		//Spawn collision detection//
+		for(var i=0; i<spawns.length; i++) {
+			spawn = spawns[i];
+			if(player.y < spawn.y+spawn.height && player.y+player.height > spawn.y && player.x+player.width > spawn.x && player.x < spawn.x+spawn.width) {
+				spawn.touched = true;
+				points += 1;
+			}
+		}
+
 		//Rightside canvas collision detection//
 		if(player.x+player.width > canvas.width) {
 			player.x = canvas.width-player.width;
@@ -206,8 +219,13 @@ var spawns = [];
 
 //Main loop functions//
 //Checks to see if an object is off screen//
-function isOffScreen(object){
-	if(object.x+object.width < 0) { //Similar to a leftside canvas collision
+function canDespawn(object){
+	if(object instanceof Spawn) {
+		if(object.touched) {
+			return true;
+		}
+	}
+	else if(object.x+object.width < 0) { //Similar to a leftside canvas collision
 		return true;
 	}
 	else {
@@ -215,7 +233,7 @@ function isOffScreen(object){
 	}
 }
 //Spawns objects to the screen//
-function spawn() {
+function spawnObjects() {
 	//Spawn spawns (lol)//
 	if(spawnCounter == spawnCounterTarget) {
 		randX = getRandomNumber(0,canvas.width);
@@ -244,7 +262,7 @@ function spawn() {
 function removeObjects(objectArray) {
 	var toRemove = [];
 	for(var i=0; i<objectArray.length; i++) {
-		if(isOffScreen(objectArray[i])) {
+		if(canDespawn(objectArray[i])) {
 			toRemove.push(i); //push the index to remove
 		}
 	}
@@ -278,7 +296,7 @@ function update() {
 	}
 }
 function mainLoop() {
-	spawn();
+	spawnObjects();
 	update();
 	draw();
 	raf = window.requestAnimationFrame(mainLoop);
