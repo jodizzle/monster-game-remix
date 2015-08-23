@@ -44,6 +44,11 @@ var points = 0;
 var loseKill = false; //Lose by touching ("killing") a falling object
 var loseWall = false; //Lose by touching the leftside of the canvas
 
+//Control FPS//
+var stop=false;
+var frameCount=0;
+var fps,fpsInterval,startTime,now,then,elapsed;
+
 //Spawn definitions//
 //ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); //reference
 function Spawn(x,y,vx,vy,width,height,color) {
@@ -403,8 +408,14 @@ function update() {
 function mainLoop() {
 	spawnObjects();
 	update();
-	draw();
+	//draw();
 	raf = window.requestAnimationFrame(mainLoop);
+	now = Date.now();
+	elapsed = now - then;
+	if(elapsed > fpsInterval) {
+		then = now - (elapsed % fpsInterval);
+		draw();
+	}
 }
 
 //Keyboard listeners//
@@ -436,8 +447,12 @@ window.addEventListener('keyup',function(e){
 	}
 });
 
-function init() {
-	mainLoop()
+function init(fps) {
+	//mainLoop()
+	fpsInterval = 100/fps;
+	then = Date.now();
+	startTime = then;
+	mainLoop();
 }
 //makeMonsterImage();
-init();
+init(60);
