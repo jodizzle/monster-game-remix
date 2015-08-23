@@ -1,3 +1,5 @@
+
+
 //Canvas setup//
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
@@ -18,7 +20,10 @@ var jumping = false
 
 //Global values//
 var gravity = 0.2
+var spawnGravity = 2
 var scrollSpeed = -0.5
+var spawnCounter = 0
+var spawnCounterTarget = 120
 
 //Player movement values//
 var upSpeed = -7
@@ -45,13 +50,28 @@ Platform.prototype.draw = function(){
 };
 //Platforms array//
 var platforms = [new Platform(250,400,80,10,'green'),new Platform(200,200,80,10,'blue'),new Platform(150,300,80,10,'orange')]
+var spawns = []
 
 //Main loop functions//
+function spawn() {
+	if(spawnCounter == spawnCounterTarget) {
+		randX = getRandomNumber(0,canvas.width);
+		randY = getRandomNumber(0,canvas.height/4); //Only spawn on top fourth of canvas screen
+		spawns.push(new Character(randX,randY,0,0,20,20,'yellow'));
+		spawnCounter = 0;
+	}
+	else {
+		spawnCounter += 1;
+	}
+}
 function draw() {
 	context.clearRect(0,0,canvas.width,canvas.height); //Clears the screen every frame
 
 	//Draws objects//
 	square.draw();
+	for(var spawn of spawns) {
+		spawn.draw();
+	}
 	for(var platform of platforms) {
 		platform.draw();
 	}
@@ -59,6 +79,9 @@ function draw() {
 function update() {
 	//Default horizontal scrolling//
 	square.x += scrollSpeed;
+	// for(var spawn of spawns) {
+	// 	spawn.x += scrollSpeed;
+	// }
 	for(var platform of platforms) {
 		platform.x += scrollSpeed;
 	}
@@ -97,6 +120,9 @@ function update() {
 	}
 	else {
 		square.vy += gravity; //Gravity is always applied except on the frame of jumping
+	}
+	for(var spawn of spawns) {
+		spawn.y += spawnGravity;
 	}
 	square.y += square.vy;
 
@@ -141,6 +167,7 @@ function update() {
 	}
 }
 function mainLoop() {
+	spawn();
 	update();
 	draw();
 	raf = window.requestAnimationFrame(mainLoop);
@@ -175,6 +202,9 @@ window.addEventListener('keyup',function(e){
 	}
 });
 
+function getRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
 
 function init() {
 	mainLoop()
