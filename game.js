@@ -21,7 +21,7 @@ var jumping = false
 //Global values//
 var gravity = 0.2
 var spawnGravity = 2
-var scrollSpeed = -0.5
+var scrollSpeed = 0
 var spawnCounter = 0
 var spawnCounterTarget = 120
 
@@ -99,6 +99,7 @@ function update() {
 	square.x += square.vx;
 
 	//Horizontal platform collision detection//
+	//Player
 	for(var platform of platforms) {
 		if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
 			if(square.vx > 0) { //Leftside case
@@ -108,6 +109,21 @@ function update() {
 			else if (square.vx < 0) { //Rightside case
 				square.x = platform.x+platform.width;
 		 	 	square.vx = 0;
+			}
+		}
+	}
+	//Spawns
+	for(var platform of platforms) {
+		for(var spawn of spawns) {
+			if(spawn.y < platform.y+platform.height && spawn.y+spawn.height > platform.y && spawn.x+spawn.width > platform.x && spawn.x < platform.x+platform.width) {
+				if(spawn.vx > 0) { //Leftside case
+					spawn.x = platform.x-spawn.width;
+				 	spawn.vx = 0;
+				}
+				else if (spawn.vx < 0) { //Rightside case
+					spawn.x = platform.x+platform.width;
+			 	 	spawn.vx = 0;
+				}
 			}
 		}
 	}
@@ -127,6 +143,7 @@ function update() {
 	square.y += square.vy;
 
 	//Vertical platform collision detection//
+	//Player
 	for(var platform of platforms) {
 		if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
 			if(square.vy > 0) { //Topside case
@@ -141,7 +158,16 @@ function update() {
 			}
 		}
 	}
-
+	//Spawns
+	for(var platform of platforms) {
+		for(var spawn of spawns) {
+			//Since spawns only fall from the top, should only have to worry about one vertical case.
+			if(spawn.y < platform.y+platform.height && spawn.y+spawn.height > platform.y && spawn.x+spawn.width > platform.x && spawn.x < platform.x+platform.width) {
+				spawn.y = platform.y-spawn.height;
+				spawn.vy = 0;
+			}
+		}
+	}
 	//Rightside canvas collision detection//
 	if(square.x+square.width > canvas.width) {
 		square.x = canvas.width-square.width;
@@ -154,6 +180,14 @@ function update() {
 	}
 
 	//Bottomside canvas collision detection//
+	//Spawn
+	for(var spawn of spawns) {
+		if(spawn.y+spawn.height > canvas.height) {
+			spawn.y = canvas.height-spawn.height;
+			spawn.vy = 0;
+		}
+	}
+	//Player
 	if(square.y+square.height > canvas.height) {
 		square.y = canvas.height-square.height;
 		square.vy = 0;
