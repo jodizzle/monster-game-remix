@@ -42,14 +42,7 @@ function Spawn(x,y,vx,vy,width,height,color) {
 	this.onGround = false;
 	this.touched = false;
 }
-// Spawn.prototype.canDespawn = function(){
-// 	if(this.x+this.width < 0) { //Similar to a leftside canvas collision
-// 		return true;
-// 	}
-// 	else {
-// 		return false;
-// 	}
-// }
+
 Spawn.prototype.draw = function(){
 	context.fillStyle = this.color;
 	context.fillRect(this.x,this.y,this.width,this.height);
@@ -224,11 +217,10 @@ var player = {
 };
 
 //platforms array//
-var platforms = [new Platform(250,400,80,10,'green'),new Platform(200,200,80,10,'blue'),new Platform(150,300,80,10,'orange')];
+//var platforms = [new Platform(250,400,80,10,'green'),new Platform(200,200,80,10,'blue'),new Platform(150,300,80,10,'orange')];
+var platforms = [];
 //spawns array//
 var spawns = [];
-
-//Main loop functions//
 
 //Displays the score//
 function displayScore() {
@@ -294,7 +286,12 @@ function removeObjects(objectArray) {
 		objectArray.splice(toRemove[i],1);
 	}
 }
+//Random number
+function getRandomNumber(min, max) {
+  return Math.random() * (max - min) + min;
+}
 
+//Main loop functions//
 function draw() {
 	context.clearRect(0,0,canvas.width,canvas.height); //Clears the screen every frame
 
@@ -381,10 +378,6 @@ window.addEventListener('keyup',function(e){
 			break;
 	}
 });
-
-function getRandomNumber(min, max) {
-  return Math.random() * (max - min) + min;
-}
 
 function init() {
 	mainLoop()
