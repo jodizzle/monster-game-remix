@@ -4,7 +4,7 @@ var context = canvas.getContext('2d');
 var raf;
 
 //Canvas dimensions//
-canvas.width = 500;
+canvas.width = 800;
 canvas.height = 500;
 
 //Movement booleans//
@@ -25,7 +25,7 @@ var platformCounter = 0;
 var platformCounterTarget = 90;
 
 //Player movement values//
-var upSpeed = -10;
+var upSpeed = -8;
 var leftSpeed = -5;
 var rightSpeed = 5;
 
@@ -229,10 +229,11 @@ function spawn() {
 
 	//Spawn platforms//
 	if(platformCounter == platformCounterTarget) {
-		randX = getRandomNumber(canvas.width,canvas.width+(canvas.width/2));
-		randY = getRandomNumber(canvas.height/6, canvas.height);
 		randWidth = getRandomNumber(20,90);
-		platforms.push(new Platform(randX,randY,randWidth,10,'#C2203D'));
+		spawnHeight = 10;
+		randX = getRandomNumber(canvas.width,canvas.width+(randWidth*2));
+		randY = getRandomNumber(canvas.height/5,canvas.height-(spawnHeight*2));
+		platforms.push(new Platform(randX,randY,randWidth,spawnHeight,'#C2203D'));
 		platformCounter = 0;
 	}
 	else {
