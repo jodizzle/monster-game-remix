@@ -21,9 +21,11 @@ var spawnGravity = 2;
 var scrollSpeed = -1;
 var spawnCounter = 0;
 var spawnCounterTarget = 120;
+var platformCounter = 0;
+var platformCounterTarget = 90;
 
 //Player movement values//
-var upSpeed = -7;
+var upSpeed = -10;
 var leftSpeed = -5;
 var rightSpeed = 5;
 
@@ -100,12 +102,12 @@ Platform.prototype.update = function(){
 
 //player definition//
 var player = {
-	x: 50,
-	y: 50,
+	x: canvas.width/2,
+	y: canvas.height,
 	vx: 0,
 	vy: 0,
-	width: 50,
-	height: 50,
+	width: 25,
+	height: 25,
 	color: 'red',
 	onGround: false,
 	draw: function() {
@@ -214,14 +216,27 @@ function isOffScreen(object){
 }
 //Spawns objects to the screen//
 function spawn() {
+	//Spawn spawns (lol)//
 	if(spawnCounter == spawnCounterTarget) {
 		randX = getRandomNumber(0,canvas.width);
-		randY = getRandomNumber(0,canvas.height/4); //Only spawn on top fourth of canvas screen
-		spawns.push(new Spawn(randX,randY,0,0,20,20,'yellow'));
+		//randY = getRandomNumber(0,canvas.height/4); //Only spawn on top fourth of canvas screen
+		spawns.push(new Spawn(randX,0,0,0,20,20,'yellow'));
 		spawnCounter = 0;
 	}
 	else {
 		spawnCounter += 1;
+	}
+
+	//Spawn platforms//
+	if(platformCounter == platformCounterTarget) {
+		randX = getRandomNumber(canvas.width,canvas.width+(canvas.width/2));
+		randY = getRandomNumber(canvas.height/6, canvas.height);
+		randWidth = getRandomNumber(20,90);
+		platforms.push(new Platform(randX,randY,randWidth,10,'#C2203D'));
+		platformCounter = 0;
+	}
+	else {
+		platformCounter += 1;
 	}
 }
 //Despawns (removes) objects that are offscreen//
