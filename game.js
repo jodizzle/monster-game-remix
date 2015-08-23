@@ -16,8 +16,9 @@ var upPressed = false;
 var onGround = false
 var jumping = false
 
-//Vertical acceleration//
+//Global values//
 var gravity = 0.2
+var scrollSpeed = -0.1
 
 //Player movement values//
 var upSpeed = -7
@@ -61,6 +62,12 @@ function draw() {
 	}
 }
 function update() {
+	//Default horizontal scrolling//
+	square.x += scrollSpeed;
+	for(var platform of platforms) {
+		platform.x += scrollSpeed;
+	}
+
 	//Horizontal movement//
 	if(leftPressed) {
 		square.vx = leftSpeed;
