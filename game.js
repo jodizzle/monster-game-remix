@@ -13,13 +13,12 @@ var rightPressed = false;
 var upPressed = false;
 
 //Jumping booleans//
-var onGround = false;
 var jumping = false;
 
 //Global values//
 var gravity = 0.2;
 var spawnGravity = 2;
-var scrollSpeed = 0;
+var scrollSpeed = -1;
 var spawnCounter = 0;
 var spawnCounterTarget = 120;
 
@@ -31,12 +30,26 @@ var rightSpeed = 5;
 //Spawn definitions//
 function Spawn(x,y,vx,vy,width,height,color) {
 	this.x = x; this.y = y; this.vx = 0; this.vy = 0; this.width = width; this.height = height; this.color = color;
+	this.onGround = false;
 }
+// Spawn.prototype.isOffScreen = function(){
+// 	if(this.x+this.width < 0) { //Similar to a leftside canvas collision
+// 		return true;
+// 	}
+// 	else {
+// 		return false;
+// 	}
+// }
 Spawn.prototype.draw = function(){
 	context.fillStyle = this.color;
 	context.fillRect(this.x,this.y,this.width,this.height);
 }
 Spawn.prototype.update = function(){
+	//Horizontal movement//
+	if(this.onGround) {
+		this.x += scrollSpeed
+	}
+
 	//Horizontal platform collision detection//
 	for(var i=0; i<platforms.length; i++) {
 		platform = platforms[i];
@@ -61,6 +74,7 @@ Spawn.prototype.update = function(){
 		if(this.y < platform.y+platform.height && this.y+this.height > platform.y && this.x+this.width > platform.x && this.x < platform.x+platform.width) {
 			this.y = platform.y-this.height;
 			this.vy = 0;
+			this.onGround = true; //Might be a worthless (since platforms are already moving), but here just in case.
 		}
 	}
 
@@ -68,6 +82,7 @@ Spawn.prototype.update = function(){
 	if(this.y+this.height > canvas.height) {
 		this.y = canvas.height-this.height;
 		this.vy = 0;
+		this.onGround = true;
 	}
 }
 
@@ -92,6 +107,7 @@ var player = {
 	width: 50,
 	height: 50,
 	color: 'red',
+	onGround: false,
 	draw: function() {
 		context.fillStyle = this.color;
 		context.fillRect(this.x,this.y,this.width,this.height);
@@ -128,9 +144,9 @@ var player = {
 		}
 
 		//Vertical movement//
-		if(upPressed && onGround && !jumping) {
+		if(upPressed && player.onGround && !jumping) {
 			player.vy = upSpeed;
-			onGround = false;
+			player.onGround = false;
 			jumping = true;
 		}
 		else {
@@ -145,7 +161,7 @@ var player = {
 				if(player.vy > 0) { //Topside case
 					player.y = platform.y-player.height;
 				 	player.vy = 0;
-				 	onGround = true;
+				 	player.onGround = true;
 				 	jumping = false;
 				}
 				else if (player.vy < 0) { //Bottomside case
@@ -170,7 +186,7 @@ var player = {
 		if(player.y+player.height > canvas.height) {
 			player.y = canvas.height-player.height;
 			player.vy = 0;
-			onGround = true;
+			player.onGround = true;
 			jumping = false;
 		}
 		//Topside canvas collision detection//
@@ -187,6 +203,16 @@ var platforms = [new Platform(250,400,80,10,'green'),new Platform(200,200,80,10,
 var spawns = [];
 
 //Main loop functions//
+//Checks to see if an object is off screen//
+function isOffScreen(object){
+	if(object.x+object.width < 0) { //Similar to a leftside canvas collision
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+//Spawns objects to the screen//
 function spawn() {
 	if(spawnCounter == spawnCounterTarget) {
 		randX = getRandomNumber(0,canvas.width);
@@ -198,6 +224,19 @@ function spawn() {
 		spawnCounter += 1;
 	}
 }
+//Despawns (removes) objects that are offscreen//
+function removeObjects(objectArray) {
+	var toRemove = [];
+	for(var i=0; i<objectArray.length; i++) {
+		if(isOffScreen(objectArray[i])) {
+			toRemove.push(i); //push the index to remove
+		}
+	}
+	for(var i=0; i<toRemove.length; i++) {
+		objectArray.splice(toRemove[i],1);
+	}
+}
+
 function draw() {
 	context.clearRect(0,0,canvas.width,canvas.height); //Clears the screen every frame
 
@@ -213,9 +252,11 @@ function draw() {
 function update() {
 	//Updates objects//
 	player.update();
+	removeObjects(spawns);
 	for(var i=0; i<spawns.length; i++) {
 		spawns[i].update();
 	}
+	removeObjects(platforms);
 	for(var i=0; i<platforms.length; i++) {
 		platforms[i].update();
 	}
