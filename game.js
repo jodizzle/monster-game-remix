@@ -340,6 +340,14 @@ function getRandomNumber(min, max) {
 function draw() {
 	context.clearRect(0,0,canvas.width,canvas.height); //Clears the screen every frame
 
+	if(!loseKill && !loseWall) {
+		//Draw background//
+		console.log('triggered');
+		var backgroundImage = new Image();
+		backgroundImage.src = 'assets/background.png';
+		context.drawImage(backgroundImage, 0, 0);
+	}
+
 	player.draw();
 	//monsterImage.onload();
 	//Display text//
