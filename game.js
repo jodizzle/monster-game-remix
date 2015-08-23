@@ -102,6 +102,14 @@ Platform.prototype.update = function(){
 	this.x += scrollSpeed;
 }
 
+var monsterImage = new Image();
+function makeMonsterImage()
+{
+  monsterImage.onload = function(){
+    context.drawImage(monsterImage, 0,0);
+  }
+  monsterImage.src = 'assets/test_monster_2.png';
+}
 //player definition//
 var player = {
 	x: canvas.width/2,
@@ -109,12 +117,16 @@ var player = {
 	vx: 0,
 	vy: 0,
 	width: 25,
-	height: 25,
+	height: 30,
 	color: 'red',
 	onGround: false,
+
 	draw: function() {
-		context.fillStyle = this.color;
-		context.fillRect(this.x,this.y,this.width,this.height);
+		var monsterImage = new Image();
+		monsterImage.src = 'assets/test_monster_2.png';
+		context.drawImage(monsterImage, this.x, this.y);
+		// context.fillStyle = this.color;
+		// context.fillRect(this.x,this.y,this.width,this.height);
 	},
 	update: function() {
 		//Default horizontal scrolling//
@@ -290,12 +302,21 @@ function removeObjects(objectArray) {
 function getRandomNumber(min, max) {
   return (Math.random()*Math.random())*(max-min)+min;
 }
+// var monsterImage = new Image();
+// function makeMonsterImage()
+// {
+//   monsterImage.onload = function(){
+//     context.drawImage(monsterImage, 0,0);
+//   }
+//   monsterImage.src = 'assets/test_monster_2.png';
+// }
 
 //Main loop functions//
 function draw() {
 	context.clearRect(0,0,canvas.width,canvas.height); //Clears the screen every frame
 
 	player.draw();
+	//monsterImage.onload();
 	//Display text//
 	context.fillStyle = "orange";
 	context.font = "48px serif";
@@ -382,4 +403,5 @@ window.addEventListener('keyup',function(e){
 function init() {
 	mainLoop()
 }
+//makeMonsterImage();
 init();
