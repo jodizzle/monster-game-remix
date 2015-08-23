@@ -1,5 +1,3 @@
-
-
 //Canvas setup//
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
@@ -15,49 +13,181 @@ var rightPressed = false;
 var upPressed = false;
 
 //Jumping booleans//
-var onGround = false
-var jumping = false
+var onGround = false;
+var jumping = false;
 
 //Global values//
-var gravity = 0.2
-var spawnGravity = 2
-var scrollSpeed = 0
-var spawnCounter = 0
-var spawnCounterTarget = 120
+var gravity = 0.2;
+var spawnGravity = 2;
+var scrollSpeed = 0;
+var spawnCounter = 0;
+var spawnCounterTarget = 120;
 
 //Player movement values//
-var upSpeed = -7
-var leftSpeed = -5
-var rightSpeed = 5
+var upSpeed = -7;
+var leftSpeed = -5;
+var rightSpeed = 5;
 
-//Generalized character definition//
-function Character(x,y,vx,vy,width,height,color) {
+//Spawn definitions//
+function Spawn(x,y,vx,vy,width,height,color) {
 	this.x = x; this.y = y; this.vx = 0; this.vy = 0; this.width = width; this.height = height; this.color = color;
 }
-Character.prototype.draw = function(){
+Spawn.prototype.draw = function(){
 	context.fillStyle = this.color;
 	context.fillRect(this.x,this.y,this.width,this.height);
 }
-var square = new Character(50,50,0,0,50,50,'red');
+Spawn.prototype.update = function(){
+	//Horizontal platform collision detection//
+	for(var platform of platforms) {
+		if(this.y < platform.y+platform.height && this.y+this.height > platform.y && this.x+this.width > platform.x && this.x < platform.x+platform.width) {
+			if(this.vx > 0) { //Leftside case
+				this.x = platform.x-this.width;
+			 	this.vx = 0;
+			}
+			else if (this.vx < 0) { //Rightside case
+				this.x = platform.x+platform.width;
+		 	 	this.vx = 0;
+			}
+		}
+	}
 
-//Generalized platform definition -- OOP-esque//
+	//Vertical movement//
+	this.y += spawnGravity;
+	//Vertical platform collision detection//
+	for(var platform of platforms) {
+		//Since spawns only fall from the top, should only have to worry about one vertical case.
+		if(this.y < platform.y+platform.height && this.y+this.height > platform.y && this.x+this.width > platform.x && this.x < platform.x+platform.width) {
+			this.y = platform.y-this.height;
+			this.vy = 0;
+		}
+	}
+
+	//Bottomside canvas collision detection//
+	if(this.y+this.height > canvas.height) {
+		this.y = canvas.height-this.height;
+		this.vy = 0;
+	}
+}
+
+//Platform definitions//
 function Platform(x,y,width,height,color) {
 	this.x = x; this.y = y; this.width = width; this.height = height; this.color = color;
 }
 Platform.prototype.draw = function(){
 	context.fillStyle = this.color;
  	context.fillRect(this.x,this.y,this.width,this.height);
+}
+Platform.prototype.update = function(){
+	this.x += scrollSpeed;
+}
+
+//player definition//
+var player = {
+	x: 50,
+	y: 50,
+	vx: 0,
+	vy: 0,
+	width: 50,
+	height: 50,
+	color: 'red',
+	draw: function() {
+		context.fillStyle = this.color;
+		context.fillRect(this.x,this.y,this.width,this.height);
+	},
+	update: function() {
+		//Default horizontal scrolling//
+		player.x += scrollSpeed;
+
+		//Horizontal movement//
+		if(leftPressed) {
+			player.vx = leftSpeed;
+		}
+		else if(rightPressed) {
+			player.vx = rightSpeed;
+		}
+		else {
+			player.vx = 0;
+		}
+		player.x += player.vx;
+
+		//Horizontal platform collision detection//
+		for(var platform of platforms) {
+			if(player.y < platform.y+platform.height && player.y+player.height > platform.y && player.x+player.width > platform.x && player.x < platform.x+platform.width) {
+				if(player.vx > 0) { //Leftside case
+					player.x = platform.x-player.width;
+				 	player.vx = 0;
+				}
+				else if (player.vx < 0) { //Rightside case
+					player.x = platform.x+platform.width;
+			 	 	player.vx = 0;
+				}
+			}
+		}
+
+		//Vertical movement//
+		if(upPressed && onGround && !jumping) {
+			player.vy = upSpeed;
+			onGround = false;
+			jumping = true;
+		}
+		else {
+			player.vy += gravity; //Gravity is always applied except on the frame of jumping
+		}
+		player.y += player.vy;
+
+		//Vertical platform collision detection//
+		for(var platform of platforms) {
+			if(player.y < platform.y+platform.height && player.y+player.height > platform.y && player.x+player.width > platform.x && player.x < platform.x+platform.width) {
+				if(player.vy > 0) { //Topside case
+					player.y = platform.y-player.height;
+				 	player.vy = 0;
+				 	onGround = true;
+				 	jumping = false;
+				}
+				else if (player.vy < 0) { //Bottomside case
+					player.y = platform.y+platform.height;
+			 	 	player.vy = 0;
+				}
+			}
+		}
+
+		//Rightside canvas collision detection//
+		if(player.x+player.width > canvas.width) {
+			player.x = canvas.width-player.width;
+			player.vx = 0;
+		}
+		//Leftside canvas collision detection//
+		else if(player.x < 0) {
+			player.x = 0;
+			player.vx = 0;
+		}
+
+		//Bottomside canvas collision detection//
+		if(player.y+player.height > canvas.height) {
+			player.y = canvas.height-player.height;
+			player.vy = 0;
+			onGround = true;
+			jumping = false;
+		}
+		//Topside canvas collision detection//
+		else if(player.y < 0) {
+			player.y = 0;
+			player.vy = 0;
+		}
+	}
 };
-//Platforms array//
-var platforms = [new Platform(250,400,80,10,'green'),new Platform(200,200,80,10,'blue'),new Platform(150,300,80,10,'orange')]
-var spawns = []
+
+//platforms array//
+var platforms = [new Platform(250,400,80,10,'green'),new Platform(200,200,80,10,'blue'),new Platform(150,300,80,10,'orange')];
+//spawns array//
+var spawns = [];
 
 //Main loop functions//
 function spawn() {
 	if(spawnCounter == spawnCounterTarget) {
 		randX = getRandomNumber(0,canvas.width);
 		randY = getRandomNumber(0,canvas.height/4); //Only spawn on top fourth of canvas screen
-		spawns.push(new Character(randX,randY,0,0,20,20,'yellow'));
+		spawns.push(new Spawn(randX,randY,0,0,20,20,'yellow'));
 		spawnCounter = 0;
 	}
 	else {
@@ -68,7 +198,7 @@ function draw() {
 	context.clearRect(0,0,canvas.width,canvas.height); //Clears the screen every frame
 
 	//Draws objects//
-	square.draw();
+	player.draw();
 	for(var spawn of spawns) {
 		spawn.draw();
 	}
@@ -77,127 +207,13 @@ function draw() {
 	}
 }
 function update() {
-	//Default horizontal scrolling//
-	square.x += scrollSpeed;
-	// for(var spawn of spawns) {
-	// 	spawn.x += scrollSpeed;
-	// }
-	for(var platform of platforms) {
-		platform.x += scrollSpeed;
-	}
-
-	//Horizontal movement//
-	if(leftPressed) {
-		square.vx = leftSpeed;
-	}
-	else if(rightPressed) {
-		square.vx = rightSpeed;
-	}
-	else {
-		square.vx = 0;
-	}
-	square.x += square.vx;
-
-	//Horizontal platform collision detection//
-	//Player
-	for(var platform of platforms) {
-		if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
-			if(square.vx > 0) { //Leftside case
-				square.x = platform.x-square.width;
-			 	square.vx = 0;
-			}
-			else if (square.vx < 0) { //Rightside case
-				square.x = platform.x+platform.width;
-		 	 	square.vx = 0;
-			}
-		}
-	}
-	//Spawns
-	for(var platform of platforms) {
-		for(var spawn of spawns) {
-			if(spawn.y < platform.y+platform.height && spawn.y+spawn.height > platform.y && spawn.x+spawn.width > platform.x && spawn.x < platform.x+platform.width) {
-				if(spawn.vx > 0) { //Leftside case
-					spawn.x = platform.x-spawn.width;
-				 	spawn.vx = 0;
-				}
-				else if (spawn.vx < 0) { //Rightside case
-					spawn.x = platform.x+platform.width;
-			 	 	spawn.vx = 0;
-				}
-			}
-		}
-	}
-
-	//Vertical movement//
-	if(upPressed && onGround && !jumping) {
-		square.vy = upSpeed;
-		onGround = false;
-		jumping = true;
-	}
-	else {
-		square.vy += gravity; //Gravity is always applied except on the frame of jumping
-	}
+	//Updates objects//
+	player.update();
 	for(var spawn of spawns) {
-		spawn.y += spawnGravity;
+		spawn.update();
 	}
-	square.y += square.vy;
-
-	//Vertical platform collision detection//
-	//Player
 	for(var platform of platforms) {
-		if(square.y < platform.y+platform.height && square.y+square.height > platform.y && square.x+square.width > platform.x && square.x < platform.x+platform.width) {
-			if(square.vy > 0) { //Topside case
-				square.y = platform.y-square.height;
-			 	square.vy = 0;
-			 	onGround = true;
-			 	jumping = false;
-			}
-			else if (square.vy < 0) { //Bottomside case
-				square.y = platform.y+platform.height;
-		 	 	square.vy = 0;
-			}
-		}
-	}
-	//Spawns
-	for(var platform of platforms) {
-		for(var spawn of spawns) {
-			//Since spawns only fall from the top, should only have to worry about one vertical case.
-			if(spawn.y < platform.y+platform.height && spawn.y+spawn.height > platform.y && spawn.x+spawn.width > platform.x && spawn.x < platform.x+platform.width) {
-				spawn.y = platform.y-spawn.height;
-				spawn.vy = 0;
-			}
-		}
-	}
-	//Rightside canvas collision detection//
-	if(square.x+square.width > canvas.width) {
-		square.x = canvas.width-square.width;
-		square.vx = 0;
-	}
-	//Leftside canvas collision detection//
-	else if(square.x < 0) {
-		square.x = 0;
-		square.vx = 0;
-	}
-
-	//Bottomside canvas collision detection//
-	//Spawn
-	for(var spawn of spawns) {
-		if(spawn.y+spawn.height > canvas.height) {
-			spawn.y = canvas.height-spawn.height;
-			spawn.vy = 0;
-		}
-	}
-	//Player
-	if(square.y+square.height > canvas.height) {
-		square.y = canvas.height-square.height;
-		square.vy = 0;
-		onGround = true;
-		jumping = false;
-	}
-	//Topside canvas collision detection//
-	else if(square.y < 0) {
-		square.y = 0;
-		square.vy = 0;
+		platform.update();
 	}
 }
 function mainLoop() {
