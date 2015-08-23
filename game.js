@@ -38,7 +38,8 @@ Spawn.prototype.draw = function(){
 }
 Spawn.prototype.update = function(){
 	//Horizontal platform collision detection//
-	for(var platform of platforms) {
+	for(var i=0; i<platforms.length; i++) {
+		platform = platforms[i];
 		if(this.y < platform.y+platform.height && this.y+this.height > platform.y && this.x+this.width > platform.x && this.x < platform.x+platform.width) {
 			if(this.vx > 0) { //Leftside case
 				this.x = platform.x-this.width;
@@ -54,7 +55,8 @@ Spawn.prototype.update = function(){
 	//Vertical movement//
 	this.y += spawnGravity;
 	//Vertical platform collision detection//
-	for(var platform of platforms) {
+	for(var i=0; i<platforms.length; i++) {
+		platform = platforms[i];
 		//Since spawns only fall from the top, should only have to worry about one vertical case.
 		if(this.y < platform.y+platform.height && this.y+this.height > platform.y && this.x+this.width > platform.x && this.x < platform.x+platform.width) {
 			this.y = platform.y-this.height;
@@ -111,7 +113,8 @@ var player = {
 		player.x += player.vx;
 
 		//Horizontal platform collision detection//
-		for(var platform of platforms) {
+		for(var i=0; i<platforms.length; i++) {
+			platform = platforms[i];
 			if(player.y < platform.y+platform.height && player.y+player.height > platform.y && player.x+player.width > platform.x && player.x < platform.x+platform.width) {
 				if(player.vx > 0) { //Leftside case
 					player.x = platform.x-player.width;
@@ -136,7 +139,8 @@ var player = {
 		player.y += player.vy;
 
 		//Vertical platform collision detection//
-		for(var platform of platforms) {
+		for(var i=0; i<platforms.length; i++) {
+			platform = platforms[i];
 			if(player.y < platform.y+platform.height && player.y+player.height > platform.y && player.x+player.width > platform.x && player.x < platform.x+platform.width) {
 				if(player.vy > 0) { //Topside case
 					player.y = platform.y-player.height;
@@ -199,21 +203,21 @@ function draw() {
 
 	//Draws objects//
 	player.draw();
-	for(var spawn of spawns) {
-		spawn.draw();
+	for(var i=0; i<spawns.length; i++) {
+		spawns[i].draw();
 	}
-	for(var platform of platforms) {
-		platform.draw();
+	for(var i=0; i<platforms.length; i++) {
+		platforms[i].draw();
 	}
 }
 function update() {
 	//Updates objects//
 	player.update();
-	for(var spawn of spawns) {
-		spawn.update();
+	for(var i=0; i<spawns.length; i++) {
+		spawns[i].update();
 	}
-	for(var platform of platforms) {
-		platform.update();
+	for(var i=0; i<platforms.length; i++) {
+		platforms[i].update();
 	}
 }
 function mainLoop() {
