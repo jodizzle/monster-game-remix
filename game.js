@@ -44,8 +44,11 @@ function Spawn(x,y,vx,vy,width,height,color) {
 }
 
 Spawn.prototype.draw = function(){
-	context.fillStyle = this.color;
-	context.fillRect(this.x,this.y,this.width,this.height);
+	var guyImage = new Image();
+	guyImage.src = 'assets/test_guy_1.png';
+	context.drawImage(guyImage, this.x, this.y);
+	// context.fillStyle = this.color;
+	// context.fillRect(this.x,this.y,this.width,this.height);
 }
 Spawn.prototype.update = function(){
 	//Horizontal movement//
