@@ -18,27 +18,22 @@ var jumping = false
 
 //Global values//
 var gravity = 0.2
-var scrollSpeed = -0.1
+var scrollSpeed = -0.5
 
 //Player movement values//
 var upSpeed = -7
 var leftSpeed = -5
 var rightSpeed = 5
 
-//Player character definition//
-var square = {
-	x: 50,
-	y: 50,
-	width: 50,
-	height: 50,
-	vx: 0,
-	vy: 0,
-	color: 'red',
-	draw: function() {
-		context.fillStyle = this.color;
-		context.fillRect(this.x,this.y,this.width,this.height);
-	}
-};
+//Generalized character definition//
+function Character(x,y,vx,vy,width,height,color) {
+	this.x = x; this.y = y; this.vx = 0; this.vy = 0; this.width = width; this.height = height; this.color = color;
+}
+Character.prototype.draw = function(){
+	context.fillStyle = this.color;
+	context.fillRect(this.x,this.y,this.width,this.height);
+}
+var square = new Character(50,50,0,0,50,50,'red');
 
 //Generalized platform definition -- OOP-esque//
 function Platform(x,y,width,height,color) {
