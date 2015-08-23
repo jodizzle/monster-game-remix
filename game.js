@@ -30,7 +30,7 @@ var gameScalingTargetLong = 1800; //30 seconds
 var spawnCounter = 0;
 var spawnCounterTarget = 120;
 var platformCounter = 0;
-var platformCounterTarget = 90;
+var platformCounterTarget = 120;
 
 //Player movement values//
 var upSpeed = -8;
@@ -111,7 +111,7 @@ Platform.prototype.draw = function(){
  	context.fillRect(this.x,this.y,this.width,this.height);
 }
 Platform.prototype.update = function(){
-	this.x += playerScrollSpeed;
+	this.x += platformScrollSpeed;
 }
 
 var monsterImage = new Image();
@@ -277,7 +277,7 @@ function canDespawn(object){
 function spawnObjects() {
 	//Spawn spawns (lol)//
 	if(spawnCounter >= spawnCounterTarget) {
-		randX = getRandomNumber(0,canvas.width);
+		randX = getRandomNumber(100,canvas.width);
 		//randY = getRandomNumber(0,canvas.height/4); //Only spawn on top fourth of canvas screen
 		spawns.push(new Spawn(randX,0,0,0,23,23,'yellow'));
 		spawnCounter = 0;
@@ -288,10 +288,10 @@ function spawnObjects() {
 
 	//Spawn platforms//
 	if(platformCounter == platformCounterTarget) {
-		randWidth = getRandomNumber(20,90);
+		randWidth = getRandomNumber(30,90);
 		spawnHeight = 10;
 		randX = getRandomNumber(canvas.width,canvas.width+(randWidth*2));
-		randY = getRandomNumber(canvas.height/3,canvas.height-(spawnHeight*3));
+		randY = getRandomNumber(canvas.height/2,canvas.height-(spawnHeight*3));
 		platforms.push(new Platform(randX,randY,randWidth,spawnHeight,'#C2203D'));
 		platformCounter = 0;
 	}
@@ -343,7 +343,7 @@ function draw() {
 		displayScore();
 	}
 	else {
-		context.fillText(points, 10, 50);
+		context.fillText("humanity: "+points, 10, 50);
 		//Draws objects//
 		for(var i=0; i<spawns.length; i++) {
 			spawns[i].draw();
@@ -366,12 +366,14 @@ function update() {
 		gameScalingTimerShort += 1;
 	}
 	if(gameScalingTimerLong == gameScalingTargetLong) {
-		platformScrollSpeed -= 0.5;
-		spawnScrollSpeed -= 0.5;
-		gameScalingTargetLong = 0;
+		platformScrollSpeed -= 0.3;
+		spawnScrollSpeed -= 0.3;
+		playerScrollSpeed -= 0.3;
+		rightSpeed += 0.3;
+		gameScalingTimerLong = 0;
 	}
 	else {
-		gameScalingTargetLong += 1;
+		gameScalingTimerLong += 1;
 	}
 
 	player.update();
