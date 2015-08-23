@@ -37,6 +37,7 @@ var loseKill = false; //Lose by touching ("killing") a falling object
 var loseWall = false; //Lose by touching the leftside of the canvas
 
 //Spawn definitions//
+//ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); //reference
 function Spawn(x,y,vx,vy,width,height,color) {
 	this.x = x; this.y = y; this.vx = 0; this.vy = 0; this.width = width; this.height = height; this.color = color;
 	this.onGround = false;
@@ -46,7 +47,7 @@ function Spawn(x,y,vx,vy,width,height,color) {
 Spawn.prototype.draw = function(){
 	var guyImage = new Image();
 	guyImage.src = 'assets/test_guy_1.png';
-	context.drawImage(guyImage, this.x, this.y);
+	context.drawImage(guyImage, 0, 0, 25, 25, this.x, this.y, this.width, this.height);
 	// context.fillStyle = this.color;
 	// context.fillRect(this.x,this.y,this.width,this.height);
 }
@@ -114,12 +115,13 @@ function makeMonsterImage()
   monsterImage.src = 'assets/test_monster_2.png';
 }
 //player definition//
+//ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); //reference
 var player = {
 	x: canvas.width/2,
 	y: canvas.height,
 	vx: 0,
 	vy: 0,
-	width: 25,
+	width: 28,
 	height: 30,
 	color: 'red',
 	onGround: false,
@@ -127,7 +129,7 @@ var player = {
 	draw: function() {
 		var monsterImage = new Image();
 		monsterImage.src = 'assets/test_monster_2.png';
-		context.drawImage(monsterImage, this.x, this.y);
+		context.drawImage(monsterImage, 3, 2, 26, 28, this.x, this.y, this.width, this.height);
 		// context.fillStyle = this.color;
 		// context.fillRect(this.x,this.y,this.width,this.height);
 	},
@@ -269,7 +271,7 @@ function spawnObjects() {
 	if(spawnCounter == spawnCounterTarget) {
 		randX = getRandomNumber(0,canvas.width);
 		//randY = getRandomNumber(0,canvas.height/4); //Only spawn on top fourth of canvas screen
-		spawns.push(new Spawn(randX,0,0,0,20,20,'yellow'));
+		spawns.push(new Spawn(randX,0,0,0,23,23,'yellow'));
 		spawnCounter = 0;
 	}
 	else {
