@@ -59,7 +59,12 @@ function Spawn(x,y,vx,vy,width,height,color) {
 
 Spawn.prototype.draw = function(){
 	var guyImage = new Image();
-	guyImage.src = 'assets/test_guy_1.png';
+	if(this.onGround) {
+		guyImage.src = 'assets/test_guy_1_splatter.png';
+	}
+	else {
+		guyImage.src = 'assets/test_guy_1.png';
+	}
 	context.drawImage(guyImage, 0, 0, 25, 25, this.x, this.y, this.width, this.height);
 	// context.fillStyle = this.color;
 	// context.fillRect(this.x,this.y,this.width,this.height);
