@@ -266,7 +266,7 @@ function spawnObjects() {
 		randWidth = getRandomNumber(20,90);
 		spawnHeight = 10;
 		randX = getRandomNumber(canvas.width,canvas.width+(randWidth*2));
-		randY = getRandomNumber(canvas.height/5,canvas.height-(spawnHeight*2));
+		randY = getRandomNumber(canvas.height/3,canvas.height-(spawnHeight*3));
 		platforms.push(new Platform(randX,randY,randWidth,spawnHeight,'#C2203D'));
 		platformCounter = 0;
 	}
@@ -288,7 +288,7 @@ function removeObjects(objectArray) {
 }
 //Random number
 function getRandomNumber(min, max) {
-  return Math.random() * (max - min) + min;
+  return (Math.random()*Math.random())*(max-min)+min;
 }
 
 //Main loop functions//
