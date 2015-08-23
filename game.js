@@ -24,9 +24,9 @@ var spawnScrollSpeed = -1;
 
 //Timers//
 var gameScalingTimerShort = 0; //makes game harder with time
-var gameScalingTargetShort = 900; //15 seconds
+var gameScalingTargetShort = 300; //5 seconds
 var gameScalingTimerLong = 0;
-var gameScalingTargetLong = 1800; //30 seconds
+var gameScalingTargetLong = 600; //10 seconds
 var spawnCounter = 0;
 var spawnCounterTarget = 120;
 var platformCounter = 0;
@@ -271,7 +271,7 @@ function canDespawn(object){
 			return true;
 		}
 	}
-	else if(object.x+object.width < 0) { //Similar to a leftside canvas collision
+	else if(object.x+object.width <= 0) { //Similar to a leftside canvas collision
 		return true;
 	}
 	else {
@@ -309,12 +309,14 @@ function removeObjects(objectArray) {
 	var toRemove = [];
 	for(var i=0; i<objectArray.length; i++) {
 		if(canDespawn(objectArray[i])) {
-			toRemove.push(i); //push the index to remove
+			//toRemove.push(i); //push the index to remove
+			objectArray.splice(i,1);
+			i--;
 		}
 	}
-	for(var i=0; i<toRemove.length; i++) {
-		objectArray.splice(toRemove[i],1);
-	}
+	// for(var i=0; i<toRemove.length; i++) {
+	// 	objectArray.splice(toRemove[i],1)
+	// }
 }
 //Random number
 function getRandomNumber(min, max) {
@@ -406,14 +408,14 @@ function update() {
 	}
 }
 function mainLoop() {
-	spawnObjects();
-	update();
 	//draw();
 	raf = window.requestAnimationFrame(mainLoop);
 	now = Date.now();
 	elapsed = now - then;
 	if(elapsed > fpsInterval) {
 		then = now - (elapsed % fpsInterval);
+		spawnObjects();
+		update();
 		draw();
 	}
 }
