@@ -11,6 +11,8 @@ canvas.height = 500;
 var leftPressed = false;
 var rightPressed = false;
 var upPressed = false;
+var upBigPressed = false;
+var upSmallPressed = false;
 
 //Jumping booleans//
 var jumping = false;
@@ -33,7 +35,9 @@ var platformCounter = 0;
 var platformCounterTarget = 90;
 
 //Player movement values//
-var upSpeed = -8;
+//var upSpeed = -8;
+var upBigSpeed = -8;
+var upSmallspeed = -5;
 var leftSpeed = -5;
 var rightSpeed = 5;
 
@@ -108,6 +112,7 @@ Spawn.prototype.update = function(){
 		this.y = canvas.height-this.height;
 		this.vy = 0;
 		this.onGround = true;
+		this.touched = true;
 	}
 }
 
@@ -184,7 +189,12 @@ var player = {
 
 		//Vertical movement//
 		if(upPressed && player.onGround && !jumping) {
-			player.vy = upSpeed;
+			if(upSmallPressed) {
+				player.vy = upSmallspeed;
+			}
+			if(upBigPressed) {
+				player.vy = upBigSpeed;
+			}
 			player.onGround = false;
 			jumping = true;
 		}
@@ -260,7 +270,7 @@ var spawns = [];
 
 //Displays the score//
 function displayScore() {
-	context.fillStyle = "orange";
+	context.fillStyle = "purple";
 	context.font = "48px serif";
 	context.textAlign = "center";
 	context.fillText("final score: " + points, canvas.width/2, canvas.height/2);
@@ -350,12 +360,28 @@ function draw() {
 		var armyImage = new Image();
 		armyImage.src = 'assets/army.png';
 		context.drawImage(armyImage, 0, canvas.height-100);
+		//Display instructions//
+		context.fillStyle = "purple";
+		context.font = "48px serif";
+		context.textAlign = "center";
+		context.fillText("u r no monster", canvas.width/2, 200);
+		context.fillText("prove it", canvas.width/2, 250);
+		context.fillText("only kill people when there dead", canvas.width/2, 300);
+		//Controls//
+		context.font = "32px serif";
+		context.textAlign = "start";
+		context.fillText("z: big jump", canvas.width-250, 50);
+		context.fillText("x: little jump", canvas.width-250, 100);
+		//Bottom Message//
+		context.font = "32px serif";
+		context.textAlign = "center";
+		context.fillText("dont let the army down here get u", canvas.width/2, 400);
 	}
 
 	player.draw();
 	//monsterImage.onload();
 	//Display text//
-	context.fillStyle = "orange";
+	context.fillStyle = "purple";
 	context.font = "48px serif";
 	context.textAlign = "start";
 	if(loseKill) {
@@ -443,7 +469,14 @@ window.addEventListener('keydown',function(e) {
 		case 37:
 			leftPressed = true;
 			break;
-		case 38:
+		//case 38:
+		case 88:
+			upSmallPressed = true;
+			upPressed = true;
+			jumping = true;
+			break
+		case 90:
+			upBigPressed = true;
 			upPressed = true;
 			jumping = true;
 			break;
@@ -457,8 +490,14 @@ window.addEventListener('keyup',function(e){
 		case 37:
 			leftPressed = false;
 			break;
-		case 38:
+		//case 38:
+		case 88:
 			upPressed = false;
+			upSmallPressed = false;
+			break;
+		case 90:
+			upPressed = false;
+			upBigPressed = false;
 			break;
 		case 39:
 			rightPressed = false;
