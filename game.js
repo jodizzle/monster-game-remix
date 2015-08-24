@@ -32,7 +32,7 @@ var gameScalingTargetLong = 600; //10 seconds
 var spawnCounter = 0;
 var spawnCounterTarget = 120;
 var platformCounter = 0;
-var platformCounterTarget = 90;
+var platformCounterTarget = 70;
 
 //Player movement values//
 //var upSpeed = -8;
@@ -309,7 +309,7 @@ function spawnObjects() {
 
 	//Spawn platforms//
 	if(platformCounter == platformCounterTarget) {
-		randWidth = getRandomNumber(30,90);
+		randWidth = getRandomNumber(40,90);
 		spawnHeight = 10;
 		randX = getRandomNumber(canvas.width,canvas.width+(randWidth*2));
 		randY = getRandomNumber(canvas.height/2,canvas.height-(spawnHeight*3));
