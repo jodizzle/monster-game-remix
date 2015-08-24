@@ -30,7 +30,7 @@ var gameScalingTargetLong = 600; //10 seconds
 var spawnCounter = 0;
 var spawnCounterTarget = 120;
 var platformCounter = 0;
-var platformCounterTarget = 120;
+var platformCounterTarget = 90;
 
 //Player movement values//
 var upSpeed = -8;
@@ -135,8 +135,8 @@ function makeMonsterImage()
 //player definition//
 //ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); //reference
 var player = {
-	x: canvas.width/2,
-	y: canvas.height,
+	x: canvas.width/3,
+	y: canvas.height/2,
 	vx: 0,
 	vy: 0,
 	width: 28,
@@ -233,7 +233,7 @@ var player = {
 		else if(player.x < 0) {
 			player.x = 0;
 			player.vx = 0;
-			loseWall = true;
+			//loseWall = true;
 		}
 
 		//Bottomside canvas collision detection//
@@ -242,6 +242,7 @@ var player = {
 			player.vy = 0;
 			player.onGround = true;
 			jumping = false;
+			loseWall = true;
 		}
 		//Topside canvas collision detection//
 		else if(player.y < 0) {
@@ -252,8 +253,8 @@ var player = {
 };
 
 //platforms array//
-//var platforms = [new Platform(250,400,80,10,'green'),new Platform(200,200,80,10,'blue'),new Platform(150,300,80,10,'orange')];
-var platforms = [];
+var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];
+//var platforms = [];
 //spawns array//
 var spawns = [];
 
@@ -302,7 +303,7 @@ function spawnObjects() {
 		spawnHeight = 10;
 		randX = getRandomNumber(canvas.width,canvas.width+(randWidth*2));
 		randY = getRandomNumber(canvas.height/2,canvas.height-(spawnHeight*3));
-		platforms.push(new Platform(randX,randY,randWidth,spawnHeight,'#C2203D'));
+		platforms.push(new Platform(randX,randY,randWidth,spawnHeight,'#000000'));
 		platformCounter = 0;
 	}
 	else {
@@ -342,10 +343,13 @@ function draw() {
 
 	if(!loseKill && !loseWall) {
 		//Draw background//
-		console.log('triggered');
 		var backgroundImage = new Image();
 		backgroundImage.src = 'assets/background.png';
 		context.drawImage(backgroundImage, 0, 0);
+		//Draw army//
+		var armyImage = new Image();
+		armyImage.src = 'assets/army.png';
+		context.drawImage(armyImage, 0, canvas.height-100);
 	}
 
 	player.draw();
