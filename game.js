@@ -7,42 +7,45 @@ var raf;
 canvas.width = 800;
 canvas.height = 500;
 
-//Movement booleans//
+//Keypress booleans//
 var leftPressed = false;
 var rightPressed = false;
 var upPressed = false;
 var upBigPressed = false;
 var upSmallPressed = false;
+var restartPressed = false;
 
 //Jumping booleans//
 var jumping = false;
 
-//Global values//
-var gravity = 0.2;
-var spawnGravity = 2;
-var playerScrollSpeed = -1;
-var platformScrollSpeed = -1;
-var spawnScrollSpeed = -1;
+//Acceleration/
+var gravity;
+var spawnGravity;
 
-//Timers//
-var gameScalingTimerShort = 0; //makes game harder with time
-var gameScalingTargetShort = 300; //5 seconds
-var gameScalingTimerLong = 0;
-var gameScalingTargetLong = 600; //10 seconds
-var spawnCounter = 0;
-var spawnCounterTarget = 120;
-var platformCounter = 0;
-var platformCounterTarget = 70;
+//Scroll Speed//
+var playerScrollSpeed;
+var platformScrollSpeed;
+var spawnScrollSpeed;
+
+//Timers and Counters//
+var gameScalingTimerShort; //makes game harder with time
+var gameScalingTargetShort; //5 seconds
+var gameScalingTimerLong;
+var gameScalingTargetLong; //10 seconds
+var spawnCounter;
+var spawnCounterTarget;
+var platformCounter;
+var platformCounterTarget;
 
 //Player movement values//
 //var upSpeed = -8;
-var upBigSpeed = -8;
-var upSmallspeed = -5;
-var leftSpeed = -5;
-var rightSpeed = 5;
+var upBigSpeed;
+var upSmallspeed;
+var leftSpeed;
+var rightSpeed;
 
 //Scoring//
-var points = 0;
+var points;
 
 //Loss condition//
 var loseKill = false; //Lose by touching ("killing") a falling object
@@ -52,6 +55,42 @@ var loseWall = false; //Lose by touching the leftside of the canvas
 var stop=false;
 var frameCount=0;
 var fps,fpsInterval,startTime,now,then,elapsed;
+
+//Initializes (or re-initializes) variables.//
+function startValues() {
+	platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];
+	player.x = canvas.width/3;
+	player.y = canvas.height/2;
+
+	//Acceleration//
+	gravity = 0.2;
+	spawnGravity = 2;
+
+	//Scroll Speed//
+	playerScrollSpeed = -1;
+	platformScrollSpeed = -1;
+	spawnScrollSpeed = -1;
+
+	//Timers and Counters//
+	gameScalingTimerShort = 0; //makes game harder with time
+	gameScalingTargetShort = 300; //5 seconds
+	gameScalingTimerLong = 0;
+	gameScalingTargetLong = 600; //10 seconds
+	spawnCounter = 0;
+	spawnCounterTarget = 120;
+	platformCounter = 0;
+	platformCounterTarget = 70;
+
+	//Player movement values//
+	//upSpeed = -8;
+	upBigSpeed = -8;
+	upSmallspeed = -5;
+	leftSpeed = -5;
+	rightSpeed = 5;
+
+	//Scoring//
+	points = 0;
+}
 
 //Spawn definitions//
 //ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); //reference
@@ -140,6 +179,8 @@ function makeMonsterImage()
 //player definition//
 //ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); //reference
 var player = {
+	// x: canvas.width/3,
+	// y: canvas.height/2,
 	x: canvas.width/3,
 	y: canvas.height/2,
 	vx: 0,
@@ -263,8 +304,8 @@ var player = {
 };
 
 //platforms array//
-var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];
-//var platforms = [];
+var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];
+//var platforms = []
 //spawns array//
 var spawns = [];
 
@@ -378,7 +419,6 @@ function draw() {
 		context.fillText("dont let the army down here get u", canvas.width/2, 400);
 	}
 
-	player.draw();
 	//monsterImage.onload();
 	//Display text//
 	context.fillStyle = "purple";
@@ -387,10 +427,12 @@ function draw() {
 	if(loseKill) {
 		context.fillText("u r the monster", 10, 50);
 		displayScore();
+		context.fillText("press r to restart", canvas.width/2, canvas.height-100);
 	}
 	else if(loseWall) {
 		context.fillText("the army got u", 10, 50);
 		displayScore();
+		context.fillText("press r to restart", canvas.width/2, canvas.height-100);
 	}
 	else {
 		context.fillText("humanity: "+points, 10, 50);
@@ -402,6 +444,8 @@ function draw() {
 			platforms[i].draw();
 		}
 	}
+
+	player.draw(); //Want to draw player above everything else.
 }
 function update() {
 	//Updates objects//
@@ -439,8 +483,10 @@ function update() {
 	}
 	else {
 		//Empty arrays
-		platforms.splice(0,platforms.length);
-		spawns.splice(0,spawns.length);
+		// platforms.splice(0,platforms.length);
+		// spawns.splice(0,spawns.length);
+		platforms = [];
+		spawns = [];
 		//Remove scrolling
 		playerScrollSpeed = 0;
 		platformScrollSpeed = 0;
@@ -448,6 +494,12 @@ function update() {
 		//Teleport player
 		// player.x = canvas.width/2;
 		// player.y = canvas.height/2;
+		if(restartPressed) {
+			loseKill = false;
+			loseWall = false;
+			startValues();
+			//platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'), new Platform(500,200,80,10,'black'), new Platform(700,canvas.height/2,80,10,'black')];
+		}
 	}
 }
 function mainLoop() {
@@ -483,6 +535,9 @@ window.addEventListener('keydown',function(e) {
 		case 39:
 			rightPressed = true;
 			break;
+		case 82:
+			restartPressed = true;
+			break;
 	}
 });
 window.addEventListener('keyup',function(e){
@@ -502,6 +557,9 @@ window.addEventListener('keyup',function(e){
 		case 39:
 			rightPressed = false;
 			break;
+		case 82:
+			restartPressed = false;
+			break;
 	}
 });
 
@@ -510,6 +568,7 @@ function init(fps) {
 	fpsInterval = 100/fps;
 	then = Date.now();
 	startTime = then;
+	startValues();
 	mainLoop();
 }
 //makeMonsterImage();
