@@ -339,8 +339,8 @@ function canDespawn(object){
 function spawnObjects() {
 	//Spawn spawns (lol)//
 	if(spawnCounter >= spawnCounterTarget) {
-		randX = getRandomNumber(100,canvas.width);
-		//randY = getRandomNumber(0,canvas.height/4); //Only spawn on top fourth of canvas screen
+		randX = getRandomNumberSpawn(100,canvas.width-100);
+		//randY = getRandomNumberPlatform(0,canvas.height/4); //Only spawn on top fourth of canvas screen
 		spawns.push(new Spawn(randX,0,0,0,23,23,'yellow'));
 		spawnCounter = 0;
 	}
@@ -350,10 +350,10 @@ function spawnObjects() {
 
 	//Spawn platforms//
 	if(platformCounter == platformCounterTarget) {
-		randWidth = getRandomNumber(40,90);
+		randWidth = getRandomNumberPlatform(40,90);
 		spawnHeight = 10;
-		randX = getRandomNumber(canvas.width,canvas.width+(randWidth*2));
-		randY = getRandomNumber(canvas.height/2,canvas.height-(spawnHeight*3));
+		randX = getRandomNumberPlatform(canvas.width,canvas.width+(randWidth*2));
+		randY = getRandomNumberPlatform(canvas.height/2,canvas.height-(spawnHeight*3));
 		platforms.push(new Platform(randX,randY,randWidth,spawnHeight,'#000000'));
 		platformCounter = 0;
 	}
@@ -375,9 +375,12 @@ function removeObjects(objectArray) {
 	// 	objectArray.splice(toRemove[i],1)
 	// }
 }
-//Random number
-function getRandomNumber(min, max) {
-  return (Math.random()*Math.random())*(max-min)+min;
+//Random number generators//
+function getRandomNumberPlatform(min, max) {
+	return (Math.random()*Math.random())*(max-min)+min;
+}
+function getRandomNumberSpawn(min, max) {
+	return Math.random()*(max-min)+min;
 }
 // var monsterImage = new Image();
 // function makeMonsterImage()
