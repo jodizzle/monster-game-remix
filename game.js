@@ -8,12 +8,12 @@ canvas.width = 800;
 canvas.height = 500;
 
 //Keypress booleans//
-var leftPressed = false;
-var rightPressed = false;
-var upPressed = false;
-var upBigPressed = false;
-var upSmallPressed = false;
-var restartPressed = false;
+var leftPressed;
+var rightPressed;
+var upPressed;
+var upBigPressed;
+var upSmallPressed;
+var restartPressed;
 
 //Jumping booleans//
 var jumping = false;
@@ -59,6 +59,18 @@ var fps,fpsInterval,startTime,now,then,elapsed;
 //Initializes (or re-initializes) variables.//
 function startValues() {
 	platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];
+	
+	//Keypress values//
+	leftPressed = false;
+	rightPressed = false;
+	upPressed = false;
+	upBigPressed = false;
+	upSmallPressed = false;
+	restartPressed = false;
+
+	//Player//
+	player.vx = 0;
+	player.vy = 0;
 	player.x = canvas.width/3;
 	player.y = canvas.height/2;
 
