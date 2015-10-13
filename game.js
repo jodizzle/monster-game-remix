@@ -21,6 +21,7 @@ var jumping = false;
 //Acceleration/
 var gravity;
 var spawnGravity;
+var horizAcc;
 
 //Scroll Speed//
 var playerScrollSpeed;
@@ -77,6 +78,7 @@ function startValues() {
 	//Acceleration//
 	gravity = 0.2;
 	spawnGravity = 2;
+	horizAcc = 0.2;
 
 	//Scroll Speed//
 	playerScrollSpeed = -1;
@@ -215,13 +217,27 @@ var player = {
 
 		//Horizontal movement//
 		if(leftPressed) {
-			player.vx = leftSpeed;
+			if(player.vx > leftSpeed) {
+				player.vx -= horizAcc;
+			}
 		}
 		else if(rightPressed) {
-			player.vx = rightSpeed;
+			if(player.vx < rightSpeed) {
+				player.vx += horizAcc;
+			}
 		}
 		else {
-			player.vx = 0;
+			//Check first to see if the number is close to be not quite
+			//0.1.  This prevents endless sliding.
+			if (Math.abs(player.vx - 0.1) < 0.1) {
+				player.vx = 0;
+			}
+			else if (player.vx > 0) {
+				player.vx -= 0.1;
+			}
+			else if (player.vx < 0) {
+				player.vx += 0.1;
+			}
 		}
 		player.x += player.vx;
 
