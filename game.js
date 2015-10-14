@@ -123,8 +123,6 @@ Spawn.prototype.draw = function(){
 		guyImage.src = 'assets/test_guy_1.png';
 	}
 	context.drawImage(guyImage, 0, 0, 25, 25, this.x, this.y, this.width, this.height);
-	// context.fillStyle = this.color;
-	// context.fillRect(this.x,this.y,this.width,this.height);
 }
 Spawn.prototype.update = function(){
 	//Horizontal movement//
@@ -203,8 +201,6 @@ function checkCollision(obj1, obj2) {
 //player definition//
 //ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); //reference
 var player = {
-	// x: canvas.width/3,
-	// y: canvas.height/2,
 	x: canvas.width/3,
 	y: canvas.height/2,
 	vx: 0,
@@ -218,8 +214,6 @@ var player = {
 		var monsterImage = new Image();
 		monsterImage.src = 'assets/test_monster_2.png';
 		context.drawImage(monsterImage, 3, 2, 26, 28, this.x, this.y, this.width, this.height);
-		// context.fillStyle = this.color;
-		// context.fillRect(this.x,this.y,this.width,this.height);
 	},
 	update: function() {
 		//Default horizontal scrolling//
@@ -324,7 +318,6 @@ var player = {
 		else if(player.x < 0) {
 			player.x = 0;
 			player.vx = 0;
-			//loseWall = true;
 		}
 
 		//Bottomside canvas collision detection//
@@ -345,7 +338,6 @@ var player = {
 
 //platforms array//
 var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];
-//var platforms = []
 //spawns array//
 var spawns = [];
 
@@ -412,9 +404,6 @@ function removeObjects(objectArray) {
 			i--;
 		}
 	}
-	// for(var i=0; i<toRemove.length; i++) {
-	// 	objectArray.splice(toRemove[i],1)
-	// }
 }
 //Random number generators//
 function getRandomNumberPlatform(min, max) {
@@ -477,14 +466,6 @@ function comparePlatformYValues(p1, p2) {
 function getRandomNumberSpawn(min, max) {
 	return Math.random()*(max-min)+min;
 }
-// var monsterImage = new Image();
-// function makeMonsterImage()
-// {
-//   monsterImage.onload = function(){
-//     context.drawImage(monsterImage, 0,0);
-//   }
-//   monsterImage.src = 'assets/test_monster_2.png';
-// }
 
 //Main loop functions//
 function draw() {
@@ -517,7 +498,6 @@ function draw() {
 		context.fillText("dont let the army down here get u", canvas.width/2, 400);
 	}
 
-	//monsterImage.onload();
 	//Display text//
 	context.fillStyle = "purple";
 	context.font = "48px serif";
@@ -581,8 +561,6 @@ function update() {
 	}
 	else {
 		//Empty arrays
-		// platforms.splice(0,platforms.length);
-		// spawns.splice(0,spawns.length);
 		platforms = [];
 		spawns = [];
 		//Remove scrolling
@@ -596,12 +574,10 @@ function update() {
 			loseKill = false;
 			loseWall = false;
 			startValues();
-			//platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'), new Platform(500,200,80,10,'black'), new Platform(700,canvas.height/2,80,10,'black')];
 		}
 	}
 }
 function mainLoop() {
-	//draw();
 	raf = window.requestAnimationFrame(mainLoop);
 	now = Date.now();
 	elapsed = now - then;
@@ -619,7 +595,6 @@ window.addEventListener('keydown',function(e) {
 		case 37:
 			leftPressed = true;
 			break;
-		//case 38:
 		case 88:
 			upSmallPressed = true;
 			upPressed = true;
@@ -643,7 +618,6 @@ window.addEventListener('keyup',function(e){
 		case 37:
 			leftPressed = false;
 			break;
-		//case 38:
 		case 88:
 			upPressed = false;
 			upSmallPressed = false;
@@ -662,12 +636,10 @@ window.addEventListener('keyup',function(e){
 });
 
 function init(fps) {
-	//mainLoop()
 	fpsInterval = 100/fps;
 	then = Date.now();
 	startTime = then;
 	startValues();
 	mainLoop();
 }
-//makeMonsterImage();
 init(60);
