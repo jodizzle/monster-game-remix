@@ -135,7 +135,7 @@ Spawn.prototype.update = function(){
 	//Horizontal platform collision detection//
 	for(var i=0; i<platforms.length; i++) {
 		platform = platforms[i];
-		if(this.y < platform.y+platform.height && this.y+this.height > platform.y && this.x+this.width > platform.x && this.x < platform.x+platform.width) {
+		if (checkCollision(this,platform)) {
 			if(this.vx > 0) { //Leftside case
 				this.x = platform.x-this.width;
 			 	this.vx = 0;
@@ -153,7 +153,7 @@ Spawn.prototype.update = function(){
 	for(var i=0; i<platforms.length; i++) {
 		platform = platforms[i];
 		//Since spawns only fall from the top, should only have to worry about one vertical case.
-		if(this.y < platform.y+platform.height && this.y+this.height > platform.y && this.x+this.width > platform.x && this.x < platform.x+platform.width) {
+		if (checkCollision(this,platform)) {
 			this.y = platform.y-this.height;
 			this.vy = 0;
 			this.onGround = true; //Might be a worthless (since platforms are already moving), but here just in case.
@@ -190,6 +190,16 @@ function makeMonsterImage()
   }
   monsterImage.src = 'assets/test_monster_2.png';
 }
+
+//Check if obj1 is colliding with obj2//
+function checkCollision(obj1, obj2) {
+	if(obj1.y < obj2.y+obj2.height && obj1.y+obj1.height > obj2.y && obj1.x+obj1.width > obj2.x && obj1.x < obj2.x+obj2.width) {
+		return true
+	}
+
+	return false
+}
+
 //player definition//
 //ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); //reference
 var player = {
@@ -246,7 +256,7 @@ var player = {
 		//Horizontal platform collision detection//
 		for(var i=0; i<platforms.length; i++) {
 			platform = platforms[i];
-			if(player.y < platform.y+platform.height && player.y+player.height > platform.y && player.x+player.width > platform.x && player.x < platform.x+platform.width) {
+			if(checkCollision(player,platform)) {
 				if(player.vx > 0) { //Leftside case
 					player.x = platform.x-player.width;
 				 	player.vx = 0;
@@ -277,7 +287,7 @@ var player = {
 		//Vertical platform collision detection//
 		for(var i=0; i<platforms.length; i++) {
 			platform = platforms[i];
-			if(player.y < platform.y+platform.height && player.y+player.height > platform.y && player.x+player.width > platform.x && player.x < platform.x+platform.width) {
+			if (checkCollision(player,platform)) {
 				if(player.vy > 0) { //Topside case
 					player.y = platform.y-player.height;
 				 	player.vy = 0;
@@ -294,7 +304,7 @@ var player = {
 		//Spawn collision detection//
 		for(var i=0; i<spawns.length; i++) {
 			spawn = spawns[i];
-			if(player.y < spawn.y+spawn.height && player.y+player.height > spawn.y && player.x+player.width > spawn.x && player.x < spawn.x+spawn.width) {
+			if (checkCollision(player,spawn)) {
 				spawn.touched = true;
 				if(spawn.onGround) {
 					points += 1;
