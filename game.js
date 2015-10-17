@@ -217,9 +217,6 @@ var player = {
 		context.drawImage(monsterImage, 3, 2, 26, 28, this.x, this.y, this.width, this.height);
 	},
 	update: function() {
-		//Default horizontal scrolling//
-		player.x += playerScrollSpeed;
-
 		//Horizontal movement//
 		if(leftPressed) {
 			if(player.vx > leftSpeed) {
@@ -316,9 +313,14 @@ var player = {
 			player.vx = 0;
 		}
 		//Leftside canvas collision detection//
-		else if(player.x < 0) {
+		//else if(player.x <= 0) {
+		else if(player.x+playerScrollSpeed <= 0) {
 			player.x = 0;
 			player.vx = 0;
+		}
+		//Default horizontal scrolling//
+		else if(player.x+playerScrollSpeed > 0) {
+			player.x += playerScrollSpeed;
 		}
 
 		//Bottomside canvas collision detection//
