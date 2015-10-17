@@ -316,10 +316,9 @@ var player = {
 		//else if(player.x <= 0) {
 		else if(player.x+playerScrollSpeed <= 0) {
 			player.x = 0;
-			player.vx = 0;
 		}
 		//Default horizontal scrolling//
-		else if(player.x+playerScrollSpeed > 0) {
+		else if(player.x+playerScrollSpeed > 0 && !rightPressed) {
 			player.x += playerScrollSpeed;
 		}
 
