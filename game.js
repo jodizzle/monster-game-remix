@@ -232,14 +232,14 @@ var player = {
 			if (player.onGround) {
 				//Check first to see if the number is close to be not quite
 				//0.1.  This prevents endless sliding.
-				if (Math.abs(player.vx - 0.1) < 0.1) {
+				if (Math.abs(player.vx - horizAcc) < horizAcc) {
 					player.vx = 0;
 				}
 				else if (player.vx > 0) {
-					player.vx -= 0.1;
+					player.vx -= horizAcc;
 				}
 				else if (player.vx < 0) {
-					player.vx += 0.1;
+					player.vx += horizAcc;
 				}
 			}
 		}
