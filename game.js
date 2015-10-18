@@ -636,6 +636,16 @@ window.addEventListener('keyup',function(e){
 			break;
 	}
 });
+//Prevent scrolling on the page with arrow keys and spacebar//
+window.addEventListener('keydown',function(e) {
+	switch (e.which) {
+		case 32: case 37: case 38: case 39: case 40:
+			e.preventDefault();
+			break;
+		default:
+			break;
+	}
+});
 
 function init(fps) {
 	fpsInterval = 100/fps;
