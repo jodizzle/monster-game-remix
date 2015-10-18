@@ -249,11 +249,11 @@ var player = {
 		for(var i=0; i<platforms.length; i++) {
 			platform = platforms[i];
 			if(checkCollision(player,platform)) {
-				if(player.vx > 0) { //Leftside case
+				if(player.vx > 0 && !leftPressed) { //Leftside case
 					player.x = platform.x-player.width;
 				 	player.vx = 0;
 				}
-				else if (player.vx < 0) { //Rightside case
+				else if (player.vx < 0 && !rightPressed) { //Rightside case
 					player.x = platform.x+platform.width;
 			 	 	player.vx = 0;
 				}
