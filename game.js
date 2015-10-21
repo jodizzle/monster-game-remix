@@ -53,8 +53,6 @@ var loseKill = false; //Lose by touching ("killing") a falling object
 var loseWall = false; //Lose by touching the leftside of the canvas
 
 //Control FPS//
-var stop=false;
-var frameCount=0;
 var fps,fpsInterval,startTime,now,then,elapsed;
 
 //Initializes (or re-initializes) variables.//
