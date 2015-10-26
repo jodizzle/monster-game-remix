@@ -22,6 +22,8 @@ var jumping = false;
 var gravity;
 var spawnGravity;
 var horizAcc;
+var horizFrictionGround;
+var horizFrictionAir;
 
 //Scroll Speed//
 var playerScrollSpeed;
@@ -77,6 +79,10 @@ function startValues() {
 	gravity = 0.2;
 	spawnGravity = 2;
 	horizAcc = 0.2;
+	//For friction, higher numbers -> more slow down
+	//1 -> slow down at rate equal to acceleration
+	horizFrictionGround = 1;
+	horizFrictionAir = 0.30;
 
 	//Scroll Speed//
 	playerScrollSpeed = -1;
@@ -234,10 +240,10 @@ var player = {
 					player.vx = 0;
 				}
 				else if (player.vx > 0) {
-					player.vx -= horizAcc;
+					player.vx -= horizAcc*horizFrictionGround;
 				}
 				else if (player.vx < 0) {
-					player.vx += horizAcc;
+					player.vx += horizAcc*horizFrictionGround;
 				}
 			}
 			else {
@@ -246,10 +252,10 @@ var player = {
 					player.vx = 0;
 				}
 				else if (player.vx > 0) {
-					player.vx -= horizAcc*0.30;
+					player.vx -= horizAcc*horizFrictionAir;
 				}
 				else if (player.vx < 0) {
-					player.vx += horizAcc*0.30;
+					player.vx += horizAcc*horizFrictionAir;
 				}
 			}
 		}
