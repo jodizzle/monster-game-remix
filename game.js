@@ -240,6 +240,18 @@ var player = {
 					player.vx += horizAcc;
 				}
 			}
+			else {
+				//Use "lower friction" while in the air.
+				if (Math.abs(player.vx - horizAcc) < horizAcc) {
+					player.vx = 0;
+				}
+				else if (player.vx > 0) {
+					player.vx -= horizAcc*0.30;
+				}
+				else if (player.vx < 0) {
+					player.vx += horizAcc*0.30;
+				}
+			}
 		}
 		player.x += player.vx;
 
