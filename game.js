@@ -405,7 +405,7 @@ function spawnObjects() {
 		spawnHeight = 10;
 		randX = getRandomNumberPlatform(canvas.width,canvas.width+(randWidth*2));
 		//randY = getRandomNumberPlatform(canvas.height/2,canvas.height-(spawnHeight*3));
-		randY = getRandomNumberPlatformYExcluded(canvas.height/2, canvas.height-(spawnHeight*3), randX, randWidth, spawnHeight);
+		randY = getRandomNumberPlatformYExcluded(canvas.height/2, canvas.height-70, randX, randWidth, spawnHeight);
 		platforms.push(new Platform(randX,randY,randWidth,spawnHeight,'#000000'));
 		platformCounter = 0;
 	}
