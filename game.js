@@ -210,7 +210,7 @@ var player = {
 	y: canvas.height/2,
 	vx: 0,
 	vy: 0,
-	width: 28,
+	width: 30,
 	height: 30,
 	color: 'red',
 	onGround: false,
