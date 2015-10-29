@@ -3,10 +3,6 @@ var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new 
 //spawns array//
 var spawns = [];
 
-function getRandomNumberSpawn(min, max) {
-	return Math.random()*(max-min)+min;
-}
-
 //Main loop functions//
 function draw() {
 	context.clearRect(0,0,canvas.width,canvas.height); //Clears the screen every frame

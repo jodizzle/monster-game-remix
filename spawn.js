@@ -1,3 +1,6 @@
+function getRandomNumberSpawn(min, max) {
+	return Math.random()*(max-min)+min;
+}
 //Spawn definitions//
 //ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); //reference
 function Spawn(x,y,vx,vy,width,height,color) {
