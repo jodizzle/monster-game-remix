@@ -57,6 +57,15 @@ var loseWall = false; //Lose by touching the leftside of the canvas
 //Control FPS//
 var fps,fpsInterval,startTime,now,then,elapsed;
 
+var monsterImage = new Image();
+function makeMonsterImage()
+{
+  monsterImage.onload = function(){
+    context.drawImage(monsterImage, 0,0);
+  }
+  monsterImage.src = 'assets/test_monster_2.png';
+}
+
 //Initializes (or re-initializes) variables.//
 function startValues() {
 	platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];

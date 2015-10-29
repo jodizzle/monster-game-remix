@@ -1,12 +1,3 @@
-var monsterImage = new Image();
-function makeMonsterImage()
-{
-  monsterImage.onload = function(){
-    context.drawImage(monsterImage, 0,0);
-  }
-  monsterImage.src = 'assets/test_monster_2.png';
-}
-
 //platforms array//
 var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];
 //spawns array//
