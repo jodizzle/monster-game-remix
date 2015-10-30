@@ -32,16 +32,15 @@ var spawnScrollSpeed;
 
 //Timers and Counters//
 var gameScalingTimerShort; //makes game harder with time
-var gameScalingTargetShort; //5 seconds
+var gameScalingTargetShort;
 var gameScalingTimerLong;
-var gameScalingTargetLong; //10 seconds
+var gameScalingTargetLong;
 var spawnCounter;
 var spawnCounterTarget;
 var platformCounter;
 var platformCounterTarget;
 
 //Player movement values//
-//var upSpeed = -8;
 var upBigSpeed;
 var upSmallspeed;
 var leftSpeed;
@@ -66,7 +65,7 @@ function makeMonsterImage()
   monsterImage.src = 'assets/test_monster_2.png';
 }
 
-//Initializes (or re-initializes) variables.//
+//Initializes (or re-initializes) variables//
 function startValues() {
 	platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];
 	
@@ -109,7 +108,6 @@ function startValues() {
 	platformCounterTarget = 70;
 
 	//Player movement values//
-	//upSpeed = -8;
 	upBigSpeed = -8;
 	upSmallspeed = -5;
 	leftSpeed = -5;

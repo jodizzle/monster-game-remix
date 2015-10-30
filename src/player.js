@@ -1,5 +1,4 @@
-//player definition//
-//ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); //reference
+//Player definition//
 var player = {
 	x: canvas.width/3,
 	y: canvas.height/2,
@@ -124,7 +123,6 @@ var player = {
 			player.vx = 0;
 		}
 		//Leftside canvas collision detection//
-		//else if(player.x <= 0) {
 		else if(player.x+playerScrollSpeed <= 0) {
 			player.x = 0;
 			player.vx = -1*playerScrollSpeed; //"Push" against the wall

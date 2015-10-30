@@ -1,6 +1,6 @@
-//platforms array//
+//Platforms array//
 var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];
-//spawns array//
+//Spawns array//
 var spawns = [];
 
 //Main loop functions//
@@ -149,7 +149,7 @@ window.addEventListener('keydown',function(e) {
 			break;
 	}
 });
-window.addEventListener('keyup',function(e){
+window.addEventListener('keyup',function(e) {
 	switch (e.which) {
 		case 37:
 			leftPressed = false;

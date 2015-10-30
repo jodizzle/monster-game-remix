@@ -1,6 +1,6 @@
 //Check if obj1 is colliding with obj2//
 function checkCollision(obj1, obj2) {
-	//Using ~~ to truncate
+	//Using ~~ to truncate - checking collisions with integers is (theoretically) better
 	if(~~obj1.y < ~~obj2.y + ~~obj2.height && ~~obj1.y + ~~obj1.height > ~~obj2.y && ~~obj1.x + ~~obj1.width > ~~obj2.x && ~~obj1.x < ~~obj2.x + ~~obj2.width) {
 		return true
 	}
@@ -15,7 +15,7 @@ function displayScore() {
 	context.fillText("final score: " + points, canvas.width/2, canvas.height/2);
 }
 //Checks to see if an object is off screen//
-function canDespawn(object){
+function canDespawn(object) {
 	if(object instanceof Spawn) {
 		if(object.touched) {
 			return true;
@@ -38,7 +38,6 @@ function spawnObjects() {
 	//Spawn spawns (lol)//
 	if(spawnCounter >= spawnCounterTarget) {
 		randX = getRandomNumberSpawn(100,canvas.width-100);
-		//randY = getRandomNumberPlatform(0,canvas.height/4); //Only spawn on top fourth of canvas screen
 		spawns.push(new Spawn(randX,0,0,0,23,23,'yellow'));
 		spawnCounter = 0;
 	}
@@ -51,7 +50,6 @@ function spawnObjects() {
 		randWidth = getRandomNumberPlatform(40,90);
 		spawnHeight = 10;
 		randX = getRandomNumberPlatform(canvas.width,canvas.width+(randWidth*2));
-		//randY = getRandomNumberPlatform(canvas.height/2,canvas.height-(spawnHeight*3));
 		randY = getRandomNumberPlatformYExcluded(canvas.height/2, canvas.height-(spawnHeight*3), randX, randWidth, spawnHeight);
 		platforms.push(new Platform(randX,randY,randWidth,spawnHeight,'#000000'));
 		platformCounter = 0;

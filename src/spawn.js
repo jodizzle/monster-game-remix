@@ -2,14 +2,13 @@ function getRandomNumberSpawn(min, max) {
 	return Math.random()*(max-min)+min;
 }
 //Spawn definitions//
-//ctx.drawImage(image, sx, sy, sWidth, sHeight, dx, dy, dWidth, dHeight); //reference
 function Spawn(x,y,vx,vy,width,height,color) {
 	this.x = x; this.y = y; this.vx = 0; this.vy = 0; this.width = width; this.height = height; this.color = color;
 	this.onGround = false;
 	this.touched = false;
 }
 
-Spawn.prototype.draw = function(){
+Spawn.prototype.draw = function() {
 	var guyImage = new Image();
 	if(this.onGround) {
 		guyImage.src = 'assets/test_guy_1_splatter.png';
@@ -19,7 +18,7 @@ Spawn.prototype.draw = function(){
 	}
 	context.drawImage(guyImage, 0, 0, 25, 25, this.x, this.y, this.width, this.height);
 }
-Spawn.prototype.update = function(){
+Spawn.prototype.update = function() {
 	//Horizontal movement//
 	if(this.onGround) {
 		this.x += spawnScrollSpeed
