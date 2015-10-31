@@ -63,25 +63,20 @@ function draw() {
 }
 function update() {
 	//Updates objects//
-	if(gameScalingTimerShort == gameScalingTargetShort) {
+	if (!loseKill && !loseWall) {
+		gameTimer += 1;
+	}
+	if(gameTimer % gameScalingTargetShort == 0) {
 		if(spawnCounterTarget > 5) {
 			spawnCounterTarget -= 5; //faster spawns
 		}
 		spawnGravity += 0.5; //faster falling spawns
-		gameScalingTimerShort = 0;
 	}
-	else {
-		gameScalingTimerShort += 1;
-	}
-	if(gameScalingTimerLong == gameScalingTargetLong) {
+	if(gameTimer % gameScalingTargetLong == 0) {
 		platformScrollSpeed -= 0.3;
 		spawnScrollSpeed -= 0.3;
 		playerScrollSpeed -= 0.3;
 		rightSpeed += 0.3;
-		gameScalingTimerLong = 0;
-	}
-	else {
-		gameScalingTimerLong += 1;
 	}
 
 	player.update();

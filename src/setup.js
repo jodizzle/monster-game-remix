@@ -31,9 +31,8 @@ var platformScrollSpeed;
 var spawnScrollSpeed;
 
 //Timers and Counters//
-var gameScalingTimerShort; //makes game harder with time
+var gameTimer;
 var gameScalingTargetShort;
-var gameScalingTimerLong;
 var gameScalingTargetLong;
 var spawnCounter;
 var spawnCounterTarget;
@@ -89,9 +88,8 @@ function startValues() {
 	spawnScrollSpeed = -1;
 
 	//Timers and Counters//
-	gameScalingTimerShort = 0; //makes game harder with time
+	gameTimer = 0;
 	gameScalingTargetShort = 300; //5 seconds
-	gameScalingTimerLong = 0;
 	gameScalingTargetLong = 600; //10 seconds
 	spawnCounter = 0;
 	spawnCounterTarget = 100;
