@@ -94,7 +94,7 @@ function startValues() {
 	gameScalingTimerLong = 0;
 	gameScalingTargetLong = 600; //10 seconds
 	spawnCounter = 0;
-	spawnCounterTarget = 120;
+	spawnCounterTarget = 100;
 	platformCounter = 0;
 	platformCounterTarget = 70;
 

@@ -64,8 +64,8 @@ function draw() {
 function update() {
 	//Updates objects//
 	if(gameScalingTimerShort == gameScalingTargetShort) {
-		if(spawnCounterTarget > 10) {
-			spawnCounterTarget -= 10; //faster spawns
+		if(spawnCounterTarget > 5) {
+			spawnCounterTarget -= 5; //faster spawns
 		}
 		spawnGravity += 0.5; //faster falling spawns
 		gameScalingTimerShort = 0;
