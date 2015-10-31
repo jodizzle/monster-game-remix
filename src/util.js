@@ -13,6 +13,7 @@ function displayScore() {
 	context.font = "48px serif";
 	context.textAlign = "center";
 	context.fillText("final score: " + points, canvas.width/2, canvas.height/2);
+	context.fillText("time survived: " + (gameTimer/60.0).toFixed(2) + " seconds", canvas.width/2, canvas.height-200)
 }
 //Checks to see if an object is off screen//
 function canDespawn(object) {
