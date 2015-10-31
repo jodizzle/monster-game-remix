@@ -77,7 +77,7 @@ function startValues() {
 	//Acceleration//
 	gravity = 0.2;
 	spawnGravity = 2;
-	horizAcc = 0.2;
+	horizAcc = 0.3;
 	//For friction, higher numbers -> more slow down
 	//1 -> slow down at rate equal to acceleration
 	horizFrictionGround = 1;
@@ -99,7 +99,7 @@ function startValues() {
 	platformCounterTarget = 70;
 
 	//Player movement values//
-	upBigSpeed = -8;
+	upBigSpeed = -7;
 	upSmallspeed = -5;
 	leftSpeed = -5;
 	rightSpeed = 5;
