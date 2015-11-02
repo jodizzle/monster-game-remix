@@ -40,6 +40,7 @@ function spawnObjects() {
 	//Use '&& gameTimer != 0' to prevent a spawn on the first frame
 	if(gameTimer % spawnCounterTarget == 0 && gameTimer != 0) {
 		randX = getRandomNumberSpawn(100,canvas.width-100);
+		randY = getRandomNumberSpawn(0,-50);
 		spawns.push(new Spawn(randX,0,0,0,23,23,'yellow'));
 	}
 
