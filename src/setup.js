@@ -35,9 +35,7 @@ var spawnScrollSpeed;
 var gameTimer;
 var gameScalingTargetShort;
 var gameScalingTargetLong;
-var spawnCounter;
 var spawnCounterTarget;
-var platformCounter;
 var platformCounterTarget;
 
 //Player movement values//
@@ -93,9 +91,7 @@ function startValues() {
 	gameTimer = 0;
 	gameScalingTargetShort = 300; //5 seconds
 	gameScalingTargetLong = 600; //10 seconds
-	spawnCounter = 0;
 	spawnCounterTarget = 100;
-	platformCounter = 0;
 	platformCounterTarget = 70;
 
 	//Player movement values//
