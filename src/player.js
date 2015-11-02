@@ -82,6 +82,10 @@ var player = {
 			jumping = true;
 		}
 		else {
+			//Doesn't work like intended, but apparently helps make a jetpack!
+			// if (upPressed && player.vy > upBigSpeed) {
+			// 	player.vy += vertAcc;
+			// }
 			player.vy += gravity; //Gravity is always applied except on the frame of jumping
 		}
 		player.y += player.vy;

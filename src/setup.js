@@ -24,6 +24,7 @@ var spawnGravity;
 var horizAcc;
 var horizFrictionGround;
 var horizFrictionAir;
+// var vertAcc;
 
 //Scroll Speed//
 var playerScrollSpeed;
@@ -81,6 +82,7 @@ function startValues() {
 	//1 -> slow down at rate equal to acceleration
 	horizFrictionGround = 1;
 	horizFrictionAir = 0.30;
+	// vertAcc = -0.3;
 
 	//Scroll Speed//
 	playerScrollSpeed = -1;
