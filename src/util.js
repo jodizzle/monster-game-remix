@@ -49,7 +49,7 @@ function spawnObjects() {
 		randWidth = getRandomNumberPlatform(40,90);
 		spawnHeight = 10;
 		randX = getRandomNumberPlatform(canvas.width,canvas.width+(randWidth*2));
-		randY = getRandomNumberPlatformYExcluded(canvas.height/2, canvas.height-(spawnHeight*3), randX, randWidth, spawnHeight);
+		randY = getRandomNumberPlatformYExcluded(canvas.height/2, canvas.height-(spawnHeight*10), randX, randWidth, spawnHeight);
 		platforms.push(new Platform(randX,randY,randWidth,spawnHeight,'#000000'));
 	}
 }
