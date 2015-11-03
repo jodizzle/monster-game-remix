@@ -101,11 +101,20 @@ function update() {
 		//Teleport player
 		// player.x = canvas.width/2;
 		// player.y = canvas.height/2;
-		if(restartPressed) {
-			loseKill = false;
-			loseWall = false;
-			startValues();
-		}
+		// if(restartPressed) {
+		// 	loseKill = false;
+		// 	loseWall = false;
+		// 	startValues();
+		// }
+	}
+	if(restartPressed) {
+		// TODO: Fix redundancy
+		platforms = [];
+		spawns = [];
+
+		loseKill = false;
+		loseWall = false;
+		startValues();
 	}
 }
 function mainLoop() {
