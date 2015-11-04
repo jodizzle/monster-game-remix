@@ -46,6 +46,7 @@ var rightSpeed;
 
 //Scoring//
 var points;
+var spawnCount;
 
 //Loss condition//
 var loseKill = false; //Lose by touching ("killing") a falling object
@@ -102,4 +103,5 @@ function startValues() {
 
 	//Scoring//
 	points = 0;
+	spawnCount = 0;
 }

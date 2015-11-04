@@ -12,7 +12,14 @@ function displayScore() {
 	context.fillStyle = "purple";
 	context.font = "48px serif";
 	context.textAlign = "center";
-	context.fillText("final score: " + points, canvas.width/2, canvas.height/2);
+	context.fillText("final score: " + points, canvas.width/2, canvas.width/4);
+	if(spawnCount == 0) {
+		percentageMessage = "percentage: :(";
+	}
+	else {
+		percentageMessage = "percentage: " + points + "/" + spawnCount + " = " + ((points/spawnCount)*100).toFixed(2) + "%";
+	}
+	context.fillText(percentageMessage, canvas.width/2, canvas.height/2);
 	context.fillText("time survived: " + (gameTimer/60.0).toFixed(2) + " seconds", canvas.width/2, canvas.height-200)
 }
 //Checks to see if an object is off screen//
@@ -42,6 +49,7 @@ function spawnObjects() {
 		randX = getRandomNumberSpawn(100,canvas.width-100);
 		randY = getRandomNumberSpawn(-100, 0);
 		spawns.push(new Spawn(randX,randY,0,0,23,23,'yellow'));
+		spawnCount += 1;
 	}
 
 	//Spawn platforms//
