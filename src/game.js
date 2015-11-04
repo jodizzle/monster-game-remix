@@ -139,7 +139,7 @@ window.addEventListener('keydown',function(e) {
 			upSmallPressed = true;
 			upPressed = true;
 			jumping = true;
-			break
+			break;
 		case 90:
 			upBigPressed = true;
 			upPressed = true;

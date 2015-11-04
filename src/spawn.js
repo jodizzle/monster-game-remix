@@ -21,7 +21,7 @@ Spawn.prototype.draw = function() {
 Spawn.prototype.update = function() {
 	//Horizontal movement//
 	if(this.onGround) {
-		this.x += spawnScrollSpeed
+		this.x += spawnScrollSpeed;
 	}
 
 	//Horizontal platform collision detection//

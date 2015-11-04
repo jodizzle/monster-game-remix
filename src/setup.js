@@ -18,7 +18,7 @@ var restartPressed;
 //Jumping booleans//
 var jumping = false;
 
-//Acceleration/
+//Acceleration//
 var gravity;
 var spawnGravity;
 var horizAcc;

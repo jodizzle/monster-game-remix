@@ -44,7 +44,7 @@ function getRandomNumberPlatformYExcluded(min, max, randX, randWidth, spawnHeigh
 
 	//Decides which section to pick
 	var choice = spawnPoints[Math.floor(Math.random()*spawnPoints.length)];
-	return choice
+	return choice;
 }
 //For application to javascript Array.sort() method//
 function comparePlatformYValues(p1, p2) {

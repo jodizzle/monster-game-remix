@@ -2,10 +2,10 @@
 function checkCollision(obj1, obj2) {
 	//Using ~~ to truncate - checking collisions with integers is (theoretically) better
 	if(~~obj1.y < ~~obj2.y + ~~obj2.height && ~~obj1.y + ~~obj1.height > ~~obj2.y && ~~obj1.x + ~~obj1.width > ~~obj2.x && ~~obj1.x < ~~obj2.x + ~~obj2.width) {
-		return true
+		return true;
 	}
 
-	return false
+	return false;
 }
 //Displays the score//
 function displayScore() {
@@ -20,7 +20,7 @@ function displayScore() {
 		percentageMessage = "percentage: " + points + "/" + spawnCount + " = " + ((points/spawnCount)*100).toFixed(2) + "%";
 	}
 	context.fillText(percentageMessage, canvas.width/2, canvas.height/2);
-	context.fillText("time survived: " + (gameTimer/60.0).toFixed(2) + " seconds", canvas.width/2, canvas.height-200)
+	context.fillText("time survived: " + (gameTimer/60.0).toFixed(2) + " seconds", canvas.width/2, canvas.height-200);
 }
 //Checks to see if an object is off screen//
 function canDespawn(object) {
