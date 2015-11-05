@@ -46,7 +46,7 @@ var rightSpeed;
 
 //Scoring//
 var points;
-var spawnCount;
+var spawnDead; //The total number of spawns that have died (and are therefore collectable)
 
 //Loss condition//
 var loseKill = false; //Lose by touching ("killing") a falling object
@@ -103,5 +103,5 @@ function startValues() {
 
 	//Scoring//
 	points = 0;
-	spawnCount = 0;
+	spawnDead = 0;
 }

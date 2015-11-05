@@ -6,6 +6,7 @@ function Spawn(x,y,vx,vy,width,height,color) {
 	this.x = x; this.y = y; this.vx = 0; this.vy = 0; this.width = width; this.height = height; this.color = color;
 	this.onGround = false;
 	this.touched = false;
+	this.added = false; //Bool to check if the spawn has been counted by spawnDead
 }
 
 Spawn.prototype.draw = function() {
@@ -49,6 +50,10 @@ Spawn.prototype.update = function() {
 			this.y = platform.y-this.height;
 			this.vy = 0;
 			this.onGround = true; //Might be a worthless (since platforms are already moving), but here just in case.
+			if(!this.added) {
+				spawnDead += 1;
+				this.added = true;
+			}
 		}
 	}
 
