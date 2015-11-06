@@ -25,21 +25,6 @@ Spawn.prototype.update = function() {
 		this.x += spawnScrollSpeed;
 	}
 
-	//Horizontal platform collision detection//
-	for(var i=0; i<platforms.length; i++) {
-		platform = platforms[i];
-		if (checkCollision(this,platform)) {
-			if(this.vx > 0) { //Leftside case
-				this.x = platform.x-this.width;
-			 	this.vx = 0;
-			}
-			else if (this.vx < 0) { //Rightside case
-				this.x = platform.x+platform.width;
-		 	 	this.vx = 0;
-			}
-		}
-	}
-
 	//Vertical movement//
 	this.y += spawnGravity;
 	//Vertical platform collision detection//
