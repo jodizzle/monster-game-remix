@@ -3,7 +3,7 @@ function getRandomNumberSpawn(min, max) {
 }
 //Spawn definitions//
 function Spawn(x,y,vx,vy,width,height,color) {
-	this.x = x; this.y = y; this.vx = 0; this.vy = 0; this.width = width; this.height = height; this.color = color;
+	this.x = x; this.y = y; this.vx = vx; this.vy = 0; this.width = width; this.height = height; this.color = color;
 	this.onGround = false;
 	this.touched = false;
 	this.added = false; //Bool to check if the spawn has been counted by spawnDead
@@ -23,6 +23,9 @@ Spawn.prototype.update = function() {
 	//Horizontal movement//
 	if(this.onGround) {
 		this.x += spawnScrollSpeed;
+	}
+	else {
+		this.x += this.vx;
 	}
 
 	//Vertical movement//

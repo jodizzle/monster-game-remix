@@ -48,7 +48,18 @@ function spawnObjects() {
 	if(gameTimer % spawnCounterTarget == 0 && gameTimer != 0) {
 		randX = getRandomNumberSpawn(100,canvas.width-100);
 		randY = getRandomNumberSpawn(-100, 0);
-		spawns.push(new Spawn(randX,randY,0,0,23,23,'yellow'));
+		//Generate a possible vx for the spawn based on the randX.  The goal is to
+		//choose a vx such that the spawn will fly towards the center (and not just
+		//offscreen).
+		if(randX < canvas.width/2) {
+			vxRange = getRandomNumberSpawn(0,2);
+		}
+		else {
+			vxRange = getRandomNumberSpawn(-2,0);
+		}
+		vxChoices = [0, vxRange]; //Heavily weight the possibility of getting '0'
+		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
+		spawns.push(new Spawn(randX,randY,randVx,0,23,23,'yellow'));
 	}
 
 	//Spawn platforms//
