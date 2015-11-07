@@ -67,8 +67,9 @@ function update() {
 		gameTimer += 1;
 	}
 	if(gameTimer % gameScalingTargetShort == 0) {
-		if(spawnCounterTarget > 5) {
-			spawnCounterTarget -= 5; //faster spawns
+		if(spawnCounterTarget > 10) {
+			spawnCounterTarget -= 10; //makes spawns spawn faster
+									  //speed currently reaches it's cap at 50 seconds
 		}
 		spawnGravity += 0.5; //faster falling spawns
 	}
