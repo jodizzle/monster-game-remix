@@ -2,6 +2,8 @@
 var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];var platforms = [new Platform(canvas.width/3,canvas.height/2,80,10,'black'),new Platform(500,200,80,10,'black'),new Platform(700,canvas.height/2,80,10,'black')];
 //Spawns array//
 var spawns = [];
+//Powerups//
+var powerups = [];
 
 //Main loop functions//
 function draw() {
@@ -57,6 +59,9 @@ function draw() {
 		for(var i=0; i<platforms.length; i++) {
 			platforms[i].draw();
 		}
+		for(var i=0; i<powerups.length; i++) {
+			powerups[i].draw();
+		}
 	}
 
 	player.draw(); //Want to draw player above everything else.
@@ -90,11 +95,16 @@ function update() {
 		for(var i=0; i<platforms.length; i++) {
 			platforms[i].update();
 		}
+		removeObjects(powerups);
+		for(var i=0; i<powerups.length; i++) {
+			powerups[i].update();
+		}
 	}
 	else {
 		//Empty arrays
 		platforms = [];
 		spawns = [];
+		powerups = [];
 		//Remove scrolling
 		playerScrollSpeed = 0;
 		platformScrollSpeed = 0;
@@ -112,6 +122,7 @@ function update() {
 		// TODO: Fix redundancy
 		platforms = [];
 		spawns = [];
+		powerups = [];
 
 		loseKill = false;
 		loseWall = false;

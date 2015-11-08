@@ -25,7 +25,7 @@ var horizAccGround;
 var horizAccAir;
 var horizFrictionGround;
 var horizFrictionAir;
-// var vertAcc;
+var vertAcc;
 
 //Scroll Speed//
 var playerScrollSpeed;
@@ -38,6 +38,8 @@ var gameScalingTargetShort;
 var gameScalingTargetLong;
 var spawnCounterTarget;
 var platformCounterTarget;
+var powerupCounterTarget;
+var jetpackCounterTarget;
 
 //Player movement values//
 var upBigSpeed;
@@ -75,6 +77,7 @@ function startValues() {
 	player.vy = 0;
 	player.x = canvas.width/3;
 	player.y = canvas.height/2;
+	player.hasJetpack = false;
 
 	//Acceleration//
 	gravity = 0.2;
@@ -85,7 +88,7 @@ function startValues() {
 	//1 -> slow down at rate equal to acceleration
 	horizFrictionGround = 1;
 	horizFrictionAir = 0.3;
-	// vertAcc = -0.3;
+	vertAcc = -0.3;
 
 	//Scroll Speed//
 	playerScrollSpeed = -1;
@@ -98,6 +101,8 @@ function startValues() {
 	gameScalingTargetLong = 600; //10 seconds
 	spawnCounterTarget = 100;
 	platformCounterTarget = 70;
+	powerupCounterTarget = 900;
+	jetpackCounterTarget = 600;
 
 	//Player movement values//
 	upBigSpeed = -7;

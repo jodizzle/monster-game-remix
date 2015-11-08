@@ -8,6 +8,8 @@ var player = {
 	height: 30,
 	color: 'red',
 	onGround: false,
+	hasJetpack: false,
+	jetpackTimer: 0,
 
 	draw: function() {
 		var monsterImage = new Image();
@@ -15,6 +17,12 @@ var player = {
 		context.drawImage(monsterImage, 3, 2, 26, 28, this.x, this.y, this.width, this.height);
 	},
 	update: function() {
+		//Check conditions of powerups//
+		//Jetpack//
+		if(player.hasJetpack && (gameTimer-player.jetpackTimer) == jetpackCounterTarget) {
+			player.hasJetpack = false;
+		}
+
 		//Horizontal movement//
 		if(leftPressed) {
 			if(player.vx > leftSpeed) {
@@ -93,9 +101,11 @@ var player = {
 		}
 		else {
 			//Doesn't work like intended, but apparently helps make a jetpack!
-			// if (upPressed && player.vy > upBigSpeed) {
-			// 	player.vy += vertAcc;
-			// }
+			if (player.hasJetpack) {
+				if (upPressed && player.vy > upBigSpeed) {
+					player.vy += vertAcc;
+				}
+			}
 			player.vy += gravity; //Gravity is always applied except on the frame of jumping
 		}
 		player.y += player.vy;
@@ -127,6 +137,19 @@ var player = {
 				}
 				else {
 					loseKill = true;
+					player.hasJetpack = false;
+				}
+			}
+		}
+
+		//Powerup collision detection//
+		for(var i=0; i<powerups.length; i++) {
+			powerup = powerups[i];
+			if (checkCollision(player,powerup)) {
+				powerup.touched = true;
+				if(powerup instanceof Jetpack) {
+					player.hasJetpack = true;
+					player.jetpackTimer = gameTimer;
 				}
 			}
 		}
@@ -153,6 +176,7 @@ var player = {
 			player.onGround = true;
 			jumping = false;
 			loseWall = true;
+			player.hasJetpack = false;
 		}
 		//Topside canvas collision detection//
 		else if(player.y < 0) {

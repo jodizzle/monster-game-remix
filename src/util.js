@@ -34,6 +34,11 @@ function canDespawn(object) {
 			return true;
 		}
 	}
+	if(object instanceof Jetpack) {
+		if(object.touched) {
+			return true;
+		}
+	}
 	else if(object.x+object.width <= 0) { //Similar to a leftside canvas collision
 		return true;
 	}
@@ -69,6 +74,14 @@ function spawnObjects() {
 		randX = getRandomNumberPlatform(canvas.width,canvas.width+(randWidth*2));
 		randY = getRandomNumberPlatformYExcluded((canvas.height/2)+50, canvas.height-(spawnHeight*10)+50, randX, randWidth, spawnHeight);
 		platforms.push(new Platform(randX,randY,randWidth,spawnHeight,'#000000'));
+	}
+
+	//Spawn powerups//
+	//Jetpack//
+	if(gameTimer % powerupCounterTarget == 0 && gameTimer != 0) {
+		randX = getRandomNumberSpawn(100,canvas.width-100);
+		randY = getRandomNumberSpawn(-100, 0);
+		powerups.push(new Jetpack(randX,randY,20,20));
 	}
 }
 //Despawns (removes) objects that are offscreen//
