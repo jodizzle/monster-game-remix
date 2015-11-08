@@ -21,7 +21,8 @@ var jumping = false;
 //Acceleration//
 var gravity;
 var spawnGravity;
-var horizAcc;
+var horizAccGround;
+var horizAccAir;
 var horizFrictionGround;
 var horizFrictionAir;
 // var vertAcc;
@@ -78,11 +79,12 @@ function startValues() {
 	//Acceleration//
 	gravity = 0.2;
 	spawnGravity = 2;
-	horizAcc = 0.3;
+	horizAccGround = 0.3;
+	horizAccAir = 0.4;
 	//For friction, higher numbers -> more slow down
 	//1 -> slow down at rate equal to acceleration
 	horizFrictionGround = 1;
-	horizFrictionAir = 0.30;
+	horizFrictionAir = 0.3;
 	// vertAcc = -0.3;
 
 	//Scroll Speed//

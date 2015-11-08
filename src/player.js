@@ -18,38 +18,48 @@ var player = {
 		//Horizontal movement//
 		if(leftPressed) {
 			if(player.vx > leftSpeed) {
-				player.vx -= horizAcc;
+				if(player.onGround) {
+					player.vx -= horizAccGround;
+				}
+				else {
+					player.vx -= horizAccAir;
+				}
 			}
 		}
 		else if(rightPressed) {
 			if(player.vx < rightSpeed) {
-				player.vx += horizAcc;
+				if(player.onGround) {
+					player.vx += horizAccGround;
+				}
+				else {
+					player.vx += horizAccAir;
+				}
 			}
 		}
 		else {
 			if (player.onGround) {
 				//Check first to see if the number is close to be not quite
 				//0.1.  This prevents endless sliding.
-				if (Math.abs(player.vx - horizAcc) < horizAcc) {
+				if (Math.abs(player.vx - horizAccGround) < horizAccGround) {
 					player.vx = 0;
 				}
 				else if (player.vx > 0) {
-					player.vx -= horizAcc*horizFrictionGround;
+					player.vx -= horizAccGround*horizFrictionGround;
 				}
 				else if (player.vx < 0) {
-					player.vx += horizAcc*horizFrictionGround;
+					player.vx += horizAccGround*horizFrictionGround;
 				}
 			}
 			else {
 				//Use "lower friction" while in the air.
-				if (Math.abs(player.vx - horizAcc) < horizAcc) {
+				if (Math.abs(player.vx - horizAccAir) < horizAccAir) {
 					player.vx = 0;
 				}
 				else if (player.vx > 0) {
-					player.vx -= horizAcc*horizFrictionAir;
+					player.vx -= horizAccAir*horizFrictionAir;
 				}
 				else if (player.vx < 0) {
-					player.vx += horizAcc*horizFrictionAir;
+					player.vx += horizAccAir*horizFrictionAir;
 				}
 			}
 		}
