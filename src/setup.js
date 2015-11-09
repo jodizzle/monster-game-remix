@@ -43,7 +43,7 @@ var jetpackCounterTarget;
 
 //Player movement values//
 var upBigSpeed;
-var upSmallspeed;
+var upSmallSpeed;
 var leftSpeed;
 var rightSpeed;
 
@@ -106,7 +106,7 @@ function startValues() {
 
 	//Player movement values//
 	upBigSpeed = -7;
-	upSmallspeed = -5;
+	upSmallSpeed = -5;
 	leftSpeed = -5;
 	rightSpeed = 5;
 
