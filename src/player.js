@@ -102,7 +102,7 @@ var player = {
 		else {
 			//Doesn't work like intended, but apparently helps make a jetpack!
 			if (player.hasJetpack) {
-				if (upPressed && player.vy > upBigSpeed) {
+				if (upPressed && player.vy > upSmallSpeed) {
 					player.vy += vertAcc;
 				}
 			}
