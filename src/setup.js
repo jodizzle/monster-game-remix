@@ -88,7 +88,7 @@ function startValues() {
 	//1 -> slow down at rate equal to acceleration
 	horizFrictionGround = 1;
 	horizFrictionAir = 0.3;
-	vertAcc = -0.3;
+	vertAcc = -0.4;
 
 	//Scroll Speed//
 	playerScrollSpeed = -1;
