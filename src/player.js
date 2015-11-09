@@ -90,10 +90,10 @@ var player = {
 
 		//Vertical movement//
 		if(upPressed && player.onGround && !jumping) {
-			if(upSmallPressed) {
+			if(upSmallPressed && !player.hasJetpack) {
 				player.vy = upSmallspeed;
 			}
-			if(upBigPressed) {
+			if(upBigPressed && !player.hasJetpack) {
 				player.vy = upBigSpeed;
 			}
 			player.onGround = false;
