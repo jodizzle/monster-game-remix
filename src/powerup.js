@@ -1,5 +1,6 @@
 function Jetpack(x,y,width,height,color) {
 	this.x = x; this.y = y; this.width = width; this.height = height; this.color = color;
+	this.onGround = false;
 	this.touched = false;
 }
 
@@ -11,8 +12,9 @@ Jetpack.prototype.draw = function() {
 };
 Jetpack.prototype.update = function() {
 	//Horizontal movement//
-	this.x += spawnScrollSpeed;
-
+	if(this.onGround) {
+		this.x += spawnScrollSpeed;
+	}
 	//Vertical movement//
 	this.y += spawnGravity;
 
@@ -22,6 +24,7 @@ Jetpack.prototype.update = function() {
 		//Since spawns only fall from the top, should only have to worry about one vertical case.
 		if (checkCollision(this,platform)) {
 			this.y = platform.y-this.height;
+			this.onGround = true;
 		}
 	}
 
