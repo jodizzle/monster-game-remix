@@ -81,7 +81,15 @@ function spawnObjects() {
 	if(gameTimer % powerupCounterTarget == 0 && gameTimer != 0) {
 		randX = getRandomNumberSpawn(100,canvas.width-100);
 		randY = getRandomNumberSpawn(-100, 0);
-		powerups.push(new Jetpack(randX,randY,20,20));
+		if(randX < canvas.width/2) {
+			vxRange = getRandomNumberSpawn(0,2);
+		}
+		else {
+			vxRange = getRandomNumberSpawn(-2,0);
+		}
+		vxChoices = [0, vxRange]; //Heavily weight the possibility of getting '0'
+		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
+		powerups.push(new Jetpack(randX,randY,randVx,0,20,20));
 	}
 }
 //Despawns (removes) objects that are offscreen//
