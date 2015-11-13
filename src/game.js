@@ -30,6 +30,7 @@ function draw() {
 		context.textAlign = "start";
 		context.fillText("z: big jump", canvas.width-250, 50);
 		context.fillText("x: little jump", canvas.width-250, 100);
+		context.fillText("p: toggle music", canvas.width-250, 150);
 		//Bottom Message//
 		context.font = "32px serif";
 		context.textAlign = "center";
