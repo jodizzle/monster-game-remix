@@ -12,7 +12,7 @@ function displayScore() {
 	context.fillStyle = "purple";
 	context.font = "48px serif";
 	context.textAlign = "center";
-	context.fillText("final score: " + points, canvas.width/2, canvas.width/4);
+	context.fillText("final humanity: " + points, canvas.width/2, canvas.width/4);
 	if(spawnDead == 0) {
 		percentageMessage = "percentage: :(";
 	}
