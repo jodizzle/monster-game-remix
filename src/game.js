@@ -53,8 +53,9 @@ function draw() {
 	}
 	else {
 		context.fillText("humanity: "+points, 10, 50);
+		context.fillText("time: "+(gameTimer/60.0).toFixed(1)+"s", 10, 100);
 		if(player.hasJetpack) {
-			context.fillText("jetpack: "+((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2), 10, 100)
+			context.fillText("jetpack: "+((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2), 10, 150)
 		}
 		//Draws objects//
 		for(var i=0; i<spawns.length; i++) {
