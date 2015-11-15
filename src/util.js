@@ -90,6 +90,13 @@ function spawnObjects() {
 		vxChoices = [0, vxRange]; //Heavily weight the possibility of getting '0'
 		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
 		powerups.push(new Jetpack(randX,randY,randVx,0,20,20));
+		//TODO: Better approach?
+		//Because the triggering of targets is based on modulo, add powerupCounterTarget to itself
+		//to prevent targets from triggering sooner than intended.  E.g., say the first random choice
+		//for powerupCounterTarget was 600, then the second was 800.  Without using prev+new,
+		//a powerup would drop at gameTimer == 600 and then at gameTimer == 800, even though only 200 frames had passed.
+		//With prev+new, a powerup would drop at gameTimer == 600 and gameTimer == 1400, as expected.
+		powerupCounterTarget = powerupCounterTarget+Math.floor(getRandomNumberSpawn(420,900));
 	}
 }
 //Despawns (removes) objects that are offscreen//
