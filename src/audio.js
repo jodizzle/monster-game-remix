@@ -1,4 +1,5 @@
-myAudio = new Audio('assets/bu-an-ogres-knight-fixed.ogg');
+myAudioList = ['assets/bu-an-ogres-knight-fixed.ogg','assets/bu-pear-of-the-report-fixed.ogg','assets/bu-a-garden-and-a-knight-fixed.ogg'];
+myAudio = new Audio(myAudioList[Math.floor(Math.random()*myAudioList.length)]);
 myAudio.addEventListener('ended', function() {
     this.currentTime = 0;
     this.play();
