@@ -46,6 +46,7 @@ var upBigSpeed;
 var upSmallSpeed;
 var leftSpeed;
 var rightSpeed;
+var terminalVelocity;
 
 //Scoring//
 var points;
@@ -109,6 +110,7 @@ function startValues() {
 	upSmallSpeed = -5;
 	leftSpeed = -5;
 	rightSpeed = 5;
+	terminalVelocity = 9;
 
 	//Scoring//
 	points = 0;

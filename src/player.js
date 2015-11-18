@@ -106,7 +106,9 @@ var player = {
 					player.vy += vertAcc;
 				}
 			}
-			player.vy += gravity; //Gravity is always applied except on the frame of jumping
+			if (player.vy < terminalVelocity) {
+				player.vy += gravity; //Gravity is always applied except on the frame of jumping
+			}
 		}
 		player.y += player.vy;
 
