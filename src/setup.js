@@ -62,7 +62,8 @@ var fps,fpsInterval,startTime,now,then,elapsed;
 //Initializes (or re-initializes) variables//
 function startValues() {
 	platforms = [new Platform(canvas.width/3,canvas.height/2+50,80,10,'black'),
-				 new Platform(500,200+50,80,10,'black'),
+				 new Platform(420,340,80,10,'black'),
+				 new Platform(525,400,80,10,'black'),
 				 new Platform(700,(canvas.height/2)+50,80,10,'black')];
 	
 	//Keypress values//
