@@ -22,7 +22,7 @@ function displayScore() {
 	context.fillText(percentageMessage, canvas.width/2, canvas.height/2);
 	context.fillText("time survived: " + (gameTimer/60.0).toFixed(2) + " seconds", canvas.width/2, canvas.height-200);
 }
-//Checks to see if an object is off screen//
+//Checks if an object can be removed from the game//
 function canDespawn(object) {
 	if(object instanceof Spawn) {
 		if(object.touched) {
@@ -39,6 +39,7 @@ function canDespawn(object) {
 			return true;
 		}
 	}
+	//Checks if an object is off-screen
 	else if(object.x+object.width <= 0) { //Similar to a leftside canvas collision
 		return true;
 	}
@@ -77,7 +78,7 @@ function spawnObjects() {
 	}
 
 	//Spawn powerups//
-	//Jetpack//
+	//Jetpack
 	if(gameTimer % powerupCounterTarget == 0 && gameTimer != 0) {
 		randX = getRandomNumberSpawn(100,canvas.width-100);
 		randY = getRandomNumberSpawn(-100, 0);

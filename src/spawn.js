@@ -8,7 +8,6 @@ function Spawn(x,y,vx,vy,width,height,color) {
 	this.touched = false;
 	this.added = false; //Bool to check if the spawn has been counted by spawnDead
 }
-
 Spawn.prototype.draw = function() {
 	var guyImage = new Image();
 	if(this.onGround) {
