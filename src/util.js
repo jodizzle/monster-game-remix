@@ -24,6 +24,10 @@ function displayScore() {
 }
 //Checks if an object can be removed from the game//
 function canDespawn(object) {
+	//Checks if an object is off-screen
+	if(object.x+object.width <= 0) {
+		return true;
+	}
 	if(object instanceof Spawn) {
 		if(object.touched) {
 			return true;
@@ -39,13 +43,8 @@ function canDespawn(object) {
 			return true;
 		}
 	}
-	//Checks if an object is off-screen
-	else if(object.x+object.width <= 0) { //Similar to a leftside canvas collision
-		return true;
-	}
-	else {
-		return false;
-	}
+
+	return false;
 }
 //Spawns objects to the screen//
 function spawnObjects() {
