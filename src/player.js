@@ -100,7 +100,7 @@ var player = {
 			jumping = true;
 		}
 		else {
-			//Doesn't work like intended, but apparently helps make a jetpack!
+			//Controls jetpack behavior
 			if (player.hasJetpack) {
 				if (upPressed && player.vy > upSmallSpeed) {
 					player.vy += vertAcc;
