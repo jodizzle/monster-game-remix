@@ -37,7 +37,7 @@ function getRandomNumberPlatformYExcluded(min, max, randX, randWidth, spawnHeigh
 
 	//If no spawn points are possible, then return -spawnHeight (so as to move off the top of the screen).
 	//Temporary fix?
-	if(spawnPoints.length == 0) {
+	if(spawnPoints.length === 0) {
 		console.log('no room for new platform!');
 		return 0;
 	}

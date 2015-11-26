@@ -13,7 +13,7 @@ function displayScore() {
 	context.font = "48px serif";
 	context.textAlign = "center";
 	context.fillText("final humanity: " + points, canvas.width/2, canvas.width/4);
-	if(spawnDead == 0) {
+	if(spawnDead === 0) {
 		percentageMessage = "percentage: :(";
 	}
 	else {
@@ -50,7 +50,7 @@ function canDespawn(object) {
 function spawnObjects() {
 	//Spawn spawns (lol)//
 	//Use '&& gameTimer != 0' to prevent a spawn on the first frame
-	if(gameTimer % spawnCounterTarget == 0 && gameTimer != 0) {
+	if(gameTimer % spawnCounterTarget === 0 && gameTimer !== 0) {
 		randX = getRandomNumberSpawn(100,canvas.width-100);
 		randY = getRandomNumberSpawn(-100, 0);
 		//Generate a possible vx for the spawn based on the randX.  The goal is to
@@ -68,7 +68,7 @@ function spawnObjects() {
 	}
 
 	//Spawn platforms//
-	if(gameTimer % platformCounterTarget == 0) {
+	if(gameTimer % platformCounterTarget === 0) {
 		randWidth = getRandomNumberPlatform(40,90);
 		spawnHeight = 10;
 		randX = getRandomNumberPlatform(canvas.width,canvas.width+(randWidth*2));
@@ -78,7 +78,7 @@ function spawnObjects() {
 
 	//Spawn powerups//
 	//Jetpack
-	if(gameTimer % powerupCounterTarget == 0 && gameTimer != 0) {
+	if(gameTimer % powerupCounterTarget === 0 && gameTimer !== 0) {
 		randX = getRandomNumberSpawn(100,canvas.width-100);
 		randY = getRandomNumberSpawn(-100, 0);
 		if(randX < canvas.width/2) {

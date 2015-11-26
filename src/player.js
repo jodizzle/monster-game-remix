@@ -19,7 +19,7 @@ var player = {
 	update: function() {
 		//Check conditions of powerups//
 		//Jetpack//
-		if(player.hasJetpack && (gameTimer-player.jetpackTimer) == jetpackCounterTarget) {
+		if(player.hasJetpack && (gameTimer-player.jetpackTimer) === jetpackCounterTarget) {
 			player.hasJetpack = false;
 		}
 
