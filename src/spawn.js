@@ -1,6 +1,3 @@
-function getRandomNumberSpawn(min, max) {
-	return Math.random()*(max-min)+min;
-}
 //Spawn definitions//
 function Spawn(x,y,vx,vy,width,height,color) {
 	this.x = x; this.y = y; this.vx = vx; this.vy = 0; this.width = width; this.height = height; this.color = color;

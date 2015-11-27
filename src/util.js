@@ -1,3 +1,8 @@
+//Return random float between min and max//
+function getRandomNumber(min, max) {
+	return Math.random()*(max-min)+min;
+}
+
 //Check if obj1 is colliding with obj2//
 function checkCollision(obj1, obj2) {
 	//Using ~~ to truncate - checking collisions with integers is (theoretically) better
@@ -51,16 +56,16 @@ function spawnObjects() {
 	//Spawn spawns (lol)//
 	//Use '&& gameTimer != 0' to prevent a spawn on the first frame
 	if(gameTimer % spawnCounterTarget === 0 && gameTimer !== 0) {
-		randX = getRandomNumberSpawn(100,canvas.width-100);
-		randY = getRandomNumberSpawn(-100, 0);
+		randX = getRandomNumber(100,canvas.width-100);
+		randY = getRandomNumber(-100, 0);
 		//Generate a possible vx for the spawn based on the randX.  The goal is to
 		//choose a vx such that the spawn will fly towards the center (and not just
 		//offscreen).
 		if(randX < canvas.width/2) {
-			vxRange = getRandomNumberSpawn(0,2);
+			vxRange = getRandomNumber(0,2);
 		}
 		else {
-			vxRange = getRandomNumberSpawn(-2,0);
+			vxRange = getRandomNumber(-2,0);
 		}
 		vxChoices = [0, vxRange]; //Heavily weight the possibility of getting '0'
 		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
@@ -79,13 +84,13 @@ function spawnObjects() {
 	//Spawn powerups//
 	//Jetpack
 	if(gameTimer % powerupCounterTarget === 0 && gameTimer !== 0) {
-		randX = getRandomNumberSpawn(100,canvas.width-100);
-		randY = getRandomNumberSpawn(-100, 0);
+		randX = getRandomNumber(100,canvas.width-100);
+		randY = getRandomNumber(-100, 0);
 		if(randX < canvas.width/2) {
-			vxRange = getRandomNumberSpawn(0,2);
+			vxRange = getRandomNumber(0,2);
 		}
 		else {
-			vxRange = getRandomNumberSpawn(-2,0);
+			vxRange = getRandomNumber(-2,0);
 		}
 		vxChoices = [0, vxRange]; //Heavily weight the possibility of getting '0'
 		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
@@ -96,7 +101,7 @@ function spawnObjects() {
 		//for powerupCounterTarget was 600, then the second was 800.  Without using prev+new,
 		//a powerup would drop at gameTimer == 600 and then at gameTimer == 800, even though only 200 frames had passed.
 		//With prev+new, a powerup would drop at gameTimer == 600 and gameTimer == 1400, as expected.
-		powerupCounterTarget = powerupCounterTarget+Math.floor(getRandomNumberSpawn(600,1200));
+		powerupCounterTarget = powerupCounterTarget+Math.floor(getRandomNumber(600,1200));
 	}
 }
 //Despawns (removes) objects that are offscreen//
