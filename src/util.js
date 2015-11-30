@@ -69,7 +69,7 @@ function spawnObjects() {
 		}
 		vxChoices = [0, vxRange]; //Heavily weight the possibility of getting '0'
 		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
-		spawns.push(new Spawn(randX,randY,randVx,0,23,23,'yellow'));
+		spawns.push(new Spawn(randX,randY,randVx,0,23,23));
 	}
 
 	//Spawn platforms//

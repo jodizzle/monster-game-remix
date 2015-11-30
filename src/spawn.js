@@ -1,6 +1,6 @@
 //Spawn definitions//
-function Spawn(x,y,vx,vy,width,height,color) {
-	this.x = x; this.y = y; this.vx = vx; this.vy = 0; this.width = width; this.height = height; this.color = color;
+function Spawn(x,y,vx,vy,width,height) {
+	this.x = x; this.y = y; this.vx = vx; this.vy = 0; this.width = width; this.height = height;
 	this.onGround = false;
 	this.touched = false;
 	this.added = false; //Bool to check if the spawn has been counted by spawnDead
