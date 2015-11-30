@@ -6,7 +6,6 @@ var player = {
 	vy: 0,
 	width: 28,
 	height: 30,
-	color: 'red',
 	onGround: false,
 	hasJetpack: false,
 	jetpackTimer: 0,
