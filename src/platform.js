@@ -46,7 +46,7 @@ function getRandomNumberPlatformYExcluded(min, max, randX, randWidth, spawnHeigh
 	var choice = spawnPoints[Math.floor(Math.random()*spawnPoints.length)];
 	return choice;
 }
-//For application to javascript Array.sort() method//
+//For application to javascript Array.sort() method
 function comparePlatformYValues(p1, p2) {
 	if (p1.y < p2.y) {
 		return -1;
@@ -56,6 +56,7 @@ function comparePlatformYValues(p1, p2) {
 	}
 	return 0;
 }
+
 //Platform definitions//
 function Platform(x,y,width,height,color) {
 	this.x = x; this.y = y; this.width = width; this.height = height; this.color = color;

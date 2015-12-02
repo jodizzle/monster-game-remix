@@ -1,4 +1,4 @@
-//Player definition//
+//Player definitions//
 var player = {
 	x: canvas.width/3,
 	y: canvas.height/2,
@@ -142,7 +142,6 @@ var player = {
 				}
 			}
 		}
-
 		//Powerup collision detection//
 		for(var i=0; i<powerups.length; i++) {
 			powerup = powerups[i];
@@ -169,7 +168,6 @@ var player = {
 		else if(player.x+playerScrollSpeed > 0) {
 			player.x += playerScrollSpeed;
 		}
-
 		//Bottomside canvas collision detection//
 		if(player.y+player.height > canvas.height) {
 			player.y = canvas.height-player.height;

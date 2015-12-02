@@ -12,6 +12,7 @@ function checkCollision(obj1, obj2) {
 
 	return false;
 }
+
 //Displays the score//
 function displayScore() {
 	context.fillStyle = "purple";
@@ -27,6 +28,7 @@ function displayScore() {
 	context.fillText(percentageMessage, canvas.width/2, canvas.height/2);
 	context.fillText("time survived: " + (gameTimer/60.0).toFixed(2) + " seconds", canvas.width/2, canvas.height-200);
 }
+
 //Checks if an object can be removed from the game//
 function canDespawn(object) {
 	//Checks if an object is off-screen
@@ -51,6 +53,7 @@ function canDespawn(object) {
 
 	return false;
 }
+
 //Spawns objects to the screen//
 function spawnObjects() {
 	//Spawn spawns (lol)//
@@ -104,6 +107,7 @@ function spawnObjects() {
 		powerupCounterTarget = powerupCounterTarget+Math.floor(getRandomNumber(600,1200));
 	}
 }
+
 //Despawns (removes) objects that are offscreen//
 function removeObjects(objectArray) {
 	for(var i=0; i<objectArray.length; i++) {

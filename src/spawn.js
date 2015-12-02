@@ -23,9 +23,9 @@ Spawn.prototype.update = function() {
 	else {
 		this.x += this.vx;
 	}
-
 	//Vertical movement//
 	this.y += spawnGravity;
+
 	//Vertical platform collision detection//
 	for(var i=0; i<platforms.length; i++) {
 		platform = platforms[i];
@@ -40,7 +40,6 @@ Spawn.prototype.update = function() {
 			}
 		}
 	}
-
 	//Bottomside canvas collision detection//
 	if(this.y+this.height > canvas.height) {
 		this.y = canvas.height-this.height;
