@@ -44,12 +44,12 @@ function draw() {
 	if(loseKill) {
 		context.fillText("u r the monster", 10, 50);
 		displayScore();
-		context.fillText("press r to restart", canvas.width/2, canvas.height-100);
+		context.fillText("press r to restart", canvas.width/2, canvas.height-50);
 	}
 	else if(loseWall) {
 		context.fillText("the army got u", 10, 50);
 		displayScore();
-		context.fillText("press r to restart", canvas.width/2, canvas.height-100);
+		context.fillText("press r to restart", canvas.width/2, canvas.height-50);
 	}
 	else {
 		context.fillText("humanity: "+points, 10, 50);
