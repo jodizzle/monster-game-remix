@@ -114,6 +114,11 @@ function update() {
 		playerScrollSpeed = 0;
 		platformScrollSpeed = 0;
 		spawnScrollSpeed = 0;
+		//Do some scoring
+		score = points*4.20 + gameTimer/60.0;
+		if (score > highScore) {
+			highScore = score;
+		}
 		//Teleport player
 		// player.x = canvas.width/2;
 		// player.y = canvas.height/2;

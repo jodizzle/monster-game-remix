@@ -51,6 +51,8 @@ var terminalVelocity;
 //Scoring//
 var points;
 var spawnDead; //The total number of spawns that have died (and are therefore collectable)
+var score;
+var highScore = 0;
 
 //Loss condition//
 var loseKill = false; //Lose by touching ("killing") a falling object
@@ -116,4 +118,5 @@ function startValues() {
 	//Scoring//
 	points = 0;
 	spawnDead = 0;
+	score = 0;
 }

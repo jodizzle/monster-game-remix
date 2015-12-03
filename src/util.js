@@ -18,6 +18,7 @@ function displayScore() {
 	context.fillStyle = "purple";
 	context.font = "48px serif";
 	context.textAlign = "center";
+	context.fillText("high score: " + highScore.toFixed(2), canvas.width/2, 120);
 	context.fillText("final humanity: " + points, canvas.width/2, canvas.width/4);
 	if(spawnDead === 0) {
 		percentageMessage = "percentage: :(";
@@ -27,7 +28,7 @@ function displayScore() {
 	}
 	context.fillText(percentageMessage, canvas.width/2, canvas.height/2);
 	context.fillText("time survived: " + (gameTimer/60.0).toFixed(2) + " seconds", canvas.width/2, canvas.height-200);
-	context.fillText("score: " + (points*4.20 + gameTimer/60.0).toFixed(2), canvas.width/2, canvas.height-150);
+	context.fillText("score: " + score.toFixed(2), canvas.width/2, canvas.height-150);
 }
 
 //Checks if an object can be removed from the game//
