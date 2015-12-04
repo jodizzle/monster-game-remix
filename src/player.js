@@ -134,7 +134,7 @@ var player = {
 			if (checkCollision(player,spawn)) {
 				spawn.touched = true;
 				if(spawn.onGround) {
-					points += 1;
+					humanity += 1;
 				}
 				else {
 					loseKill = true;

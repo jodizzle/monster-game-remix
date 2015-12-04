@@ -49,7 +49,7 @@ var rightSpeed;
 var terminalVelocity;
 
 //Scoring//
-var points;
+var humanity;
 var spawnDead; //The total number of spawns that have died (and are therefore collectable)
 var score;
 var highScore = 0;
@@ -116,7 +116,7 @@ function startValues() {
 	terminalVelocity = 9;
 
 	//Scoring//
-	points = 0;
+	humanity = 0;
 	spawnDead = 0;
 	score = 0;
 }

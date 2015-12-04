@@ -52,7 +52,7 @@ function draw() {
 		context.fillText("press r to restart", canvas.width/2, canvas.height-50);
 	}
 	else {
-		context.fillText("humanity: "+points, 10, 50);
+		context.fillText("humanity: "+humanity, 10, 50);
 		context.fillText("time: "+(gameTimer/60.0).toFixed(1)+"s", 10, 100);
 		if(player.hasJetpack) {
 			context.fillText("jetpack: "+((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2), 10, 150)

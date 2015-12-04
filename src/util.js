@@ -15,9 +15,9 @@ function checkCollision(obj1, obj2) {
 
 //Calculate score metric//
 function calculateScore() {
-	pointsWeight = 4.20;
+	humanityWeight = 4.20;
 	time = gameTimer/60.0;
-	return points*pointsWeight + time;
+	return humanity*humanityWeight + time;
 }
 
 //Displays the score//
@@ -26,12 +26,12 @@ function displayScore() {
 	context.font = "48px serif";
 	context.textAlign = "center";
 	context.fillText("high score: " + highScore.toFixed(2), canvas.width/2, 120);
-	context.fillText("final humanity: " + points, canvas.width/2, canvas.width/4);
+	context.fillText("final humanity: " + humanity, canvas.width/2, canvas.width/4);
 	if(spawnDead === 0) {
 		percentageMessage = "percentage: :(";
 	}
 	else {
-		percentageMessage = "percentage: " + points + "/" + spawnDead + " = " + ((points/spawnDead)*100).toFixed(2) + "%";
+		percentageMessage = "percentage: " + humanity + "/" + spawnDead + " = " + ((humanity/spawnDead)*100).toFixed(2) + "%";
 	}
 	context.fillText(percentageMessage, canvas.width/2, canvas.height/2);
 	context.fillText("time survived: " + (gameTimer/60.0).toFixed(2) + " seconds", canvas.width/2, canvas.height-200);
