@@ -13,6 +13,13 @@ function checkCollision(obj1, obj2) {
 	return false;
 }
 
+//Calculate score metric//
+function calculateScore() {
+	pointsWeight = 4.20;
+	time = gameTimer/60.0;
+	return points*pointsWeight + time;
+}
+
 //Displays the score//
 function displayScore() {
 	context.fillStyle = "purple";
