@@ -119,14 +119,6 @@ function update() {
 		if (score > highScore) {
 			highScore = score;
 		}
-		//Teleport player
-		// player.x = canvas.width/2;
-		// player.y = canvas.height/2;
-		// if(restartPressed) {
-		// 	loseKill = false;
-		// 	loseWall = false;
-		// 	startValues();
-		// }
 	}
 	if(restartPressed) {
 		// TODO: Fix redundancy
