@@ -60,19 +60,14 @@ var score;
 var highScore = 0;
 
 //Loss condition//
-var loseKill = false; //Lose by touching ("killing") a falling object
-var loseWall = false; //Lose by touching the leftside of the canvas
+var loseKill; //Lose by touching ("killing") a falling object
+var loseWall; //Lose by touching the leftside of the canvas
 
 //Control FPS//
 var fps,fpsInterval,startTime,now,then,elapsed;
 
 //Initializes (or re-initializes) variables//
 function startValues() {
-	platforms = [new Platform(canvas.width/3,canvas.height/2+50,80,10,'black'),
-				 new Platform(420,340,80,10,'black'),
-				 new Platform(525,400,80,10,'black'),
-				 new Platform(700,(canvas.height/2)+50,80,10,'black')];
-	
 	//Keypress values//
 	leftPressed = false;
 	rightPressed = false;
@@ -80,6 +75,14 @@ function startValues() {
 	upBigPressed = false;
 	upSmallPressed = false;
 	restartPressed = false;
+
+	//Object Arrays//
+	platforms = [new Platform(canvas.width/3,canvas.height/2+50,80,10,'black'),
+				 new Platform(420,340,80,10,'black'),
+				 new Platform(525,400,80,10,'black'),
+				 new Platform(700,(canvas.height/2)+50,80,10,'black')];
+	spawns = [];
+	powerups = [];
 
 	//Player//
 	player.vx = 0;
@@ -124,4 +127,8 @@ function startValues() {
 	humanity = 0;
 	spawnDead = 0;
 	score = 0;
+
+	//Loss condition//
+	loseKill = false;
+	loseWall = false;
 }

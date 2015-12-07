@@ -114,13 +114,6 @@ function update() {
 		}
 	}
 	if(restartPressed) {
-		// TODO: Fix redundancy
-		platforms = [];
-		spawns = [];
-		powerups = [];
-
-		loseKill = false;
-		loseWall = false;
 		startValues();
 	}
 }
