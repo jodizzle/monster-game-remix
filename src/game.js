@@ -1,10 +1,3 @@
-//Platforms array//
-var platforms = [];
-//Spawns array//
-var spawns = [];
-//Powerups array//
-var powerups = [];
-
 //Main loop functions//
 function draw() {
 	context.clearRect(0,0,canvas.width,canvas.height); //Clears the screen every frame

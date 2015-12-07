@@ -27,6 +27,11 @@ var horizFrictionGround;
 var horizFrictionAir;
 var vertAcc;
 
+//Object Arrays//
+var platforms = [];
+var spawns = [];
+var powerups = [];
+
 //Scroll Speed//
 var playerScrollSpeed;
 var platformScrollSpeed;
