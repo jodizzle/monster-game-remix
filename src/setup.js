@@ -27,17 +27,17 @@ var horizFrictionGround;
 var horizFrictionAir;
 var vertAcc;
 
-//Object Arrays//
+//Object arrays//
 var platforms = [];
 var spawns = [];
 var powerups = [];
 
-//Scroll Speed//
+//Scroll speeds//
 var playerScrollSpeed;
 var platformScrollSpeed;
 var spawnScrollSpeed;
 
-//Timers and Counters//
+//Timers and counters//
 var gameTimer;
 var gameScalingTargetShort;
 var gameScalingTargetLong;
@@ -59,7 +59,7 @@ var spawnDead; //The total number of spawns that have died (and are therefore co
 var score;
 var highScore = 0;
 
-//Loss condition//
+//Loss conditions//
 var loseKill; //Lose by touching ("killing") a falling object
 var loseWall; //Lose by touching the leftside of the canvas
 
@@ -76,7 +76,7 @@ function startValues() {
 	upSmallPressed = false;
 	restartPressed = false;
 
-	//Object Arrays//
+	//Object arrays//
 	platforms = [new Platform(canvas.width/3,canvas.height/2+50,80,10,'black'),
 				 new Platform(420,340,80,10,'black'),
 				 new Platform(525,400,80,10,'black'),
@@ -102,12 +102,12 @@ function startValues() {
 	horizFrictionAir = 0.3;
 	vertAcc = -0.5;
 
-	//Scroll Speed//
+	//Scroll speed//
 	playerScrollSpeed = -1;
 	platformScrollSpeed = -1;
 	spawnScrollSpeed = -1;
 
-	//Timers and Counters//
+	//Timers and counters//
 	gameTimer = 0;
 	gameScalingTargetShort = 300; //5 seconds
 	gameScalingTargetLong = 600; //10 seconds
@@ -128,7 +128,7 @@ function startValues() {
 	spawnDead = 0;
 	score = 0;
 
-	//Loss condition//
+	//Loss conditions//
 	loseKill = false;
 	loseWall = false;
 }
