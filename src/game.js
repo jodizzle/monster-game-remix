@@ -108,7 +108,7 @@ function update() {
 		platformScrollSpeed = 0;
 		spawnScrollSpeed = 0;
 		//Do some scoring
-		score = calculateScore()
+		score = calculateScore();
 		if (score > highScore) {
 			highScore = score;
 		}
