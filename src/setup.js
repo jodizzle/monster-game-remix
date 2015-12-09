@@ -57,6 +57,7 @@ var terminalVelocity;
 var humanity;
 var spawnDead; //The total number of spawns that have died (and are therefore collectable)
 var score;
+var prevScore = 0;
 var highScore = 0;
 
 //Loss conditions//

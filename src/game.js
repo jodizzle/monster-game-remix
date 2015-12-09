@@ -114,6 +114,7 @@ function update() {
 		}
 	}
 	if(restartPressed) {
+		prevScore = score;
 		startValues();
 	}
 }
