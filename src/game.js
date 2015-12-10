@@ -10,7 +10,8 @@ function draw() {
 		//Draw army//
 		var armyImage = new Image();
 		armyImage.src = 'assets/army.png';
-		context.drawImage(armyImage, 0, canvas.height-100);
+		// context.drawImage(armyImage, 0, canvas.height-100);
+		context.drawImage(armyImage, 0, canvas.height-armySine(gameTimer));
 		//Display instructions//
 		context.fillStyle = "purple";
 		context.font = "48px serif";

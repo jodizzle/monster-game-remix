@@ -3,6 +3,11 @@ function getRandomNumber(min, max) {
 	return Math.random()*(max-min)+min;
 }
 
+//Sine function for animating army//
+function armySine(x) {
+	return Math.abs(Math.sin((x%60)*0.05))*100;
+}
+
 //Check if obj1 is colliding with obj2//
 function checkCollision(obj1, obj2) {
 	//Using ~~ to truncate - checking collisions with integers is (theoretically) better
