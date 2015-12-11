@@ -8,6 +8,11 @@ function armySine(x) {
 	return Math.abs(Math.sin((x%60)*0.05))*100;
 }
 
+//Cosine function for animating army//
+function armyCos(x) {
+	return -1*Math.cos((x%60)*0.05)*100;
+}
+
 //Check if obj1 is colliding with obj2//
 function checkCollision(obj1, obj2) {
 	//Using ~~ to truncate - checking collisions with integers is (theoretically) better
