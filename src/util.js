@@ -5,12 +5,12 @@ function getRandomNumber(min, max) {
 
 //Sine function for animating army//
 function armySine(x) {
-	return Math.abs(Math.sin((x%60)*0.05))*100;
+	return Math.abs(Math.sin((x%90)*0.03))*100;
 }
 
 //Cosine function for animating army//
 function armyCos(x) {
-	return -1*Math.cos((x%60)*0.05)*100;
+	return -1*Math.cos((x%90)*0.03)*100;
 }
 
 //Check if obj1 is colliding with obj2//
