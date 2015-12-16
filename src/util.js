@@ -10,7 +10,7 @@ function armySine(x) {
 
 //Cosine function for animating army//
 function armyCos(x) {
-	return -1*Math.cos((x%90)*0.03)*100;
+	return -2*Math.cos((x%90)*0.03)*100;
 }
 
 //Check if obj1 is colliding with obj2//
