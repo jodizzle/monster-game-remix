@@ -119,7 +119,7 @@ function update() {
 	}
 }
 function mainLoop() {
-	raf = window.requestAnimationFrame(mainLoop);
+	window.requestAnimationFrame(mainLoop);
 	now = Date.now();
 	elapsed = now - then;
 	if(elapsed > fpsInterval) {

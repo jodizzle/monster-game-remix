@@ -1,7 +1,6 @@
 //Canvas setup//
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
-var raf;
 
 //Canvas dimensions//
 canvas.width = 800;
