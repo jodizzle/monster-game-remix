@@ -21,9 +21,9 @@ function draw() {
 		//Controls//
 		context.font = "32px serif";
 		context.textAlign = "start";
-		context.fillText("z: big jump", canvas.width-250, 50);
-		context.fillText("x: little jump", canvas.width-250, 100);
-		context.fillText("p: toggle music", canvas.width-250, 150);
+		context.fillText("z: big jump", canvas.width-250, 30);
+		context.fillText("x: little jump", canvas.width-250, 70);
+		context.fillText("p: toggle music", canvas.width-250, 110);
 		//Bottom Message//
 		context.font = "32px serif";
 		context.textAlign = "center";
@@ -45,8 +45,8 @@ function draw() {
 		context.fillText("press r to restart", canvas.width/2, canvas.height-50);
 	}
 	else {
-		context.fillText("humanity: "+humanity, 10, 50);
-		context.fillText("time: "+(gameTimer/60.0).toFixed(1)+"s", 10, 100);
+		context.fillText("humanity: "+humanity, 10, 40);
+		context.fillText("time: "+(gameTimer/60.0).toFixed(1)+"s", 10, 90);
 		if(player.hasJetpack) {
 			context.fillText("jetpack: "+((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2), 10, 150)
 		}
