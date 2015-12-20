@@ -38,15 +38,15 @@ function displayScore() {
 	context.fillText("score: " + score, canvas.width/2, 120);
 	context.fillText("previous score: " + prevScore, canvas.width/2, 170);
 	context.fillText("high score: " + highScore, canvas.width/2, 220);
-	context.fillText("final humanity: " + humanity, canvas.width/2, 280);
+	context.fillText("final humanity: " + humanity, canvas.width/2, 270);
 	if(spawnDead === 0) {
 		percentageMessage = "percentage: :(";
 	}
 	else {
 		percentageMessage = "percentage: " + humanity + "/" + spawnDead + " = " + ((humanity/spawnDead)*100).toFixed(2) + "%";
 	}
-	context.fillText(percentageMessage, canvas.width/2, 330);
-	context.fillText("time survived: " + (gameTimer/60.0).toFixed(2) + " seconds", canvas.width/2, 380);
+	context.fillText(percentageMessage, canvas.width/2, 320);
+	context.fillText("time survived: " + (gameTimer/60.0).toFixed(2) + " seconds", canvas.width/2, 370);
 }
 
 //Checks if an object can be removed from the game//
