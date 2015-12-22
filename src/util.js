@@ -70,6 +70,11 @@ function canDespawn(object) {
 			return true;
 		}
 	}
+	if(object instanceof DoublePoints) {
+		if(object.touched) {
+			return true;
+		}
+	}
 
 	return false;
 }
@@ -105,7 +110,6 @@ function spawnObjects() {
 	}
 
 	//Spawn powerups//
-	//Jetpack
 	if(gameTimer % powerupCounterTarget === 0 && gameTimer !== 0) {
 		randX = getRandomNumber(100,canvas.width-100);
 		randY = getRandomNumber(-100, 0);
@@ -117,7 +121,8 @@ function spawnObjects() {
 		}
 		vxChoices = [0, vxRange]; //Heavily weight the possibility of getting '0'
 		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
-		powerups.push(new Jetpack(randX,randY,randVx,0,20,20));
+		powerupList = [new Jetpack(randX,randY,randVx,0,20,20), new DoublePoints(randX,randY,randVx,0,20,20)];
+		powerups.push(powerupList[Math.floor(Math.random()*powerupList.length)]);
 		//TODO: Better approach?
 		//Because the triggering of targets is based on modulo, add powerupCounterTarget to itself
 		//to prevent targets from triggering sooner than intended.  E.g., say the first random choice

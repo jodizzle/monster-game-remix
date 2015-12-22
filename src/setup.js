@@ -44,6 +44,7 @@ var spawnCounterTarget;
 var platformCounterTarget;
 var powerupCounterTarget;
 var jetpackCounterTarget;
+var doublePointsCounterTarget;
 
 //Player movement values//
 var upBigSpeed;
@@ -115,6 +116,7 @@ function startValues() {
 	platformCounterTarget = 90;
 	powerupCounterTarget = Math.floor(getRandomNumber(420,900));
 	jetpackCounterTarget = 600;
+	doublePointsCounterTarget = 600;
 
 	//Player movement values//
 	upBigSpeed = -7;

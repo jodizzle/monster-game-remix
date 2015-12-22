@@ -8,7 +8,9 @@ var player = {
 	height: 30,
 	onGround: false,
 	hasJetpack: false,
+	hasDoublePoints: false,
 	jetpackTimer: 0,
+	doublePointsTimer: 0,
 
 	draw: function() {
 		var monsterImage = new Image();
@@ -20,6 +22,10 @@ var player = {
 		//Jetpack//
 		if(player.hasJetpack && (gameTimer-player.jetpackTimer) === jetpackCounterTarget) {
 			player.hasJetpack = false;
+		}
+		//Double Points//
+		if(player.hasDoublePoints && (gameTimer-player.doublePointsTimer) === doublePointsCounterTarget) {
+			player.hasDoublePoints = false;
 		}
 
 		//Horizontal movement//
@@ -134,11 +140,17 @@ var player = {
 			if (checkCollision(player,spawn)) {
 				spawn.touched = true;
 				if(spawn.onGround) {
-					humanity += 1;
+					if(player.hasDoublePoints) {
+						humanity += 2;
+					}
+					else {
+						humanity += 1;
+					}
 				}
 				else {
 					loseKill = true;
 					player.hasJetpack = false;
+					player.hasDoublePoints = false;
 				}
 			}
 		}
@@ -150,6 +162,10 @@ var player = {
 				if(powerup instanceof Jetpack) {
 					player.hasJetpack = true;
 					player.jetpackTimer = gameTimer;
+				}
+				if(powerup instanceof DoublePoints) {
+					player.hasDoublePoints = true;
+					player.doublePointsTimer = gameTimer;
 				}
 			}
 		}
@@ -176,6 +192,7 @@ var player = {
 			jumping = false;
 			loseWall = true;
 			player.hasJetpack = false;
+			player.hasDoublePoints = false;
 		}
 		//Topside canvas collision detection//
 		else if(player.y < 0) {
