@@ -146,6 +146,7 @@ var player = {
 					else {
 						humanity += 1;
 					}
+					spawnCollected += 1;
 				}
 				else {
 					loseKill = true;
