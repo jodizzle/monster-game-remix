@@ -39,11 +39,12 @@ function displayScore() {
 	context.fillText("previous score: " + prevScore, canvas.width/2, 170);
 	context.fillText("high score: " + highScore, canvas.width/2, 220);
 	context.fillText("final humanity: " + humanity, canvas.width/2, 270);
+	percentageMessage = "percentage: " + humanity + "/" + spawnDead + " = ";
 	if(spawnDead === 0) {
-		percentageMessage = "percentage: :(";
+		percentageMessage += ":(";
 	}
 	else {
-		percentageMessage = "percentage: " + humanity + "/" + spawnDead + " = " + ((humanity/spawnDead)*100).toFixed(2) + "%";
+		percentageMessage += ((humanity/spawnDead)*100).toFixed(2) + "%";
 	}
 	context.fillText(percentageMessage, canvas.width/2, 320);
 	context.fillText("time survived: " + (gameTimer/60.0).toFixed(2) + " seconds", canvas.width/2, 370);
