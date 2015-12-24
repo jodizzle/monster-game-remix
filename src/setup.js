@@ -79,10 +79,17 @@ function startValues() {
 	restartPressed = false;
 
 	//Object arrays//
-	platforms = [new Platform(canvas.width/3,canvas.height/2+50,80,10,'black'),
-				 new Platform(420,340,80,10,'black'),
-				 new Platform(525,400,80,10,'black'),
-				 new Platform(700,(canvas.height/2)+50,80,10,'black')];
+	platformXValues = [canvas.width/3, 420, 525, 700];
+	platforms = [new Platform(0,canvas.height/2+50,80,10,'black'),
+				 new Platform(0,340,80,10,'black'),
+				 new Platform(0,400,80,10,'black'),
+				 new Platform(0,(canvas.height/2)+50,80,10,'black')];
+
+	//Randomize x positions;
+	shuffleArray(platformXValues);
+	for(var i = 0; i < platforms.length; i++) {
+		platforms[i].x = platformXValues[i];
+	}
 	spawns = [];
 	powerups = [];
 
