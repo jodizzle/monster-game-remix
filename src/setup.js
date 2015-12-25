@@ -98,6 +98,7 @@ function startValues() {
 	player.x = canvas.width/3;
 	player.y = canvas.height/2;
 	player.hasJetpack = false;
+	player.hasDoublePoints = false;
 
 	//Acceleration//
 	gravity = 0.2;
