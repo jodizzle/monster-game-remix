@@ -4,8 +4,8 @@ var player = {
 	y: canvas.height/2,
 	vx: 0,
 	vy: 0,
-	width: 28,
-	height: 30,
+	width: 26,
+	height: 28,
 	onGround: false,
 	hasJetpack: false,
 	hasDoublePoints: false,
@@ -15,7 +15,7 @@ var player = {
 	draw: function() {
 		var monsterImage = new Image();
 		monsterImage.src = 'assets/test_monster_2.png';
-		context.drawImage(monsterImage, 3, 2, 26, 28, this.x, this.y, this.width, this.height);
+		context.drawImage(monsterImage, 3, 2, this.width, this.height, this.x, this.y, this.width, this.height);
 	},
 	update: function() {
 		//Check conditions of powerups//
