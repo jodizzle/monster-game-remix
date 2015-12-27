@@ -85,6 +85,9 @@ function update() {
 		spawnScrollSpeed -= 0.3;
 		playerScrollSpeed -= 0.3;
 		rightSpeed += 0.3;
+		if(platformCounterTarget > 60) {
+			platformCounterTarget -= 10;
+		}
 	}
 
 	player.update();
