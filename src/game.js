@@ -78,6 +78,9 @@ function update() {
 			spawnCounterTarget -= 10; //makes spawns spawn faster
 									  //speed currently reaches it's cap at 50 seconds
 		}
+		if(platformCounterTarget > 10) {
+			platformCounterTarget -= 5;
+		}
 		spawnGravity += 0.5; //faster falling spawns
 	}
 	if(gameTimer % gameScalingTargetLong === 0) {
@@ -85,9 +88,6 @@ function update() {
 		spawnScrollSpeed -= 0.3;
 		playerScrollSpeed -= 0.3;
 		rightSpeed += 0.3;
-		if(platformCounterTarget > 60) {
-			platformCounterTarget -= 10;
-		}
 	}
 
 	player.update();
