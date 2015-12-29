@@ -80,7 +80,7 @@ function startValues() {
 
 	//Object arrays//
 	platforms = []; //Reset platforms
-	platformXValues = [canvas.width/3, 420, 525, 700];
+	platformXValues = [canvas.width/3, 400, 525, 700];
 	platformYValues = [canvas.height/2 + 50, canvas.height/2 + 50, 340, 400];
 
 	//Randomize x- and y-positions:
