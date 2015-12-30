@@ -12,7 +12,7 @@ myAudio.addEventListener('ended', function() {
 }, false);
 
 //Keyboard listener for 'p' key//
-window.addEventListener('keydown',function(e) {
+window.addEventListener('keydown', function(e) {
 	switch (e.which) {
 		case 80:
 			if(!myAudio.paused) {

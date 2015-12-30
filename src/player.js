@@ -79,15 +79,15 @@ var player = {
 		player.x += player.vx;
 
 		//Horizontal platform collision detection//
-		for(var i=0; i<platforms.length; i++) {
+		for(var i = 0; i < platforms.length; i++) {
 			platform = platforms[i];
 			if(checkCollision(player,platform)) {
 				if(player.vx > 0 && !leftPressed) { //Leftside case
-					player.x = platform.x-player.width;
+					player.x = platform.x - player.width;
 				 	player.vx = 0;
 				}
 				else if (player.vx < 0 && !rightPressed) { //Rightside case
-					player.x = platform.x+platform.width;
+					player.x = platform.x + platform.width;
 			 	 	player.vx = 0;
 				}
 			}
@@ -118,24 +118,24 @@ var player = {
 		player.y += player.vy;
 
 		//Vertical platform collision detection//
-		for(var i=0; i<platforms.length; i++) {
+		for(var i = 0; i < platforms.length; i++) {
 			platform = platforms[i];
 			if (checkCollision(player,platform)) {
 				if(player.vy > 0) { //Topside case
-					player.y = platform.y-player.height;
+					player.y = platform.y - player.height;
 				 	player.vy = 0;
 				 	player.onGround = true;
 				 	jumping = false;
 				}
 				else if (player.vy < 0) { //Bottomside case
-					player.y = platform.y+platform.height;
+					player.y = platform.y + platform.height;
 			 	 	player.vy = 0;
 				}
 			}
 		}
 
 		//Spawn collision detection//
-		for(var i=0; i<spawns.length; i++) {
+		for(var i = 0; i < spawns.length; i++) {
 			spawn = spawns[i];
 			if (checkCollision(player,spawn)) {
 				spawn.touched = true;
@@ -156,7 +156,7 @@ var player = {
 			}
 		}
 		//Powerup collision detection//
-		for(var i=0; i<powerups.length; i++) {
+		for(var i = 0; i < powerups.length; i++) {
 			powerup = powerups[i];
 			if (checkCollision(player,powerup)) {
 				powerup.touched = true;
@@ -172,21 +172,21 @@ var player = {
 		}
 
 		//Rightside canvas collision detection//
-		if(player.x+player.width > canvas.width) {
-			player.x = canvas.width-player.width;
+		if(player.x + player.width > canvas.width) {
+			player.x = canvas.width - player.width;
 			player.vx = 0;
 		}
 		//Leftside canvas collision detection//
-		else if(player.x+playerScrollSpeed <= 0) {
+		else if(player.x + playerScrollSpeed <= 0) {
 			player.x = 0;
 			player.vx = -1*playerScrollSpeed; //"Push" against the wall
 		}
 		//Default horizontal scrolling//
-		else if(player.x+playerScrollSpeed > 0) {
+		else if(player.x + playerScrollSpeed > 0) {
 			player.x += playerScrollSpeed;
 		}
 		//Bottomside canvas collision detection//
-		if(player.y+player.height > canvas.height) {
+		if(player.y + player.height > canvas.height) {
 			player.y = canvas.height-player.height;
 			player.vy = 0;
 			player.onGround = true;

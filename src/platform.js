@@ -9,9 +9,9 @@ function getRandomNumberPlatformYExcluded(min, max, randX, randWidth, spawnHeigh
 	excluded = [new Platform]; //'Dummy platform' variable that acts as storage for the min value but is still cooperative with the loops in this function.
 	excluded[0].y = min;
 	excluded[0].height = 0;
-	for(var i=0;i<platforms.length;i++) {
-		if(platforms[i].x+platforms[i].width > canvas.width) {	//Checks to see if it is (completely, including rightside) off-screen
-			if((randX+randWidth > platforms[i].x && randX < platforms[i].x+platforms[i].width)) {	//Horizontal collision detection
+	for(var i = 0; i < platforms.length; i++) {
+		if(platforms[i].x + platforms[i].width > canvas.width) {	//Checks to see if it is (completely, including rightside) off-screen
+			if((randX + randWidth > platforms[i].x && randX < platforms[i].x + platforms[i].width)) {	//Horizontal collision detection
 				excluded.push(platforms[i]);
 			}
 		}
@@ -26,8 +26,8 @@ function getRandomNumberPlatformYExcluded(min, max, randX, randWidth, spawnHeigh
 
 	//Generate random numbers for each Y-section (as defined by platforms in excluded) and checks to make sure that the platform can fit inside a given region.
 	spawnPoints = [];
-	for(var i=1;i<excluded.length;i++) { //rest of the cases
-		minValue = excluded[i-1].y+excluded[i-1].height;
+	for(var i = 1; i < excluded.length; i++) { //rest of the cases
+		minValue = excluded[i-1].y + excluded[i-1].height;
 		maxValue = excluded[i].y;
 		if(maxValue - minValue >= spawnHeight) { //only add the value as a potential spawn point if the spawn can fit in there.
 											 	 //> or >=?

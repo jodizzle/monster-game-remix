@@ -122,7 +122,7 @@ function startValues() {
 	gameScalingTargetLong = 600; //10 seconds
 	spawnCounterTarget = 100;
 	platformCounterTarget = 100;
-	powerupCounterTarget = Math.floor(getRandomNumber(420,900));
+	powerupCounterTarget = Math.floor(getRandomNumber(420, 900));
 	jetpackCounterTarget = 600;
 	doublePointsCounterTarget = 600;
 

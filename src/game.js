@@ -1,6 +1,6 @@
 //Main loop functions//
 function draw() {
-	context.clearRect(0,0,canvas.width,canvas.height); //Clears the screen every frame
+	context.clearRect(0, 0, canvas.width, canvas.height); //Clears the screen every frame
 
 	if(!loseKill && !loseWall) {
 		//Draw background//
@@ -46,22 +46,22 @@ function draw() {
 		context.fillText("press r to restart", canvas.width/2, canvas.height-50);
 	}
 	else {
-		context.fillText("humanity: "+humanity, 10, 40);
-		context.fillText("time: "+(gameTimer/60.0).toFixed(1)+"s", 10, 90);
+		context.fillText("humanity: " + humanity, 10, 40);
+		context.fillText("time: " + (gameTimer/60.0).toFixed(1) + "s", 10, 90);
 		if(player.hasJetpack) {
-			context.fillText("jetpack: "+((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2), 10, 140)
+			context.fillText("jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2), 10, 140)
 		}
 		if(player.hasDoublePoints) {
-			context.fillText("double points: "+((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2), 10, 140);
+			context.fillText("double points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2), 10, 140);
 		}
 		//Draws objects//
-		for(var i=0; i<spawns.length; i++) {
+		for(var i = 0; i < spawns.length; i++) {
 			spawns[i].draw();
 		}
-		for(var i=0; i<platforms.length; i++) {
+		for(var i = 0; i < platforms.length; i++) {
 			platforms[i].draw();
 		}
-		for(var i=0; i<powerups.length; i++) {
+		for(var i = 0; i < powerups.length; i++) {
 			powerups[i].draw();
 		}
 	}
@@ -93,15 +93,15 @@ function update() {
 	player.update();
 	if(!loseKill && !loseWall) {
 		removeObjects(spawns);
-		for(var i=0; i<spawns.length; i++) {
+		for(var i=0; i < spawns.length; i++) {
 			spawns[i].update();
 		}
 		removeObjects(platforms);
-		for(var i=0; i<platforms.length; i++) {
+		for(var i=0; i < platforms.length; i++) {
 			platforms[i].update();
 		}
 		removeObjects(powerups);
-		for(var i=0; i<powerups.length; i++) {
+		for(var i=0; i < powerups.length; i++) {
 			powerups[i].update();
 		}
 	}
@@ -138,7 +138,7 @@ function mainLoop() {
 }
 
 //Keyboard listeners//
-window.addEventListener('keydown',function(e) {
+window.addEventListener('keydown', function(e) {
 	switch (e.which) {
 		case 37:
 			leftPressed = true;
@@ -161,7 +161,7 @@ window.addEventListener('keydown',function(e) {
 			break;
 	}
 });
-window.addEventListener('keyup',function(e) {
+window.addEventListener('keyup', function(e) {
 	switch (e.which) {
 		case 37:
 			leftPressed = false;
@@ -183,7 +183,7 @@ window.addEventListener('keyup',function(e) {
 	}
 });
 //Prevent scrolling on the page with arrow keys and spacebar
-window.addEventListener('keydown',function(e) {
+window.addEventListener('keydown', function(e) {
 	switch (e.which) {
 		case 32: case 37: case 38: case 39: case 40:
 			e.preventDefault();
