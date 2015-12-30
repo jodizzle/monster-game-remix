@@ -117,7 +117,7 @@ function spawnObjects() {
 	}
 
 	//Spawn platforms//
-	if(gameTimer % platformCounterTarget === 0) {
+	if(gameTimer % platformCounterTarget === 0 && gameTimer !== 0) {
 		randWidth = getRandomNumberPlatform(40,90);
 		spawnHeight = 10;
 		randX = getRandomNumberPlatform(canvas.width,canvas.width+(randWidth*2));
