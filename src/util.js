@@ -40,8 +40,7 @@ function checkCollision(obj1, obj2) {
 
 //Calculate score metric//
 function calculateScore() {
-	humanityWeight = 4.20;
-	time = gameTimer/60.0;
+	var time = gameTimer/60.0;
 	return Math.round(humanity*humanityWeight + time);
 }
 
