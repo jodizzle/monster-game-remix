@@ -34,7 +34,7 @@ function draw() {
 
 	//Display text//
 	context.fillStyle = "purple";
-	context.font = "48px serif";
+	context.font = "40px serif";
 	context.textAlign = "start";
 	if(loseKill) {
 		context.fillText("u r the monster", 10, 50);
