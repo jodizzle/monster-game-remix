@@ -31,7 +31,7 @@ function getRandomNumberPlatformYExcluded(min, max, randX, randWidth, spawnHeigh
 		maxValue = excluded[i].y;
 		if(maxValue - minValue >= spawnHeight) { //only add the value as a potential spawn point if the spawn can fit in there.
 											 	 //> or >=?
-			spawnPoints.push(getRandomNumberPlatform(minValue,maxValue));
+			spawnPoints.push(getRandomNumber(minValue,maxValue));
 		}
 	}
 
