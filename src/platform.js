@@ -1,7 +1,3 @@
-//Random number generators//
-function getRandomNumberPlatform(min, max) {
-	return (Math.random()*Math.random())*(max-min)+min;
-}
 //Gets a random Y-value for a to-be-spawned platform in a way that avoids collisions with existing platforms//
 	//*Currently only works if all platform Y-values are guranteed to be inside the min-max range*//
 function getRandomNumberPlatformYExcluded(min, max, randX, randWidth, spawnHeight) {
