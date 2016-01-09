@@ -81,7 +81,7 @@ var player = {
 		//Horizontal platform collision detection//
 		for(var i = 0; i < platforms.length; i++) {
 			platform = platforms[i];
-			if(checkCollision(player,platform)) {
+			if(checkCollision(player, platform)) {
 				if(player.vx > 0 && !leftPressed) { //Leftside case
 					player.x = platform.x - player.width;
 				 	player.vx = 0;
@@ -120,7 +120,7 @@ var player = {
 		//Vertical platform collision detection//
 		for(var i = 0; i < platforms.length; i++) {
 			platform = platforms[i];
-			if (checkCollision(player,platform)) {
+			if (checkCollision(player, platform)) {
 				if(player.vy > 0) { //Topside case
 					player.y = platform.y - player.height;
 				 	player.vy = 0;
@@ -137,7 +137,7 @@ var player = {
 		//Spawn collision detection//
 		for(var i = 0; i < spawns.length; i++) {
 			spawn = spawns[i];
-			if (checkCollision(player,spawn)) {
+			if (checkCollision(player, spawn)) {
 				spawn.touched = true;
 				if(spawn.onGround) {
 					if(player.hasDoublePoints) {
@@ -158,7 +158,7 @@ var player = {
 		//Powerup collision detection//
 		for(var i = 0; i < powerups.length; i++) {
 			powerup = powerups[i];
-			if (checkCollision(player,powerup)) {
+			if (checkCollision(player, powerup)) {
 				powerup.touched = true;
 				if(powerup instanceof Jetpack) {
 					player.hasJetpack = true;
@@ -187,7 +187,7 @@ var player = {
 		}
 		//Bottomside canvas collision detection//
 		if(player.y + player.height > canvas.height) {
-			player.y = canvas.height-player.height;
+			player.y = canvas.height - player.height;
 			player.vy = 0;
 			player.onGround = true;
 			jumping = false;

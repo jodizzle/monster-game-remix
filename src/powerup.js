@@ -25,7 +25,7 @@ Jetpack.prototype.update = function() {
 	for(var i = 0; i < platforms.length; i++) {
 		platform = platforms[i];
 		//Since spawns only fall from the top, should only have to worry about one vertical case.
-		if (checkCollision(this,platform)) {
+		if (checkCollision(this, platform)) {
 			this.y = platform.y - this.height;
 			this.onGround = true;
 		}
@@ -65,7 +65,7 @@ DoublePoints.prototype.update = function() {
 	for(var i = 0; i < platforms.length; i++) {
 		platform = platforms[i];
 		//Since spawns only fall from the top, should only have to worry about one vertical case.
-		if (checkCollision(this,platform)) {
+		if (checkCollision(this, platform)) {
 			this.y = platform.y - this.height;
 			this.onGround = true;
 		}

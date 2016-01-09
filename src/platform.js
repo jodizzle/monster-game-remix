@@ -54,7 +54,7 @@ function comparePlatformYValues(p1, p2) {
 }
 
 //Platform definitions//
-function Platform(x,y,width,height,color) {
+function Platform(x, y, width, height, color) {
 	this.x = x; this.y = y; this.width = width; this.height = height; this.color = color;
 	this.removeNow = false;
 }
