@@ -18,6 +18,14 @@ function shuffleArray(array) {
     return array;
 }
 
+//Draw "PAUSED" on the screen//
+function drawPaused() {
+	context.fillStyle = "red";
+	context.font = "72px serif";
+	context.textAlign = "center";
+	context.fillText("PAUSED", canvas.width/2, canvas.height/2);
+}
+
 //Sine function for animating army//
 function armySine(x) {
 	return Math.abs(Math.sin((x%90)*0.03))*100;

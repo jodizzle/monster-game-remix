@@ -26,6 +26,7 @@ function draw() {
 		context.fillText("p: toggle music", canvas.width-250, 30);
 		context.fillText("c: cycle music", canvas.width-250, 70)
 		context.fillText("r: restart", canvas.width-250, 110);
+		context.fillText("space: pause", canvas.width-250, 150);
 		//Bottom Message//
 		context.font = "32px serif";
 		context.textAlign = "center";
@@ -130,7 +131,7 @@ function mainLoop() {
 	window.requestAnimationFrame(mainLoop);
 	now = Date.now();
 	elapsed = now - then;
-	if(elapsed > fpsInterval) {
+	if(elapsed > fpsInterval && !paused) {
 		then = now - (elapsed % fpsInterval);
 		spawnObjects();
 		update();
@@ -141,6 +142,10 @@ function mainLoop() {
 //Keyboard listeners//
 window.addEventListener('keydown', function(e) {
 	switch (e.which) {
+		case 32: //Pause the game when the spacebar is pressed
+			drawPaused();
+			paused = !paused;
+			break;
 		case 37:
 			leftPressed = true;
 			break;

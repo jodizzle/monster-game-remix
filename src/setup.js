@@ -67,6 +67,7 @@ var loseKill; //Lose by touching ("killing") a falling object
 var loseWall; //Lose by touching the leftside of the canvas
 
 //Control FPS//
+var paused = false; //Boolean switch for pausing
 var fps,fpsInterval,startTime,now,then,elapsed;
 
 //Initializes (or re-initializes) variables//
