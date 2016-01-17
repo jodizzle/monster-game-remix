@@ -35,7 +35,7 @@ function draw() {
 		//Bottom Message//
 		context.font = "32px serif";
 		context.textAlign = "center";
-		context.fillText("don't let the army down here get you", canvas.width/2, 400);
+		context.fillText("don't let the army down here get you", canvas.width/2, 440);
 	}
 
 	//Display text//
