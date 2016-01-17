@@ -13,11 +13,11 @@ function draw() {
 		context.drawImage(armyImage, armyCos(gameTimer), canvas.height-armySine(gameTimer));
 		//Display instructions//
 		context.fillStyle = "purple";
-		context.font = "48px serif";
+		context.font = "44px serif";
 		context.textAlign = "center";
-		context.fillText("u r no monster", canvas.width/2, 200);
+		context.fillText("you are no monster", canvas.width/2, 200);
 		context.fillText("prove it", canvas.width/2, 250);
-		context.fillText("only kill people when there dead", canvas.width/2, 300);
+		context.fillText("only kill people when they're dead", canvas.width/2, 300);
 		//Controls//
 		context.font = "32px serif";
 		context.textAlign = "start";
@@ -35,7 +35,7 @@ function draw() {
 		//Bottom Message//
 		context.font = "32px serif";
 		context.textAlign = "center";
-		context.fillText("dont let the army down here get u", canvas.width/2, 400);
+		context.fillText("don't let the army down here get you", canvas.width/2, 400);
 	}
 
 	//Display text//
