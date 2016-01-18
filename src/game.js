@@ -43,12 +43,12 @@ function draw() {
 	context.font = "40px serif";
 	context.textAlign = "start";
 	if(loseKill) {
-		context.fillText("u r the monster", 10, 50);
+		context.fillText("you are the monster", 10, 50);
 		displayScore();
 		context.fillText("press r to restart", canvas.width/2, canvas.height-50);
 	}
 	else if(loseWall) {
-		context.fillText("the army got u", 10, 50);
+		context.fillText("the army got you", 10, 50);
 		displayScore();
 		context.fillText("press r to restart", canvas.width/2, canvas.height-50);
 	}
