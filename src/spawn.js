@@ -1,6 +1,6 @@
 //Spawn definitions//
-function Spawn(x, y, vx, vy, width, height) {
-	this.x = x; this.y = y; this.vx = vx; this.vy = 0; this.width = width; this.height = height;
+function Spawn(x, y, vx, vy, width, height, wobble) {
+	this.x = x; this.y = y; this.vx = vx; this.vy = 0; this.width = width; this.height = height; this.wobble = wobble;
 	this.onGround = false;
 	this.touched = false;
 	this.added = false; //Bool to check if the spawn has been counted by spawnDead
@@ -21,6 +21,9 @@ Spawn.prototype.update = function() {
 		this.x += spawnScrollSpeed;
 	}
 	else {
+		if(this.wobble) {
+			this.x += 3*Math.cos((gameTimer%180)*0.03);
+		}
 		this.x += this.vx;
 	}
 	//Vertical movement//
