@@ -8,6 +8,10 @@ audioIndex = Math.floor(Math.random()*myAudioList.length);
 myAudio = new Audio(myAudioList[audioIndex]);
 myAudio.volume = 0.3;
 
+function playSong() {
+	myAudio.play();
+}
+
 function changeSong() {
 	audioIndex += 1;
 	if(audioIndex >= myAudioList.length) {
@@ -15,8 +19,10 @@ function changeSong() {
 	}
 	myAudio.pause();
 	myAudio.src = myAudioList[audioIndex];
-	myAudio.play();
+	// Event listener below should takes care of playing when audio is ready
 }
+
+myAudio.addEventListener('canplaythrough', playSong, false);
 
 myAudio.addEventListener('ended', function() {
     this.currentTime = 0;
@@ -39,5 +45,3 @@ window.addEventListener('keydown', function(e) {
 			break;
 	}
 });
-
-myAudio.play();
