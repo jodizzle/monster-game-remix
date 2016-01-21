@@ -17,7 +17,6 @@ function changeSong() {
 	if(audioIndex >= myAudioList.length) {
 		audioIndex = 0;
 	}
-	myAudio.pause();
 	myAudio.src = myAudioList[audioIndex];
 	// Event listener below should takes care of playing when audio is ready
 }
