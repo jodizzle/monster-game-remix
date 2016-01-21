@@ -1,29 +1,29 @@
-myAudioList = ['assets/bu-an-ogres-knight-fixed.ogg',
+audioList = ['assets/bu-an-ogres-knight-fixed.ogg',
 			   'assets/bu-pear-of-the-report-fixed.ogg',
 			   'assets/bu-a-garden-and-a-knight-fixed.ogg',
 			   'assets/bu-crazed-and-poor-fixed.ogg',
 			   'assets/bu-a-bananas-reports-fixed.ogg'];
 //Choose a random song
-audioIndex = Math.floor(Math.random()*myAudioList.length);
-myAudio = new Audio(myAudioList[audioIndex]);
-myAudio.volume = 0.3;
+audioIndex = Math.floor(Math.random()*audioList.length);
+audio = new Audio(audioList[audioIndex]);
+audio.volume = 0.3;
 
 function playSong() {
-	myAudio.play();
+	audio.play();
 }
 
 function changeSong() {
 	audioIndex += 1;
-	if(audioIndex >= myAudioList.length) {
+	if(audioIndex >= audioList.length) {
 		audioIndex = 0;
 	}
-	myAudio.src = myAudioList[audioIndex];
+	audio.src = audioList[audioIndex];
 	// Event listener below should takes care of playing when audio is ready
 }
 
-myAudio.addEventListener('canplaythrough', playSong, false);
+audio.addEventListener('canplaythrough', playSong, false);
 
-myAudio.addEventListener('ended', function() {
+audio.addEventListener('ended', function() {
     this.currentTime = 0;
     this.play();
 }, false);
@@ -32,11 +32,11 @@ myAudio.addEventListener('ended', function() {
 window.addEventListener('keydown', function(e) {
 	switch (e.which) {
 		case 80: //'p'
-			if(!myAudio.paused) {
-				myAudio.pause();
+			if(!audio.paused) {
+				audio.pause();
 			}
 			else {
-				myAudio.play();
+				audio.play();
 			}
 			break;
 		case 67: //'c'

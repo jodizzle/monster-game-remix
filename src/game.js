@@ -23,7 +23,7 @@ function draw() {
 		context.textAlign = "start";
 		context.fillText("z: big jump", 330, 30);
 		context.fillText("x: little jump", 330, 70);
-		if (myAudio.paused) {
+		if (audio.paused) {
 			context.fillText("p: play music", canvas.width-250, 30);
 		}
 		else {
