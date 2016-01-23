@@ -4,6 +4,9 @@ function Spawn(x, y, vx, vy, width, height, wobble) {
 	this.onGround = false;
 	this.touched = false;
 	this.added = false; //Bool to check if the spawn has been counted by spawnDead
+	if(this.wobble) {
+		wobbleAmplitude = Math.floor(getRandomNumber(3,6));
+	}
 }
 Spawn.prototype.draw = function() {
 	var guyImage = new Image();
@@ -22,7 +25,7 @@ Spawn.prototype.update = function() {
 	}
 	else {
 		if(this.wobble) {
-			this.x += 3*Math.cos((gameTimer%180)*0.03);
+			this.x += wobbleAmplitude*Math.cos((gameTimer%180)*0.03);
 		}
 		this.x += this.vx;
 	}
