@@ -8,8 +8,15 @@ audioIndex = Math.floor(Math.random()*audioList.length);
 audio = new Audio(audioList[audioIndex]);
 audio.volume = 0.3;
 
-function playSong() {
-	audio.play();
+function toggleSong() {
+	if(!audio.paused) {
+		audio.pause();
+		audioMessage = "play";
+	}
+	else {
+		audio.play();
+		audioMessage = "pause";
+	}
 }
 
 function changeSong() {
@@ -21,7 +28,7 @@ function changeSong() {
 	// Event listener below should takes care of playing when audio is ready
 }
 
-audio.addEventListener('canplaythrough', playSong, false);
+audio.addEventListener('canplaythrough', toggleSong, false);
 
 audio.addEventListener('ended', function() {
     this.currentTime = 0;
@@ -32,12 +39,7 @@ audio.addEventListener('ended', function() {
 window.addEventListener('keydown', function(e) {
 	switch (e.which) {
 		case 80: //'p'
-			if(!audio.paused) {
-				audio.pause();
-			}
-			else {
-				audio.play();
-			}
+			toggleSong();
 			break;
 		case 67: //'c'
 			changeSong();

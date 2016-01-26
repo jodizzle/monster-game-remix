@@ -70,6 +70,9 @@ var loseWall; //Lose by touching the leftside of the canvas
 var paused = false; //Boolean switch for pausing
 var fps,fpsInterval,startTime,now,then,elapsed;
 
+//Audio//
+audioMessage = "pause";
+
 //Initializes (or re-initializes) variables//
 function startValues() {
 	//Keypress values//
