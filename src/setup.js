@@ -43,6 +43,8 @@ var gameScalingTargetLong;
 var spawnCounterTarget;
 var platformCounterTarget;
 var powerupCounterTarget;
+var powerupCounterLowerBound;
+var powerupCounterUpperBound;
 var jetpackCounterTarget;
 var doublePointsCounterTarget;
 
@@ -127,7 +129,9 @@ function startValues() {
 	gameScalingTargetLong = 600; //10 seconds
 	spawnCounterTarget = 100;
 	platformCounterTarget = 100;
-	powerupCounterTarget = Math.floor(getRandomNumber(300, 600));
+	powerupCounterLowerBound = 300;
+	powerupCounterUpperBound = 600;
+	powerupCounterTarget = Math.floor(getRandomNumber(powerupCounterLowerBound, powerupCounterUpperBound));
 	jetpackCounterTarget = 600;
 	doublePointsCounterTarget = 600;
 

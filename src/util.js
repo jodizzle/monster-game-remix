@@ -156,7 +156,7 @@ function spawnObjects() {
 		//for powerupCounterTarget was 600, then the second was 800.  Without using prev+new,
 		//a powerup would drop at gameTimer == 600 and then at gameTimer == 800, even though only 200 frames had passed.
 		//With prev+new, a powerup would drop at gameTimer == 600 and gameTimer == 1400, as expected.
-		powerupCounterTarget = powerupCounterTarget+Math.floor(getRandomNumber(300, 600));
+		powerupCounterTarget = powerupCounterTarget+Math.floor(getRandomNumber(powerupCounterLowerBound, powerupCounterUpperBound));
 	}
 }
 
