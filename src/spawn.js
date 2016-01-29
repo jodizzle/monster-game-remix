@@ -1,6 +1,6 @@
 //Spawn definitions//
-function Spawn(x, y, vx, vy, width, height, wobble) {
-	this.x = x; this.y = y; this.vx = vx; this.vy = 0; this.width = width; this.height = height; this.wobble = wobble;
+function Spawn(x, y, vx, vy, width, height, wobble, track) {
+	this.x = x; this.y = y; this.vx = vx; this.vy = 0; this.width = width; this.height = height; this.wobble = wobble; this.track = track;
 	this.onGround = false;
 	this.touched = false;
 	this.added = false; //Bool to check if the spawn has been counted by spawnDead
@@ -27,10 +27,26 @@ Spawn.prototype.update = function() {
 		if(this.wobble) {
 			this.x += wobbleAmplitude*Math.cos((gameTimer%180)*0.03);
 		}
+		else if(this.track) {
+			if(player.y > this.y) {
+				if(player.x > this.x) {
+					this.x += 1;
+				}
+				else {
+					this.x -= 1;
+				}
+			}
+		}
+
 		this.x += this.vx;
 	}
 	//Vertical movement//
-	this.y += spawnGravity;
+	if(this.track) {
+		this.y += 0.5;
+	}
+	else {
+		this.y += spawnGravity;
+	}
 
 	//Vertical platform collision detection//
 	for(var i = 0; i < platforms.length; i++) {
