@@ -55,6 +55,10 @@ var leftSpeed;
 var rightSpeed;
 var terminalVelocity;
 
+//Spawn movement values//
+var spawnTrackXSpeed;
+var spawnTrackYSpeed;
+
 //Scoring//
 var humanity;
 var humanityWeight = 4.20; //Multiplier for humanity in score calculation
@@ -141,6 +145,10 @@ function startValues() {
 	leftSpeed = -5;
 	rightSpeed = 5;
 	terminalVelocity = 9;
+
+	//Spawn movement values//
+	spawnTrackXSpeed = 1;
+	spawnTrackYSpeed = 0.5;
 
 	//Scoring//
 	humanity = 0;

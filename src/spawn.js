@@ -30,10 +30,10 @@ Spawn.prototype.update = function() {
 		else if(this.track) {
 			if(player.y > this.y) {
 				if(player.x > this.x) {
-					this.x += 1;
+					this.x += spawnTrackXSpeed;
 				}
 				else {
-					this.x -= 1;
+					this.x -= spawnTrackXSpeed;
 				}
 			}
 		}
@@ -42,7 +42,7 @@ Spawn.prototype.update = function() {
 	}
 	//Vertical movement//
 	if(this.track && !this.onGround) {
-		this.y += 0.5;
+		this.y += spawnTrackYSpeed;
 	}
 	else {
 		this.y += spawnGravity;
