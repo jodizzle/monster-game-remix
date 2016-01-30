@@ -41,7 +41,7 @@ Spawn.prototype.update = function() {
 		this.x += this.vx;
 	}
 	//Vertical movement//
-	if(this.track) {
+	if(this.track && !this.onGround) {
 		this.y += 0.5;
 	}
 	else {
