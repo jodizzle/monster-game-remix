@@ -28,13 +28,11 @@ Spawn.prototype.update = function() {
 			this.x += wobbleAmplitude*Math.cos((gameTimer%180)*0.03);
 		}
 		else if(this.track) {
-			if(player.y > this.y) {
-				if(player.x > this.x) {
-					this.x += spawnTrackXSpeed;
-				}
-				else {
-					this.x -= spawnTrackXSpeed;
-				}
+			if(player.x > this.x) {
+				this.x += spawnTrackXSpeed;
+			}
+			else {
+				this.x -= spawnTrackXSpeed;
 			}
 		}
 
