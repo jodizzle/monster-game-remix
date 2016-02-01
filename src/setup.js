@@ -147,8 +147,8 @@ function startValues() {
 	terminalVelocity = 9;
 
 	//Spawn movement values//
-	spawnTrackXSpeed = 1;
-	spawnTrackYSpeed = 0.5;
+	spawnTrackXSpeed = 0.5;
+	spawnTrackYSpeed = 1;
 
 	//Scoring//
 	humanity = 0;
