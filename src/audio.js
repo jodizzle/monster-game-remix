@@ -9,7 +9,12 @@ audio = new Audio(audioList[audioIndex]);
 audio.volume = 0.3;
 
 function toggleSong() {
-	if(!audio.paused) {
+	// If audio.currentTime is 0, then the song is
+	// replaying (via the 'ended' event listener),
+	// and so the 'play' message should not be displayed,
+	// since the audio is not actually paused in the intended
+	// sense.
+	if(!audio.paused && audio.currentTime != 0) {
 		audio.pause();
 		audioMessage = "play";
 	}
@@ -32,7 +37,7 @@ audio.addEventListener('canplaythrough', toggleSong, false);
 
 audio.addEventListener('ended', function() {
     this.currentTime = 0;
-    this.play();
+    toggleSong();
 }, false);
 
 //Keyboard listeners//
