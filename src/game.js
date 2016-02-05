@@ -26,7 +26,7 @@ function draw() {
 		context.fillText("p: " + audioMessage + " music", canvas.width-280, 30);
 		context.fillText("c: cycle music", canvas.width-280, 70)
 		context.fillText("r: restart", canvas.width-280, 110);
-		context.fillText("space: pause", canvas.width-280, 150);
+		context.fillText("space: (un)pause", canvas.width-280, 150);
 		//Bottom Message//
 		context.font = "32px serif";
 		context.textAlign = "center";
