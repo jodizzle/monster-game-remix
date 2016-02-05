@@ -21,12 +21,12 @@ function draw() {
 		//Controls//
 		context.font = "32px serif";
 		context.textAlign = "start";
-		context.fillText("z: big jump", 330, 30);
-		context.fillText("x: little jump", 330, 70);
-		context.fillText("p: " + audioMessage + " music", canvas.width-250, 30);
-		context.fillText("c: cycle music", canvas.width-250, 70)
-		context.fillText("r: restart", canvas.width-250, 110);
-		context.fillText("space: pause", canvas.width-250, 150);
+		context.fillText("z: big jump", 290, 30);
+		context.fillText("x: little jump", 290, 70);
+		context.fillText("p: " + audioMessage + " music", canvas.width-280, 30);
+		context.fillText("c: cycle music", canvas.width-280, 70)
+		context.fillText("r: restart", canvas.width-280, 110);
+		context.fillText("space: pause", canvas.width-280, 150);
 		//Bottom Message//
 		context.font = "32px serif";
 		context.textAlign = "center";
