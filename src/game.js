@@ -54,7 +54,7 @@ function draw() {
 			context.fillText("jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2), 10, 140)
 		}
 		if(player.hasDoublePoints) {
-			context.fillText("double points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2), 10, 140);
+			context.fillText("x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2), 10, 140);
 		}
 		//Draws objects//
 		for(var i = 0; i < spawns.length; i++) {
