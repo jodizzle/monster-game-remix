@@ -91,12 +91,14 @@ function startValues() {
 
 	//Object arrays//
 	platforms = []; //Reset platforms
-	platformXValues = [canvas.width/3, 400, 525, 700, canvas.width];
-	platformYValues = [canvas.height/2 + 50, canvas.height/2 + 50, 340, 400, 425];
+	platformXValues = [400, 525, 700, canvas.width];
+	platformYValues = [canvas.height/2 + 50, 340, 400, 425];
 
 	//Randomize x- and y-positions:
 	shuffleArray(platformXValues);
 	shuffleArray(platformYValues);
+
+	platforms.push(new Platform(canvas.width/3, canvas.height/2 + 50, 80, 10, 'black'));
 	for(var i = 0; i < platformXValues.length; i++) {
 		platforms.push(new Platform(platformXValues[i], platformYValues[i], 80, 10, 'black'));
 	}
