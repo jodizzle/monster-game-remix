@@ -15,9 +15,9 @@ function draw() {
 		context.fillStyle = "purple";
 		context.font = "44px serif";
 		context.textAlign = "center";
-		context.fillText("you are no monster", canvas.width/2, 200);
-		context.fillText("prove it", canvas.width/2, 250);
-		context.fillText("only kill people when they're dead", canvas.width/2, 300);
+		context.fillText("you are no monster", canvas.width/2, 240);
+		context.fillText("prove it", canvas.width/2, 290);
+		context.fillText("only kill people when they're dead", canvas.width/2, 340);
 		//Controls//
 		context.font = "32px serif";
 		context.textAlign = "start";
@@ -54,7 +54,7 @@ function draw() {
 			context.fillText("jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 140)
 		}
 		if(player.hasDoublePoints) {
-			context.fillText("x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2) + "s", 10, 140);
+			context.fillText("x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2) + "s", 10, 190);
 		}
 		//Draws objects//
 		for(var i = 0; i < spawns.length; i++) {
