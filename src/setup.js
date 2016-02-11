@@ -139,7 +139,7 @@ function startValues() {
 	powerupCounterUpperBound = 600;
 	powerupCounterTarget = Math.floor(getRandomNumber(powerupCounterLowerBound, powerupCounterUpperBound));
 	jetpackCounterTarget = 600;
-	doublePointsCounterTarget = 600;
+	doublePointsCounterTarget = 900;
 
 	//Player movement values//
 	upBigSpeed = -7;
