@@ -50,11 +50,12 @@ function draw() {
 	else {
 		context.fillText("humanity: " + humanity, 10, 40);
 		context.fillText("time: " + (gameTimer/60.0).toFixed(1) + "s", 10, 90);
+		context.font = "32px serif";
 		if(player.hasJetpack) {
-			context.fillText("jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 140)
+			context.fillText("jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 130)
 		}
 		if(player.hasDoublePoints) {
-			context.fillText("x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2) + "s", 10, 190);
+			context.fillText("x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2) + "s", 10, 170);
 		}
 		//Draws objects//
 		for(var i = 0; i < spawns.length; i++) {
