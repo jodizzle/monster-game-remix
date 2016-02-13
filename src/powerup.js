@@ -1,12 +1,13 @@
 //Jetpack definitions//
-function Jetpack(x, y, vx, vy, width, height, color) {
-	this.x = x; this.y = y; this.vx = vx; this.vy = vy; this.width = width; this.height = height; this.color = color;
+function Jetpack(x, y, vx, vy, width, height) {
+	this.x = x; this.y = y; this.vx = vx; this.vy = vy; this.width = width; this.height = height;
+	this.color = "#25E820";
 	this.onGround = false;
 	this.touched = false;
 }
 Jetpack.prototype.draw = function() {
 	if(!this.touched) {
-		context.fillStyle = "#25E820";
+		context.fillStyle = this.color;
 		context.fillRect(this.x, this.y, this.width, this.height);
 	}
 };
@@ -39,14 +40,15 @@ Jetpack.prototype.update = function() {
 };
 
 //Double Points definitions//
-function DoublePoints(x, y, vx, vy, width, height, color) {
-	this.x = x; this.y = y; this.vx = vx; this.vy = vy; this.width = width; this.height = height; this.color = color;
+function DoublePoints(x, y, vx, vy, width, height) {
+	this.x = x; this.y = y; this.vx = vx; this.vy = vy; this.width = width; this.height = height;
+	this.color = "#FE2C2C";
 	this.onGround = false;
 	this.touched = false;
 }
 DoublePoints.prototype.draw = function() {
 	if(!this.touched) {
-		context.fillStyle = "#FE2C2C";
+		context.fillStyle = this.color;
 		context.fillRect(this.x, this.y, this.width, this.height);
 	}
 };
