@@ -79,6 +79,10 @@ var fps,fpsInterval,startTime,now,then,elapsed;
 //Audio//
 audioMessage = "pause";
 
+//Powerup Colors//
+jetpackColor = "#25E820";
+doublePointsColor = "#FE2C2C";
+
 //Initializes (or re-initializes) variables//
 function startValues() {
 	//Keypress values//
