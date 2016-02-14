@@ -52,9 +52,11 @@ function draw() {
 		context.fillText("time: " + (gameTimer/60.0).toFixed(1) + "s", 10, 90);
 		context.font = "32px serif";
 		if(player.hasJetpack) {
+			context.fillStyle = jetpackColor;
 			context.fillText("jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 130)
 		}
 		if(player.hasDoublePoints) {
+			context.fillStyle = doublePointsColor;
 			context.fillText("x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2) + "s", 10, 170);
 		}
 		//Draws objects//
