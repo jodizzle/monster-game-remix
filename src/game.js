@@ -48,16 +48,16 @@ function draw() {
 		context.fillText("press r to restart", canvas.width/2, canvas.height-50);
 	}
 	else {
-		context.fillText("humanity: " + humanity, 10, 40);
-		context.fillText("time: " + (gameTimer/60.0).toFixed(1) + "s", 10, 90);
 		context.font = "32px serif";
+		context.fillText("humanity: " + humanity, 10, 30);
+		context.fillText("time: " + (gameTimer/60.0).toFixed(1) + "s", 10, 70);
 		if(player.hasJetpack) {
 			context.fillStyle = jetpackColor;
-			context.fillText("jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 130)
+			context.fillText("jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 110)
 		}
 		if(player.hasDoublePoints) {
 			context.fillStyle = doublePointsColor;
-			context.fillText("x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2) + "s", 10, 170);
+			context.fillText("x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2) + "s", 10, 150);
 		}
 		//Draws objects//
 		for(var i = 0; i < spawns.length; i++) {
