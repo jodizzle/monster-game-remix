@@ -20,9 +20,12 @@ function shuffleArray(array) {
 
 //Draw "PAUSED" on the screen//
 function drawPaused() {
+	context.strokeStyle = "black";
 	context.fillStyle = "red";
 	context.font = "72px serif";
 	context.textAlign = "center";
+	context.lineWidth = 8;
+	context.strokeText("PAUSED", canvas.width/2, canvas.height/2);
 	context.fillText("PAUSED", canvas.width/2, canvas.height/2);
 }
 
