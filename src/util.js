@@ -18,6 +18,12 @@ function shuffleArray(array) {
     return array;
 }
 
+//Stroke and fill text//
+function drawText(str, x, y) {
+	context.strokeText(str, x, y);
+	context.fillText(str, x, y);
+}
+
 //Draw "PAUSED" on the screen//
 function drawPaused() {
 	context.strokeStyle = "black";
@@ -25,8 +31,7 @@ function drawPaused() {
 	context.font = "72px serif";
 	context.textAlign = "center";
 	context.lineWidth = 8;
-	context.strokeText("PAUSED", canvas.width/2, canvas.height/2);
-	context.fillText("PAUSED", canvas.width/2, canvas.height/2);
+	drawText("PAUSED", canvas.width/2, canvas.height/2);
 }
 
 //Sine function for animating army//
