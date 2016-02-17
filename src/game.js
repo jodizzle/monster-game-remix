@@ -12,25 +12,27 @@ function draw() {
 		armyImage.src = 'assets/army.png';
 		context.drawImage(armyImage, armyCos(gameTimer), canvas.height-armySine(gameTimer));
 		//Display instructions//
+		context.strokeStyle = "black";
 		context.fillStyle = "purple";
 		context.font = "44px serif";
 		context.textAlign = "center";
-		context.fillText("you are no monster", canvas.width/2, 240);
-		context.fillText("prove it", canvas.width/2, 290);
-		context.fillText("only kill people when they're dead", canvas.width/2, 340);
+		context.lineWidth = 0.3;
+		drawText("you are no monster", canvas.width/2, 240);
+		drawText("prove it", canvas.width/2, 290);
+		drawText("only kill people when they're dead", canvas.width/2, 340);
 		//Controls//
 		context.font = "32px serif";
 		context.textAlign = "start";
-		context.fillText("z: big jump", 290, 30);
-		context.fillText("x: little jump", 290, 70);
-		context.fillText("p: " + audioMessage + " music", canvas.width-280, 30);
-		context.fillText("c: cycle music", canvas.width-280, 70)
-		context.fillText("r: restart", canvas.width-280, 110);
-		context.fillText("space: (un)pause", canvas.width-280, 150);
+		drawText("z: big jump", 290, 30);
+		drawText("x: little jump", 290, 70);
+		drawText("p: " + audioMessage + " music", canvas.width-280, 30);
+		drawText("c: cycle music", canvas.width-280, 70);
+		drawText("r: restart", canvas.width-280, 110);
+		drawText("space: (un)pause", canvas.width-280, 150);
 		//Bottom Message//
 		context.font = "32px serif";
 		context.textAlign = "center";
-		context.fillText("don't let the army down here get you", canvas.width/2, 440);
+		drawText("don't let the army down here get you", canvas.width/2, 440);
 	}
 
 	//Display text//
@@ -49,15 +51,16 @@ function draw() {
 	}
 	else {
 		context.font = "32px serif";
-		context.fillText("humanity: " + humanity, 10, 30);
-		context.fillText("time: " + (gameTimer/60.0).toFixed(1) + "s", 10, 70);
+		drawText("humanity: " + humanity, 10, 30);
+		drawText("time: " + (gameTimer/60.0).toFixed(1) + "s", 10, 70);
+		context.lineWidth = 1;
 		if(player.hasJetpack) {
 			context.fillStyle = jetpackColor;
-			context.fillText("jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 110)
+			drawText("jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 110)
 		}
 		if(player.hasDoublePoints) {
 			context.fillStyle = doublePointsColor;
-			context.fillText("x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2) + "s", 10, 150);
+			drawText("x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2) + "s", 10, 150);
 		}
 		//Draws objects//
 		for(var i = 0; i < spawns.length; i++) {
