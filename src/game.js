@@ -23,8 +23,8 @@ function draw() {
 		//Controls//
 		context.font = "32px serif";
 		context.textAlign = "start";
-		drawText("z: big jump", 290, 30);
-		drawText("x: little jump", 290, 70);
+		drawText("z: big jump", 270, 30);
+		drawText("x: little jump", 270, 70);
 		drawText("p: " + audioMessage + " music", canvas.width-280, 30);
 		drawText("c: cycle music", canvas.width-280, 70);
 		drawText("r: restart", canvas.width-280, 110);
