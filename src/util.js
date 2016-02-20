@@ -19,9 +19,9 @@ function shuffleArray(array) {
 }
 
 //Stroke and fill text//
-function drawText(str, x, y) {
-	context.strokeText(str, x, y);
-	context.fillText(str, x, y);
+function drawText(ctx, str, x, y) {
+	ctx.strokeText(str, x, y);
+	ctx.fillText(str, x, y);
 }
 
 //Draw "PAUSED" on the screen//

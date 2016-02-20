@@ -17,22 +17,22 @@ function draw() {
 		context.font = "44px serif";
 		context.textAlign = "center";
 		context.lineWidth = 0.3;
-		drawText("you are no monster", canvas.width/2, 240);
-		drawText("prove it", canvas.width/2, 290);
-		drawText("only kill people when they're dead", canvas.width/2, 340);
+		drawText(context, "you are no monster", canvas.width/2, 240);
+		drawText(context, "prove it", canvas.width/2, 290);
+		drawText(context, "only kill people when they're dead", canvas.width/2, 340);
 		//Controls//
 		context.font = "32px serif";
 		context.textAlign = "start";
-		drawText("z: big jump", 270, 30);
-		drawText("x: little jump", 270, 70);
-		drawText("p: " + audioMessage + " music", canvas.width-280, 30);
-		drawText("c: cycle music", canvas.width-280, 70);
-		drawText("r: restart", canvas.width-280, 110);
-		drawText("space: (un)pause", canvas.width-280, 150);
+		drawText(context, "z: big jump", 270, 30);
+		drawText(context, "x: little jump", 270, 70);
+		drawText(context, "p: " + audioMessage + " music", canvas.width-280, 30);
+		drawText(context, "c: cycle music", canvas.width-280, 70);
+		drawText(context, "r: restart", canvas.width-280, 110);
+		drawText(context, "space: (un)pause", canvas.width-280, 150);
 		//Bottom Message//
 		context.font = "32px serif";
 		context.textAlign = "center";
-		drawText("don't let the army down here get you", canvas.width/2, 440);
+		drawText(context, "don't let the army down here get you", canvas.width/2, 440);
 	}
 
 	//Display text//
@@ -51,16 +51,16 @@ function draw() {
 	}
 	else {
 		context.font = "32px serif";
-		drawText("humanity: " + humanity, 10, 30);
-		drawText("time: " + (gameTimer/60.0).toFixed(1) + "s", 10, 70);
+		drawText(context, "humanity: " + humanity, 10, 30);
+		drawText(context, "time: " + (gameTimer/60.0).toFixed(1) + "s", 10, 70);
 		context.lineWidth = 1;
 		if(player.hasJetpack) {
 			context.fillStyle = jetpackColor;
-			drawText("jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 110)
+			drawText(context, "jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 110)
 		}
 		if(player.hasDoublePoints) {
 			context.fillStyle = doublePointsColor;
-			drawText("x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2) + "s", 10, 150);
+			drawText(context, "x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2) + "s", 10, 150);
 		}
 		//Draws objects//
 		for(var i = 0; i < spawns.length; i++) {
