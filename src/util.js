@@ -31,7 +31,7 @@ function drawPaused() {
 	context.font = "72px serif";
 	context.textAlign = "center";
 	context.lineWidth = 8;
-	drawText("PAUSED", canvas.width/2, canvas.height/2);
+	drawText(context, "PAUSED", canvas.width/2, canvas.height/2);
 }
 
 //Sine function for animating army//
