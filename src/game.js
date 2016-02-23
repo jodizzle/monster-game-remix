@@ -1,6 +1,10 @@
 //Main loop functions//
 function draw() {
 	context.clearRect(0, 0, canvas.width, canvas.height); //Clears the screen every frame
+	context.fillStyle = "purple";
+	context.font = "32px serif";
+	context.textAlign = "start";
+	context.lineWidth = 0.3;
 
 	if(!loseKill && !loseWall) {
 		//Draw background//
@@ -11,34 +15,12 @@ function draw() {
 		var armyImage = new Image();
 		armyImage.src = 'assets/army.png';
 		context.drawImage(armyImage, armyCos(gameTimer), canvas.height-armySine(gameTimer));
-		//Display instructions//
-		context.strokeStyle = "black";
-		context.fillStyle = "purple";
-		context.font = "44px serif";
-		context.textAlign = "center";
-		context.lineWidth = 0.3;
-		drawText(context, "you are no monster", canvas.width/2, 240);
-		drawText(context, "prove it", canvas.width/2, 290);
-		drawText(context, "only kill people when they're dead", canvas.width/2, 340);
-		//Controls//
-		context.font = "32px serif";
-		context.textAlign = "start";
-		drawText(context, "z: big jump", 270, 30);
-		drawText(context, "x: little jump", 270, 70);
 		drawText(context, "p: " + audioMessage + " music", canvas.width-280, 30);
-		drawText(context, "c: cycle music", canvas.width-280, 70);
-		drawText(context, "r: restart", canvas.width-280, 110);
-		drawText(context, "space: (un)pause", canvas.width-280, 150);
-		//Bottom Message//
-		context.font = "32px serif";
-		context.textAlign = "center";
-		drawText(context, "don't let the army down here get you", canvas.width/2, 440);
+		context.drawImage(textCanvas, 0, 0);
 	}
 
 	//Display text//
-	context.fillStyle = "purple";
 	context.font = "40px serif";
-	context.textAlign = "start";
 	if(loseKill) {
 		context.fillText("you are the monster", 10, 50);
 		displayScore();

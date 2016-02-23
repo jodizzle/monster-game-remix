@@ -1,10 +1,14 @@
 //Canvas setup//
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
+var textCanvas = document.createElement('canvas');
+var textContext = textCanvas.getContext('2d')
 
 //Canvas dimensions//
 canvas.width = 800;
 canvas.height = 500;
+textCanvas.width = 800;
+textCanvas.height = 500;
 
 //Keypress booleans//
 var leftPressed;
@@ -165,4 +169,28 @@ function startValues() {
 	//Loss conditions//
 	loseKill = false;
 	loseWall = false;
+
+	//Draw to text canvas//
+	textContext.clearRect(0, 0, textCanvas.width, textCanvas.height);
+	//Display instructions//
+	textContext.strokeStyle = "black";
+	textContext.fillStyle = "purple";
+	textContext.font = "44px serif";
+	textContext.textAlign = "center";
+	textContext.lineWidth = 0.3;
+	drawText(textContext, "you are no monster", canvas.width/2, 240);
+	drawText(textContext, "prove it", canvas.width/2, 290);
+	drawText(textContext, "only kill people when they're dead", canvas.width/2, 340);
+	//Controls//
+	textContext.font = "32px serif";
+	textContext.textAlign = "start";
+	drawText(textContext, "z: big jump", 270, 30);
+	drawText(textContext, "x: little jump", 270, 70);
+	drawText(textContext, "c: cycle music", canvas.width-280, 70);
+	drawText(textContext, "r: restart", canvas.width-280, 110);
+	drawText(textContext, "space: (un)pause", canvas.width-280, 150);
+	//Bottom Message//
+	textContext.font = "32px serif";
+	textContext.textAlign = "center";
+	drawText(textContext, "don't let the army down here get you", canvas.width/2, 440);
 }
