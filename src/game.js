@@ -4,7 +4,7 @@ function draw() {
 	context.fillStyle = "purple";
 	context.font = "32px serif";
 	context.textAlign = "start";
-	context.lineWidth = 0.3;
+	context.lineWidth = 1;
 
 	if(!loseKill && !loseWall) {
 		//Draw background//
@@ -35,7 +35,6 @@ function draw() {
 		context.font = "32px serif";
 		drawText(context, "humanity: " + humanity, 10, 30);
 		drawText(context, "time: " + (gameTimer/60.0).toFixed(1) + "s", 10, 70);
-		context.lineWidth = 1;
 		if(player.hasJetpack) {
 			context.fillStyle = jetpackColor;
 			drawText(context, "jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 110)
