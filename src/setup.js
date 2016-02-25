@@ -2,7 +2,7 @@
 var canvas = document.getElementById('game');
 var context = canvas.getContext('2d');
 var textCanvas = document.createElement('canvas');
-var textContext = textCanvas.getContext('2d')
+var textContext = textCanvas.getContext('2d');
 
 //Canvas dimensions//
 canvas.width = 800;

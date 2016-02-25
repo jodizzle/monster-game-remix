@@ -37,7 +37,7 @@ function draw() {
 		drawText(context, "time: " + (gameTimer/60.0).toFixed(1) + "s", 10, 70);
 		if(player.hasJetpack) {
 			context.fillStyle = jetpackColor;
-			drawText(context, "jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 110)
+			drawText(context, "jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 110);
 		}
 		if(player.hasDoublePoints) {
 			context.fillStyle = doublePointsColor;

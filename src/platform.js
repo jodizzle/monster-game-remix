@@ -61,7 +61,7 @@ function Platform(x, y, width, height, color) {
 Platform.prototype.draw = function() {
 	context.fillStyle = this.color;
  	context.fillRect(this.x,this.y,this.width,this.height);
-}
+};
 Platform.prototype.update = function() {
 	this.x += platformScrollSpeed;
-}
+};

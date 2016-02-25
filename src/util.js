@@ -132,7 +132,7 @@ function spawnObjects() {
 		vxChoices = [0, vxRange, vxRange, vxRange]; //Heavily weight the possibility of getting '0'
 		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
 		randWobble = Math.random() > 0.75; //25% chance
-		randTrack = (Math.random() > 0.50 && randVx == 0 && !randWobble);
+		randTrack = (Math.random() > 0.50 && randVx === 0 && !randWobble);
 		spawns.push(new Spawn(randX, randY, randVx, 0, 23, 23, randWobble, randTrack));
 	}
 
