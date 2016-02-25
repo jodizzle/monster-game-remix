@@ -1,8 +1,11 @@
 //Jetpack definitions//
-function Jetpack(x, y, vx, vy, width, height) {
-	this.x = x; this.y = y; this.vx = vx; this.vy = vy; this.width = width; this.height = height;
+function Jetpack(x, y, vx, vy, width, height, wobble) {
+	this.x = x; this.y = y; this.vx = vx; this.vy = vy; this.width = width; this.height = height; this.wobble = wobble;
 	this.onGround = false;
 	this.touched = false;
+	if(this.wobble) {
+		wobbleAmplitude = Math.floor(getRandomNumber(3,4));
+	}
 }
 Jetpack.prototype.draw = function() {
 	if(!this.touched) {
@@ -16,6 +19,10 @@ Jetpack.prototype.update = function() {
 		this.x += spawnScrollSpeed;
 	}
 	else {
+		if(this.wobble) {
+			this.x += wobbleAmplitude*Math.cos((gameTimer%180)*0.03);
+		}
+
 		this.x += this.vx;
 	}
 	//Vertical movement//
@@ -39,10 +46,13 @@ Jetpack.prototype.update = function() {
 };
 
 //Double Points definitions//
-function DoublePoints(x, y, vx, vy, width, height) {
-	this.x = x; this.y = y; this.vx = vx; this.vy = vy; this.width = width; this.height = height;
+function DoublePoints(x, y, vx, vy, width, height, wobble) {
+	this.x = x; this.y = y; this.vx = vx; this.vy = vy; this.width = width; this.height = height; this.wobble = wobble;
 	this.onGround = false;
 	this.touched = false;
+	if(this.wobble) {
+		wobbleAmplitude = Math.floor(getRandomNumber(3,4));
+	}
 }
 DoublePoints.prototype.draw = function() {
 	if(!this.touched) {
@@ -56,6 +66,10 @@ DoublePoints.prototype.update = function() {
 		this.x += spawnScrollSpeed;
 	}
 	else {
+		if(this.wobble) {
+			this.x += wobbleAmplitude*Math.cos((gameTimer%180)*0.03);
+		}
+
 		this.x += this.vx;
 	}
 	//Vertical movement//

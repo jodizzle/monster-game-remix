@@ -157,7 +157,8 @@ function spawnObjects() {
 		}
 		vxChoices = [0, vxRange]; //Heavily weight the possibility of getting '0'
 		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
-		powerupList = [new Jetpack(randX, randY, randVx, 0, 20, 20), new DoublePoints(randX, randY, randVx, 0, 20, 20)];
+		randWobble = Math.random() > 0.75; //25% chance
+		powerupList = [new Jetpack(randX, randY, randVx, 0, 20, 20, randWobble), new DoublePoints(randX, randY, randVx, 0, 20, 20, randWobble)];
 		powerups.push(powerupList[Math.floor(Math.random()*powerupList.length)]);
 		//TODO: Better approach?
 		//Because the triggering of targets is based on modulo, add powerupCounterTarget to itself
