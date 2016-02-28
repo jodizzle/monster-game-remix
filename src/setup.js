@@ -177,7 +177,7 @@ function startValues() {
 	textContext.fillStyle = "purple";
 	textContext.font = "44px serif";
 	textContext.textAlign = "center";
-	textContext.lineWidth = 1;
+	textContext.lineWidth = 2;
 	drawText(textContext, "you are no monster", canvas.width/2, 240);
 	drawText(textContext, "prove it", canvas.width/2, 290);
 	drawText(textContext, "only kill people when they're dead", canvas.width/2, 340);
