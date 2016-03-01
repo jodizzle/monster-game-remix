@@ -80,7 +80,7 @@ function displayScore() {
 		percentageMessage += ((spawnCollected/spawnDead)*100).toFixed(2) + "%";
 	}
 	context.fillText(percentageMessage, canvas.width/2, 320);
-	context.fillText("time survived: " + (gameTimer/60.0).toFixed(2) + " seconds", canvas.width/2, 370);
+	context.fillText("time survived: " + (gameTimer/60.0).toFixed(1) + " seconds", canvas.width/2, 370);
 }
 
 //Checks if an object can be removed from the game//
