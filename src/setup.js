@@ -5,10 +5,8 @@ var textCanvas = document.createElement('canvas');
 var textContext = textCanvas.getContext('2d');
 
 //Canvas dimensions//
-canvas.width = 800;
-canvas.height = 500;
-textCanvas.width = 800;
-textCanvas.height = 500;
+canvas.width = textCanvas.width = 800;
+canvas.height = textCanvas.height = 500;
 
 //Keypress booleans//
 var leftPressed;
