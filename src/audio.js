@@ -14,7 +14,7 @@ function toggleSong() {
 	// and so the 'play' message should not be displayed,
 	// since the audio is not actually paused in the intended
 	// sense.
-	if(!audio.paused && audio.currentTime != 0) {
+	if(!audio.paused && audio.currentTime !== 0) {
 		audio.pause();
 		audioMessage = "play";
 	}

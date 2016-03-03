@@ -17,7 +17,7 @@ Spawn.prototype.draw = function() {
 		guyImage.src = 'assets/test_guy_1.png';
 	}
 	context.drawImage(guyImage, 0, 0, 25, 25, this.x, this.y, this.width, this.height);
-}
+};
 Spawn.prototype.update = function() {
 	//Horizontal movement//
 	if(this.onGround) {
@@ -67,4 +67,4 @@ Spawn.prototype.update = function() {
 		this.onGround = true;
 		this.touched = true;
 	}
-}
+};
