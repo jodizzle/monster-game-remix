@@ -34,14 +34,14 @@ function draw() {
 	else {
 		context.font = "32px serif";
 		drawText(context, "humanity: " + humanity, 10, 30);
-		drawText(context, "time: " + (gameTimer/60.0).toFixed(1) + "s", 10, 70);
+		drawText(context, "time: " + (gameTimer/60.0).toFixed(1), 10, 70);
 		if(player.hasJetpack) {
 			context.fillStyle = jetpackColor;
-			drawText(context, "jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2) + "s", 10, 110);
+			drawText(context, "jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2), 10, 110);
 		}
 		if(player.hasDoublePoints) {
 			context.fillStyle = doublePointsColor;
-			drawText(context, "x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2) + "s", 10, 150);
+			drawText(context, "x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2), 10, 150);
 		}
 		//Draws objects//
 		for(var i = 0; i < spawns.length; i++) {
