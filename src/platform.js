@@ -2,7 +2,7 @@
 	//*Currently only works if all platform Y-values are guranteed to be inside the min-max range*//
 function getRandomNumberPlatformYExcluded(min, max, randX, randWidth, spawnHeight) {
 	//Find all platforms on the same vertical axis and add them to the excluded list
-	excluded = [new Platform]; //'Dummy platform' variable that acts as storage for the min value but is still cooperative with the loops in this function.
+	excluded = [new Platform()]; //'Dummy platform' variable that acts as storage for the min value but is still cooperative with the loops in this function.
 	excluded[0].y = min;
 	excluded[0].height = 0;
 	for(var i = 0; i < platforms.length; i++) {
@@ -13,7 +13,7 @@ function getRandomNumberPlatformYExcluded(min, max, randX, randWidth, spawnHeigh
 		}
 	}
 
-	excluded.push(new Platform); //Dummy variable as above, but to hold the max value.
+	excluded.push(new Platform()); //Dummy variable as above, but to hold the max value.
 	excluded[excluded.length-1].y = max;
 	excluded[excluded.length-1].height = 0;
 
