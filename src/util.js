@@ -139,10 +139,10 @@ function spawnObjects() {
 	//Spawn platforms//
 	if(gameTimer % platformCounterTarget === 0 && gameTimer !== 0) {
 		randWidth = getRandomNumber(40, 90);
-		spawnHeight = 10;
+		randHeight = getRandomNumber(5,10);
 		randX = getRandomNumber(canvas.width, canvas.width+(randWidth*2));
-		randY = getRandomNumberPlatformYExcluded((canvas.height/2)+50, canvas.height-75, randX, randWidth, spawnHeight+50);
-		platforms.push(new Platform(randX, randY, randWidth, spawnHeight, '#000000'));
+		randY = getRandomNumberPlatformYExcluded((canvas.height/2)+50, canvas.height-75, randX, randWidth, randHeight+50);
+		platforms.push(new Platform(randX, randY, randWidth, randHeight, '#000000'));
 	}
 
 	//Spawn powerups//
