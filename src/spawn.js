@@ -5,7 +5,7 @@ function Spawn(x, y, vx, vy, width, height, wobble, track) {
 	this.touched = false;
 	this.added = false; //Bool to check if the spawn has been counted by spawnDead
 	if(this.wobble) {
-		wobbleAmplitude = Math.floor(getRandomNumber(3,6));
+		wobbleAmplitude = Math.floor(getRandomNumber(3, 6));
 	}
 }
 Spawn.prototype.draw = function() {

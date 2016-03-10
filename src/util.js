@@ -124,10 +124,10 @@ function spawnObjects() {
 		//choose a vx such that the spawn will fly towards the center (and not just
 		//offscreen).
 		if(randX < canvas.width/2) {
-			vxRange = getRandomNumber(0,2);
+			vxRange = getRandomNumber(0, 2);
 		}
 		else {
-			vxRange = getRandomNumber(-2,0);
+			vxRange = getRandomNumber(-2, 0);
 		}
 		vxChoices = [0, vxRange, vxRange, vxRange]; //Heavily weight the possibility of getting '0'
 		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
@@ -139,7 +139,7 @@ function spawnObjects() {
 	//Spawn platforms//
 	if(gameTimer % platformCounterTarget === 0 && gameTimer !== 0) {
 		randWidth = getRandomNumber(40, 90);
-		randHeight = getRandomNumber(5,10);
+		randHeight = getRandomNumber(5, 10);
 		randX = getRandomNumber(canvas.width, canvas.width+(randWidth*2));
 		randY = getRandomNumberPlatformYExcluded((canvas.height/2)+50, canvas.height-75, randX, randWidth, randHeight+50);
 		platforms.push(new Platform(randX, randY, randWidth, randHeight, '#000000'));
