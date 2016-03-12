@@ -85,7 +85,7 @@ function displayScore() {
 
 //Checks if an object can be removed from the game//
 function canDespawn(object) {
-	//Checks if an object is off-screen
+	// Checks if an object is off-screen.
 	if(object.x + object.width <= 0) {
 		return true;
 	}
@@ -116,20 +116,20 @@ function canDespawn(object) {
 //Spawns objects to the screen//
 function spawnObjects() {
 	//Spawn spawns (lol)//
-	//Use '&& gameTimer != 0' to prevent a spawn on the first frame
+	// Use '&& gameTimer != 0' to prevent a spawn on the first frame
 	if(gameTimer % spawnCounterTarget === 0 && gameTimer !== 0) {
 		randX = getRandomNumber(100, canvas.width-100);
 		randY = getRandomNumber(-100, 0);
-		//Generate a possible vx for the spawn based on the randX.  The goal is to
-		//choose a vx such that the spawn will fly towards the center (and not just
-		//offscreen).
+		// Generate a possible vx for the spawn based on the randX.  The goal is to
+		// choose a vx such that the spawn will fly towards the center (and not just
+		// offscreen).
 		if(randX < canvas.width/2) {
 			vxRange = Math.floor(getRandomNumber(0, 2));
 		}
 		else {
 			vxRange = Math.floor(getRandomNumber(-2, 0));
 		}
-		vxChoices = [0, vxRange, vxRange, vxRange]; //Heavily weight the possibility of getting '0'
+		vxChoices = [0, vxRange, vxRange, vxRange]; //Heavily weight the possibility of getting '0'.
 		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
 		randWobble = Math.random() > 0.75; //25% chance
 		randTrack = (Math.random() > 0.35 && randVx === 0 && !randWobble);
@@ -155,17 +155,17 @@ function spawnObjects() {
 		else {
 			vxRange = getRandomNumber(-2, 0);
 		}
-		vxChoices = [0, vxRange]; //Heavily weight the possibility of getting '0'
+		vxChoices = [0, vxRange]; // Heavily weight the possibility of getting '0'.
 		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
-		randWobble = Math.random() > 0.75; //25% chance
+		randWobble = Math.random() > 0.75; // 25% chance
 		powerupList = [new Jetpack(randX, randY, randVx, 0, 20, 20, randWobble), new DoublePoints(randX, randY, randVx, 0, 20, 20, randWobble)];
 		powerups.push(powerupList[Math.floor(Math.random()*powerupList.length)]);
-		//TODO: Better approach?
-		//Because the triggering of targets is based on modulo, add powerupCounterTarget to itself
-		//to prevent targets from triggering sooner than intended.  E.g., say the first random choice
-		//for powerupCounterTarget was 600, then the second was 800.  Without using prev+new,
-		//a powerup would drop at gameTimer == 600 and then at gameTimer == 800, even though only 200 frames had passed.
-		//With prev+new, a powerup would drop at gameTimer == 600 and gameTimer == 1400, as expected.
+		// TODO: Better approach?
+		// Because the triggering of targets is based on modulo, add powerupCounterTarget to itself
+		// to prevent targets from triggering sooner than intended.  E.g., say the first random choice
+		// for powerupCounterTarget was 600, then the second was 800.  Without using prev+new,
+		// a powerup would drop at gameTimer == 600 and then at gameTimer == 800, even though only 200 frames had passed.
+		// With prev+new, a powerup would drop at gameTimer == 600 and gameTimer == 1400, as expected.
 		powerupCounterTarget = powerupCounterTarget+Math.floor(getRandomNumber(powerupCounterLowerBound, powerupCounterUpperBound));
 	}
 }

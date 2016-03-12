@@ -1,6 +1,6 @@
 //Main loop functions//
 function draw() {
-	context.clearRect(0, 0, canvas.width, canvas.height); //Clears the screen every frame
+	context.clearRect(0, 0, canvas.width, canvas.height); // Clears the screen every frame.
 	context.fillStyle = "purple";
 	context.font = "32px serif";
 	context.textAlign = "start";
@@ -55,7 +55,8 @@ function draw() {
 		}
 	}
 
-	player.draw(); //Want to draw player above everything else.
+	// Want to draw player above everything else.
+	player.draw();
 }
 function update() {
 	//Updates objects//
@@ -64,13 +65,14 @@ function update() {
 	}
 	if(gameTimer % gameScalingTargetShort === 0) {
 		if(spawnCounterTarget > 10) {
-			spawnCounterTarget -= 10; //makes spawns spawn faster
-									  //speed currently reaches it's cap at 50 seconds
+			// Makes spawns spawn faster.
+			// Speed currently reaches it's cap at 50 seconds.
+			spawnCounterTarget -= 10;
 		}
 		if(platformCounterTarget > 10) {
 			platformCounterTarget -= 10;
 		}
-		spawnGravity += 0.5; //faster falling spawns
+		spawnGravity += 0.5;
 	}
 	if(gameTimer % gameScalingTargetLong === 0) {
 		platformScrollSpeed -= 1;
@@ -95,15 +97,15 @@ function update() {
 		}
 	}
 	else {
-		//Empty arrays
+		// Empty arrays
 		platforms = [];
 		spawns = [];
 		powerups = [];
-		//Remove scrolling
+		// Remove scrolling
 		playerScrollSpeed = 0;
 		platformScrollSpeed = 0;
 		spawnScrollSpeed = 0;
-		//Do some scoring
+		// Do some scoring
 		score = calculateScore();
 		if (score > highScore) {
 			highScore = score;
@@ -129,7 +131,7 @@ function mainLoop() {
 //Keyboard listeners//
 window.addEventListener('keydown', function(e) {
 	switch (e.which) {
-		case 32: //Pause the game when the spacebar is pressed
+		case 32: // Pause the game when the spacebar is pressed.
 			drawPaused();
 			paused = !paused;
 			break;
@@ -175,7 +177,7 @@ window.addEventListener('keyup', function(e) {
 			break;
 	}
 });
-//Prevent scrolling on the page with arrow keys and spacebar
+// Prevent scrolling on the page with arrow keys and spacebar.
 window.addEventListener('keydown', function(e) {
 	switch (e.which) {
 		case 32: case 37: case 38: case 39: case 40:

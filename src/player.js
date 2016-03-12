@@ -51,8 +51,8 @@ var player = {
 		}
 		else {
 			if (player.onGround) {
-				//Check first to see if the number is close to be not quite
-				//0.1.  This prevents endless sliding.
+				// Check first to see if the number is close to be not quite
+				// 0.1.  This prevents endless sliding.
 				if (Math.abs(player.vx - horizAccGround) < horizAccGround) {
 					player.vx = 0;
 				}
@@ -64,7 +64,7 @@ var player = {
 				}
 			}
 			else {
-				//Use "lower friction" while in the air.
+				// Use "lower friction" while in the air.
 				if (Math.abs(player.vx - horizAccAir) < horizAccAir) {
 					player.vx = 0;
 				}
@@ -105,14 +105,15 @@ var player = {
 			jumping = true;
 		}
 		else {
-			//Controls jetpack behavior
+			// Controls jetpack behavior.
 			if (player.hasJetpack) {
 				if (upPressed && player.vy > upSmallSpeed) {
 					player.vy += vertAcc;
 				}
 			}
 			if (player.vy < terminalVelocity) {
-				player.vy += gravity; //Gravity is always applied except on the frame of jumping
+				// Gravity is always applied except on the frame of jumping.
+				player.vy += gravity;
 			}
 		}
 		player.y += player.vy;
@@ -121,13 +122,15 @@ var player = {
 		for(var i = 0; i < platforms.length; i++) {
 			platform = platforms[i];
 			if (checkCollision(player, platform)) {
-				if(player.vy > 0) { //Topside case
+				//Topside case
+				if(player.vy > 0) {
 					player.y = platform.y - player.height;
 				 	player.vy = 0;
 				 	player.onGround = true;
 				 	jumping = false;
 				}
-				else if (player.vy < 0) { //Bottomside case
+				// Bottomside case
+				else if (player.vy < 0) {
 					player.y = platform.y + platform.height;
 			 	 	player.vy = 0;
 				}
@@ -179,7 +182,7 @@ var player = {
 		//Leftside canvas collision detection//
 		else if(player.x + playerScrollSpeed <= 0) {
 			player.x = 0;
-			player.vx = -1*playerScrollSpeed; //"Push" against the wall
+			player.vx = -1*playerScrollSpeed; // "Push" against the wall.
 		}
 		//Default horizontal scrolling//
 		else if(player.x + playerScrollSpeed > 0) {

@@ -3,7 +3,7 @@ audioList = ['assets/bu-an-ogres-knight-fixed.ogg',
 			   'assets/bu-a-garden-and-a-knight-fixed.ogg',
 			   'assets/bu-crazed-and-poor-fixed.ogg',
 			   'assets/bu-a-bananas-reports-fixed.ogg'];
-//Choose a random song
+// Choose a random song.
 audioIndex = Math.floor(Math.random()*audioList.length);
 audio = new Audio(audioList[audioIndex]);
 audio.volume = 0.3;
@@ -30,7 +30,7 @@ function changeSong() {
 		audioIndex = 0;
 	}
 	audio.src = audioList[audioIndex];
-	// Event listener below should takes care of playing when audio is ready
+	// Event listener below should takes care of playing when audio is ready.
 }
 
 audio.addEventListener('canplaythrough', toggleSong, false);

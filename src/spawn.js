@@ -3,7 +3,7 @@ function Spawn(x, y, vx, vy, width, height, wobble, track) {
 	this.x = x; this.y = y; this.vx = vx; this.vy = 0; this.width = width; this.height = height; this.wobble = wobble; this.track = track;
 	this.onGround = false;
 	this.touched = false;
-	this.added = false; //Bool to check if the spawn has been counted by spawnDead
+	this.added = false;
 	if(this.wobble) {
 		wobbleAmplitude = Math.floor(getRandomNumber(3, 6));
 	}
@@ -49,11 +49,12 @@ Spawn.prototype.update = function() {
 	//Vertical platform collision detection//
 	for(var i = 0; i < platforms.length; i++) {
 		platform = platforms[i];
-		//Since spawns only fall from the top, should only have to worry about one vertical case.
+		// Since spawns only fall from the top, should only have to worry about one vertical case.
 		if (checkCollision(this, platform)) {
 			this.y = platform.y - this.height;
 			this.vy = 0;
-			this.onGround = true; //Might be a worthless (since platforms are already moving), but here just in case.
+			// Might be a worthless (since platforms are already moving), but here just in case.
+			this.onGround = true;
 			if(!this.added) {
 				spawnDead += 1;
 				this.added = true;

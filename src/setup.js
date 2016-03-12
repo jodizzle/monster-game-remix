@@ -63,19 +63,19 @@ var spawnTrackYSpeed;
 
 //Scoring//
 var humanity;
-var humanityWeight = 4.20; //Multiplier for humanity in score calculation
+var humanityWeight = 4.20; // Multiplier for humanity in score calculation.
 var spawnCollected;
-var spawnDead; //The total number of spawns that have died (and are therefore collectable)
+var spawnDead; // The total number of spawns that have died (and are therefore collectable).
 var score;
 var prevScore = 0;
 var highScore = 0;
 
 //Loss conditions//
-var loseKill; //Lose by touching ("killing") a falling object
-var loseWall; //Lose by touching the leftside of the canvas
+var loseKill; // Lose by touching ("killing") a falling object.
+var loseWall; // Lose by touching the leftside of the canvas.
 
 //Control FPS//
-var paused = false; //Boolean switch for pausing
+var paused = false; // Boolean switch for pausing.
 var fps,fpsInterval,startTime,now,then,elapsed;
 
 //Audio//
@@ -96,7 +96,7 @@ function startValues() {
 	restartPressed = false;
 
 	//Object arrays//
-	platforms = []; //Reset platforms
+	platforms = []; // Reset platforms.
 	platformXValues = [400, 525, 700, canvas.width];
 	platformYValues = [canvas.height/2 + 50, 340, 400, 425];
 
@@ -124,8 +124,8 @@ function startValues() {
 	spawnGravity = 2;
 	horizAccGround = 0.3;
 	horizAccAir = 0.4;
-	//For friction, higher numbers -> more slow down
-	//1 -> slow down at rate equal to acceleration
+	// For friction, higher numbers -> more slow down
+	// 1 -> slow down at rate equal to acceleration
 	horizFrictionGround = 1;
 	horizFrictionAir = 0.3;
 	vertAcc = -0.5;
