@@ -106,7 +106,7 @@ function startValues() {
 
 	platforms.push(new Platform(canvas.width/3, canvas.height/2 + 50, 80, 10, 'black'));
 	for(var i = 0; i < platformXValues.length; i++) {
-		platforms.push(new Platform(platformXValues[i], platformYValues[i], getRandomNumber(40, 90), getRandomNumber(5, 10), 'black'));
+		platforms.push(new Platform(platformXValues[i], platformYValues[i], Math.floor(getRandomNumber(40, 90)), Math.floor(getRandomNumber(5, 10)), 'black'));
 	}
 	spawns = [];
 	powerups = [];
