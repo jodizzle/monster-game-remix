@@ -4,7 +4,7 @@ function draw() {
 	context.fillStyle = "purple";
 	context.font = "32px serif";
 	context.textAlign = "start";
-	context.lineWidth = 2;
+	context.lineWidth = 3;
 
 	if(!loseKill && !loseWall) {
 		//Draw background//
