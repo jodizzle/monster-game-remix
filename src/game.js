@@ -2,7 +2,7 @@
 function draw() {
 	context.clearRect(0, 0, canvas.width, canvas.height); // Clears the screen every frame.
 	context.fillStyle = "purple";
-	context.font = "32px serif";
+	context.font = "36px serif";
 	context.textAlign = "start";
 	context.lineWidth = 3;
 
@@ -32,7 +32,7 @@ function draw() {
 		context.fillText("press r to restart", canvas.width/2, canvas.height-50);
 	}
 	else {
-		context.font = "32px serif";
+		context.font = "36px serif";
 		drawText(context, "humanity: " + humanity, 10, 30);
 		drawText(context, "time: " + (gameTimer/60.0).toFixed(1), 10, 70);
 		if(player.hasJetpack) {
