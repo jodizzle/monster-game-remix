@@ -63,7 +63,8 @@ var spawnTrackYSpeed;
 
 //Scoring//
 var humanity;
-var humanityWeight = 4.20; // Multiplier for humanity in score calculation.
+var humanityWeight = 5; // Multiplier for humanity in score calculation.
+var timeWeight = 1; // Multiplier for time in score calculation,
 var spawnCollected;
 var spawnDead; // The total number of spawns that have died (and are therefore collectable).
 var score;
