@@ -177,8 +177,8 @@ function startValues() {
 	textContext.font = "44px serif";
 	textContext.textAlign = "center";
 	textContext.lineWidth = 3;
-	drawText(textContext, "you are no monster", canvas.width/2, 240);
-	drawText(textContext, "prove it", canvas.width/2, 290);
+	drawText(textContext, "YOU ARE NO MONSTER", canvas.width/2, 240);
+	drawText(textContext, "PROVE IT", canvas.width/2, 290);
 	drawText(textContext, "only kill people when they're dead", canvas.width/2, 340);
 	//Controls//
 	textContext.font = "36px serif";
@@ -190,5 +190,5 @@ function startValues() {
 	drawText(textContext, "space: pause", canvas.width-280, 150);
 	//Bottom Message//
 	textContext.textAlign = "center";
-	drawText(textContext, "don't let the army down here get you", canvas.width/2, 440);
+	drawText(textContext, "(don't let the army down here get you)", canvas.width/2, 440);
 }
