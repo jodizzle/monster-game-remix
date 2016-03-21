@@ -77,7 +77,7 @@ var loseWall; // Lose by touching the leftside of the canvas.
 
 //Control FPS//
 var paused = false; // Boolean switch for pausing.
-var fps,fpsInterval,startTime,now,then,elapsed;
+var fps, fpsInterval, startTime, now, then, elapsed; // Variables used by init and mainLoop
 
 //Audio//
 audioMessage = "pause";
