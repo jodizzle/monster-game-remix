@@ -164,12 +164,22 @@ var player = {
 			if (checkCollision(player, powerup)) {
 				powerup.touched = true;
 				if(powerup instanceof Jetpack) {
-					player.hasJetpack = true;
-					player.jetpackTimer = gameTimer;
+					if(player.hasJetpack) {
+						player.jetpackTimer += jetpackCounterTarget;
+					}
+					else {
+						player.hasJetpack = true;
+						player.jetpackTimer = gameTimer;
+					}
 				}
 				if(powerup instanceof DoublePoints) {
-					player.hasDoublePoints = true;
-					player.doublePointsTimer = gameTimer;
+					if(player.hasDoublePoints) {
+						player.doublePointsTimer += doublePointsCounterTarget;
+					}
+					else {
+						player.hasDoublePoints = true;
+						player.doublePointsTimer = gameTimer;
+					}
 				}
 			}
 		}
