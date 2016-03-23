@@ -111,7 +111,6 @@ function canDespawn(object) {
 
 //Spawns objects to the screen//
 function spawnObjects() {
-	//Spawn spawns (lol)//
 	// Use '&& gameTimer != 0' to prevent a spawn on the first frame
 	if(gameTimer % spawnCounterTarget === 0 && gameTimer !== 0) {
 		randX = getRandomNumber(100, canvas.width-100);
