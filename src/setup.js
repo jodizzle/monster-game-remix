@@ -1,82 +1,15 @@
 //Canvas setup//
-var canvas = document.getElementById('game');
-var context = canvas.getContext('2d');
-var textCanvas = document.createElement('canvas');
-var textContext = textCanvas.getContext('2d');
+canvas = document.getElementById('game');
+context = canvas.getContext('2d');
+textCanvas = document.createElement('canvas');
+textContext = textCanvas.getContext('2d');
 
 //Canvas dimensions//
 canvas.width = textCanvas.width = 800;
 canvas.height = textCanvas.height = 500;
 
-//Keypress booleans//
-var leftPressed;
-var rightPressed;
-var upPressed;
-var upBigPressed;
-var upSmallPressed;
-var restartPressed;
-
-//Jumping booleans//
-var jumping = false;
-
-//Acceleration//
-var gravity;
-var spawnGravity;
-var horizAccGround;
-var horizAccAir;
-var horizFrictionGround;
-var horizFrictionAir;
-var vertAcc;
-
-//Object arrays//
-var platforms = [];
-var spawns = [];
-var powerups = [];
-
-//Scroll speeds//
-var playerScrollSpeed;
-var platformScrollSpeed;
-var spawnScrollSpeed;
-
-//Timers and counters//
-var gameTimer;
-var gameScalingTargetShort;
-var gameScalingTargetLong;
-var spawnCounterTarget;
-var platformCounterTarget;
-var powerupCounterTarget;
-var powerupCounterLowerBound;
-var powerupCounterUpperBound;
-var jetpackCounterTarget;
-var doublePointsCounterTarget;
-
-//Player movement values//
-var upBigSpeed;
-var upSmallSpeed;
-var leftSpeed;
-var rightSpeed;
-var terminalVelocity;
-
-//Spawn movement values//
-var spawnTrackXSpeed;
-var spawnTrackYSpeed;
-
-//Scoring//
-var humanity;
-var humanityWeight = 5; // Multiplier for humanity in score calculation.
-var timeWeight = 1; // Multiplier for time in score calculation,
-var spawnCollected;
-var spawnDead; // The total number of spawns that have died (and are therefore collectable).
-var score;
-var prevScore = 0;
-var highScore = 0;
-
-//Loss conditions//
-var loseKill; // Lose by touching ("killing") a falling object.
-var loseWall; // Lose by touching the leftside of the canvas.
-
 //Control FPS//
-var paused = false; // Boolean switch for pausing.
+paused = false; // Boolean switch for pausing.
 var fps, fpsInterval, startTime, now, then, elapsed; // Variables used by init and mainLoop
 
 //Audio//
@@ -95,6 +28,9 @@ function startValues() {
 	upBigPressed = false;
 	upSmallPressed = false;
 	restartPressed = false;
+
+	//Jumping booleans//
+	jumping = false;
 
 	//Object arrays//
 	platforms = []; // Reset platforms.
@@ -161,9 +97,13 @@ function startValues() {
 
 	//Scoring//
 	humanity = 0;
+	humanityWeight = 5; // Multiplier for humanity in score calculation.
+	timeWeight = 1; // Multiplier for time in score calculation,
 	spawnCollected = 0;
 	spawnDead = 0;
 	score = 0;
+	prevScore = 0;
+	highScore = 0;
 
 	//Loss conditions//
 	loseKill = false;
