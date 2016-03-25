@@ -8,11 +8,8 @@ textContext = textCanvas.getContext('2d');
 canvas.width = textCanvas.width = 800;
 canvas.height = textCanvas.height = 500;
 
-//Control FPS//
+//Pausing//
 paused = false; // Boolean switch for pausing.
-var fps, fpsInterval, startTime, now, then, elapsed; // Variables used by init and mainLoop
-
-//Audio//
 audioMessage = "pause";
 
 //Powerup Colors//
