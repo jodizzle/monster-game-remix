@@ -29,6 +29,12 @@ function startValues() {
 	//Jumping booleans//
 	jumping = false;
 
+	//Platform Dimensions//
+	platformWidthLowerBound = 40;
+	platformWidthUpperBound = 90;
+	platformHeightLowerBound = 5;
+	platformHeightUpperBound = 10;
+
 	//Object arrays//
 	platforms = []; // Reset platforms.
 	platformXValues = [400, 525, 700, canvas.width];
@@ -40,7 +46,7 @@ function startValues() {
 
 	platforms.push(new Platform(canvas.width/3, canvas.height/2 + 50, 80, 10, 'black'));
 	for(var i = 0; i < platformXValues.length; i++) {
-		platforms.push(new Platform(platformXValues[i], platformYValues[i], Math.floor(getRandomNumber(40, 90)), Math.floor(getRandomNumber(5, 10)), 'black'));
+		platforms.push(new Platform(platformXValues[i], platformYValues[i], Math.floor(getRandomNumber(platformWidthLowerBound, platformWidthUpperBound)), Math.floor(getRandomNumber(platformHeightLowerBound, platformHeightUpperBound)), 'black'));
 	}
 	spawns = [];
 	powerups = [];

@@ -133,8 +133,8 @@ function spawnObjects() {
 
 	//Spawn platforms//
 	if(gameTimer % platformCounterTarget === 0 && gameTimer !== 0) {
-		randWidth = Math.round(getRandomNumber(40, 90));
-		randHeight = Math.round(getRandomNumber(5, 10));
+		randWidth = Math.round(getRandomNumber(platformWidthLowerBound, platformWidthUpperBound));
+		randHeight = Math.round(getRandomNumber(platformHeightLowerBound, platformHeightUpperBound));
 		randX = getRandomNumber(canvas.width, canvas.width+(randWidth*2));
 		randY = getRandomNumberPlatformYExcluded((canvas.height/2)+50, canvas.height-75, randX, randWidth, randHeight+50);
 		platforms.push(new Platform(randX, randY, randWidth, randHeight, '#000000'));
