@@ -16,7 +16,7 @@ audioMessage = "pause";
 jetpackColor = "#25E820";
 doublePointsColor = "#FE2C2C";
 
-//Initializes (or re-initializes) variables//
+//Initialize variables//
 function startValues() {
 	//Keypress values//
 	leftPressed = false;
@@ -40,13 +40,17 @@ function startValues() {
 	platformXValues = [400, 525, 700, canvas.width];
 	platformYValues = [canvas.height/2 + 50, 340, 400, 425];
 
-	//Randomize x- and y-positions:
+	// Randomize x- and y-positions:
 	shuffleArray(platformXValues);
 	shuffleArray(platformYValues);
 
 	platforms.push(new Platform(canvas.width/3, canvas.height/2 + 50, 80, 10, 'black'));
 	for(var i = 0; i < platformXValues.length; i++) {
-		platforms.push(new Platform(platformXValues[i], platformYValues[i], Math.floor(getRandomNumber(platformWidthLowerBound, platformWidthUpperBound)), Math.floor(getRandomNumber(platformHeightLowerBound, platformHeightUpperBound)), 'black'));
+		platforms.push(new Platform(platformXValues[i], 
+		                            platformYValues[i], 
+		                            Math.floor(getRandomNumber(platformWidthLowerBound, platformWidthUpperBound)), 
+		                            Math.floor(getRandomNumber(platformHeightLowerBound, platformHeightUpperBound)), 
+		                            'black'));
 	}
 	spawns = [];
 	powerups = [];

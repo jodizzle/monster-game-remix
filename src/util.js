@@ -42,7 +42,7 @@ function armyCos(x) {
 
 //Check if obj1 is colliding with obj2//
 function checkCollision(obj1, obj2) {
-	//Using ~~ to truncate - checking collisions with integers is (theoretically) better
+	// Using ~~ to truncate; checking collisions with integers is (theoretically) better.
 	if(~~obj1.y < ~~obj2.y + ~~obj2.height && 
 		~~obj1.y + ~~obj1.height > ~~obj2.y && 
 		~~obj1.x + ~~obj1.width > ~~obj2.x && 
@@ -82,6 +82,8 @@ function displayScore() {
 //Checks if an object can be removed from the game//
 function canDespawn(object) {
 	// Checks if an object is off-screen.
+	// TODO: Only despawn an object when it has landed and is off-screen?  Would allow objects
+	// in-air to complete a swinging motion if they have swung off-screen.
 	if(object.x + object.width <= 0) {
 		return true;
 	}
@@ -111,7 +113,7 @@ function canDespawn(object) {
 
 //Spawns objects to the screen//
 function spawnObjects() {
-	// Use '&& gameTimer != 0' to prevent a spawn on the first frame
+	// Use '&& gameTimer != 0' to prevent a spawn on the first frame.
 	if(gameTimer % spawnCounterTarget === 0 && gameTimer !== 0) {
 		randX = getRandomNumber(100, canvas.width-100);
 		randY = getRandomNumber(-100, 0);
