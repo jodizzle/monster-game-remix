@@ -5,7 +5,7 @@ function Spawn(x, y, vx, vy, width, height, wobble, track) {
 	this.touched = false;
 	this.added = false;
 	if(this.wobble) {
-		wobbleAmplitude = Math.floor(getRandomNumber(3, 6));
+		wobbleAmplitude = Math.round(getRandomNumber(3, 6));
 	}
 }
 Spawn.prototype.draw = function() {

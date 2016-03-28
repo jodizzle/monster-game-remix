@@ -4,7 +4,7 @@ function Jetpack(x, y, vx, vy, width, height, wobble) {
 	this.onGround = false;
 	this.touched = false;
 	if(this.wobble) {
-		wobbleAmplitude = Math.floor(getRandomNumber(3, 4));
+		wobbleAmplitude = Math.round(getRandomNumber(3, 4));
 	}
 }
 Jetpack.prototype.draw = function() {
@@ -51,7 +51,7 @@ function DoublePoints(x, y, vx, vy, width, height, wobble) {
 	this.onGround = false;
 	this.touched = false;
 	if(this.wobble) {
-		wobbleAmplitude = Math.floor(getRandomNumber(3, 4));
+		wobbleAmplitude = Math.round(getRandomNumber(3, 4));
 	}
 }
 DoublePoints.prototype.draw = function() {

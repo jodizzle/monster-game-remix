@@ -48,8 +48,8 @@ function startValues() {
 	for(var i = 0; i < platformXValues.length; i++) {
 		platforms.push(new Platform(platformXValues[i], 
 		                            platformYValues[i], 
-		                            Math.floor(getRandomNumber(platformWidthLowerBound, platformWidthUpperBound)), 
-		                            Math.floor(getRandomNumber(platformHeightLowerBound, platformHeightUpperBound)), 
+		                            Math.round(getRandomNumber(platformWidthLowerBound, platformWidthUpperBound)), 
+		                            Math.round(getRandomNumber(platformHeightLowerBound, platformHeightUpperBound)), 
 		                            'black'));
 	}
 	spawns = [];
@@ -87,7 +87,7 @@ function startValues() {
 	platformCounterTarget = 100;
 	powerupCounterLowerBound = 300;
 	powerupCounterUpperBound = 600;
-	powerupCounterTarget = Math.floor(getRandomNumber(powerupCounterLowerBound, powerupCounterUpperBound));
+	powerupCounterTarget = Math.round(getRandomNumber(powerupCounterLowerBound, powerupCounterUpperBound));
 	jetpackCounterTarget = 600;
 	doublePointsCounterTarget = 900;
 
