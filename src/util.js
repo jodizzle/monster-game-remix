@@ -112,6 +112,7 @@ function canDespawn(object) {
 }
 
 //Spawns objects to the screen//
+// TODO: approach spawning with less modulus ('counter targets')?
 function spawnObjects() {
 	// Use '&& gameTimer != 0' to prevent a spawn on the first frame.
 	if(gameTimer % spawnCounterTarget === 0 && gameTimer !== 0) {
