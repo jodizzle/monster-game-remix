@@ -1,5 +1,6 @@
 //Gets a random Y-value for a to-be-spawned platform in a way that avoids collisions with existing platforms//
 	//*Currently only works if all platform Y-values are guranteed to be inside the min-max range*//
+// TODO: Improve (fix platform alignment issues)?
 function getRandomNumberPlatformYExcluded(min, max, randX, spawnWidth, spawnHeight) {
 	// Find all platforms on the same vertical axis and add them to the excluded list.
 	// 'Dummy platform' variable that acts as storage for the min value but is still cooperative with the loops in this function.
