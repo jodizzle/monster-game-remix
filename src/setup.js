@@ -132,9 +132,9 @@ function startValues() {
 	textContext.textAlign = "start";
 	drawText(textContext, "z: big jump", 270, 30);
 	drawText(textContext, "x: little jump", 270, 70);
-	drawText(textContext, "c: cycle music", canvas.width-280, 70);
-	drawText(textContext, "r: restart", canvas.width-280, 110);
-	drawText(textContext, "space: pause", canvas.width-280, 150);
+	drawText(textContext, "c: cycle music", 525, 70);
+	drawText(textContext, "r: restart", 525, 110);
+	drawText(textContext, "space: pause", 525, 150);
 	//Bottom Message//
 	textContext.textAlign = "center";
 	drawText(textContext, "(don't let the army down here get you)", canvas.width/2, 440);
