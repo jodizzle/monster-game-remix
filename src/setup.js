@@ -40,7 +40,7 @@ function startValues() {
 	platformXValues = [400, 525, 700, canvas.width];
 	platformYValues = [canvas.height/2 + 50, 340, 400, 425];
 
-	// Randomize x- and y-positions:
+	// Randomize x- and y-positions
 	shuffleArray(platformXValues);
 	shuffleArray(platformYValues);
 
@@ -68,8 +68,8 @@ function startValues() {
 	spawnGravity = 2;
 	horizAccGround = 0.3;
 	horizAccAir = 0.4;
-	// For friction, higher numbers -> more slow down
-	// 1 -> slow down at rate equal to acceleration
+	// For friction, higher numbers -> more slow down.
+	// 1 -> slow down at rate equal to acceleration.
 	horizFrictionGround = 1;
 	horizFrictionAir = 0.3;
 	vertAcc = -0.5;
