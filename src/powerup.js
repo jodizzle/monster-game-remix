@@ -1,3 +1,4 @@
+// TODO: better class structure for easier production of new powerups types.
 //Jetpack definitions//
 function Jetpack(x, y, vx, vy, width, height, wobble) {
 	this.x = x; this.y = y; this.vx = vx; this.vy = vy; this.width = width; this.height = height; this.wobble = wobble;
