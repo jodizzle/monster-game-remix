@@ -15,6 +15,7 @@ function draw() {
 		var armyImage = new Image();
 		armyImage.src = 'assets/army.png';
 		context.drawImage(armyImage, armyCos(gameTimer), canvas.height-armySine(gameTimer));
+		drawText(context, "Track " + audioIndex, 330, 150);
 		drawText(context, "p: " + audioMessage + " music", 525, 30);
 		context.drawImage(textCanvas, 0, 0);
 	}
