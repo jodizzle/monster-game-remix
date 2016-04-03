@@ -4,7 +4,7 @@ audioList = ['assets/bu-an-ogres-knight-fixed.ogg',
 			   'assets/bu-crazed-and-poor-fixed.ogg',
 			   'assets/bu-a-bananas-reports-fixed.ogg'];
 // Choose a random song.
-audioIndex = Math.round(Math.random()*audioList.length);
+audioIndex = Math.floor(Math.random()*audioList.length);
 audio = new Audio(audioList[audioIndex]);
 audio.volume = 0.3;
 
