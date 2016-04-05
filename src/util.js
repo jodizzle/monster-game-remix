@@ -82,10 +82,18 @@ function displayScore() {
 //Checks if an object can be removed from the game//
 function canDespawn(object) {
 	// Checks if an object is off-screen.
-	// TODO: Only despawn an object when it has landed and is off-screen?  Would allow objects
-	// in-air to complete a swinging motion if they have swung off-screen.
 	if(object.x + object.width <= 0) {
-		return true;
+		// Check to see if any of the collectibles are on the ground before despawning.
+		// TODO: Overly complicated logic?
+		if(object instanceof Spawn || object instanceof Jetpack || object instanceof DoublePoints) {
+			if(object.onGround) {
+				return true;
+			}
+		}
+		// Always return true for platforms.
+		else {
+			return true;
+		}
 	}
 	if(object instanceof Spawn) {
 		if(object.touched) {
