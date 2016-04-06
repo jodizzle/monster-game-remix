@@ -96,7 +96,7 @@ function startValues() {
 	upSmallSpeed = -5;
 	leftSpeed = -5;
 	rightSpeed = 5;
-	terminalVelocity = 9;
+	terminalVelocity = 7;
 
 	//Spawn movement values//
 	spawnTrackXSpeed = 0.75;
