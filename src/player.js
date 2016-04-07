@@ -111,9 +111,17 @@ var player = {
 					player.vy += vertAcc;
 				}
 			}
-			if (player.vy < terminalVelocity) {
+			if (!downPressed && player.vy < terminalVelocity) {
 				// Gravity is always applied except on the frame of jumping.
 				player.vy += gravity;
+			}
+			// As long as down is held, fast fall.  If down is released and above terminal
+			// velocity, return to terminal velocity.
+			else if(!downPressed && player.vy > terminalVelocity) {
+				player.vy = terminalVelocity;
+			}
+			else if(downPressed) {
+				player.vy += fastFallMultiplier*gravity;
 			}
 		}
 		player.y += player.vy;

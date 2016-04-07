@@ -152,6 +152,9 @@ window.addEventListener('keydown', function(e) {
 		case 39:
 			rightPressed = true;
 			break;
+		case 40:
+			downPressed = true;
+			break;
 		case 82:
 			restartPressed = true;
 			break;
@@ -172,6 +175,9 @@ window.addEventListener('keyup', function(e) {
 			break;
 		case 39:
 			rightPressed = false;
+			break;
+		case 40:
+			downPressed = false;
 			break;
 		case 82:
 			restartPressed = false;

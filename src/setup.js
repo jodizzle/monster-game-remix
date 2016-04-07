@@ -21,6 +21,7 @@ function startValues() {
 	//Keypress values//
 	leftPressed = false;
 	rightPressed = false;
+	downPressed = false;
 	upPressed = false;
 	upBigPressed = false;
 	upSmallPressed = false;
@@ -97,6 +98,7 @@ function startValues() {
 	leftSpeed = -5;
 	rightSpeed = 5;
 	terminalVelocity = 7;
+	fastFallMultiplier = 3; // 3 times regular gravity.
 
 	//Spawn movement values//
 	spawnTrackXSpeed = 0.75;
