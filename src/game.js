@@ -114,6 +114,8 @@ function update() {
 	}
 	if(restartPressed) {
 		prevScore = score;
+		audioIndex = Math.floor(Math.random()*audioList.length);
+		audio.src = audioList[audioIndex];
 		startValues();
 	}
 }
