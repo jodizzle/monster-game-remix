@@ -97,7 +97,7 @@ function startValues() {
 	upSmallSpeed = -5;
 	leftSpeed = -5;
 	rightSpeed = 5;
-	terminalVelocity = 7;
+	terminalVelocity = 5;
 	fastFallMultiplier = 3; // 3 times regular gravity.
 
 	//Spawn movement values//
