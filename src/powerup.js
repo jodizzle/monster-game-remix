@@ -47,7 +47,7 @@ Jetpack.prototype.update = function() {
 };
 
 //Double Points definitions//
-function DoublePoints(x, y, vx, vy, width, height, wobble) {
+function MultiPoints(x, y, vx, vy, width, height, wobble) {
 	this.x = x; this.y = y; this.vx = vx; this.vy = vy; this.width = width; this.height = height; this.wobble = wobble;
 	this.onGround = false;
 	this.touched = false;
@@ -55,13 +55,13 @@ function DoublePoints(x, y, vx, vy, width, height, wobble) {
 		wobbleAmplitude = Math.round(getRandomNumber(3, 4));
 	}
 }
-DoublePoints.prototype.draw = function() {
+MultiPoints.prototype.draw = function() {
 	if(!this.touched) {
-		context.fillStyle = doublePointsColor;
+		context.fillStyle = multiPointsColor;
 		context.fillRect(this.x, this.y, this.width, this.height);
 	}
 };
-DoublePoints.prototype.update = function() {
+MultiPoints.prototype.update = function() {
 	//Horizontal movement//
 	if(this.onGround) {
 		this.x += spawnScrollSpeed;

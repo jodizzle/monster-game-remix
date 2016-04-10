@@ -85,7 +85,7 @@ function canDespawn(object) {
 	if(object.x + object.width <= 0) {
 		// Check to see if any of the collectibles are on the ground before despawning.
 		// TODO: Overly complicated logic?
-		if(object instanceof Spawn || object instanceof Jetpack || object instanceof DoublePoints) {
+		if(object instanceof Spawn || object instanceof Jetpack || object instanceof MultiPoints) {
 			if(object.onGround) {
 				return true;
 			}
@@ -110,7 +110,7 @@ function canDespawn(object) {
 			return true;
 		}
 	}
-	if(object instanceof DoublePoints) {
+	if(object instanceof MultiPoints) {
 		if(object.touched) {
 			return true;
 		}
@@ -164,7 +164,7 @@ function spawnObjects() {
 		vxChoices = [0, vxRange]; // Heavily weight the possibility of getting '0'.
 		randVx = vxChoices[Math.floor(Math.random()*vxChoices.length)];
 		randWobble = Math.random() > 0.75; // 25% chance
-		powerupList = [new Jetpack(randX, randY, randVx, 0, 20, 20, randWobble), new DoublePoints(randX, randY, randVx, 0, 20, 20, randWobble)];
+		powerupList = [new Jetpack(randX, randY, randVx, 0, 20, 20, randWobble), new MultiPoints(randX, randY, randVx, 0, 20, 20, randWobble)];
 		powerups.push(powerupList[Math.floor(Math.random()*powerupList.length)]);
 		// TODO: Better approach?
 		// Because the triggering of targets is based on modulo, add powerupCounterTarget to itself

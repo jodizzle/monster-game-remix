@@ -40,9 +40,9 @@ function draw() {
 			context.fillStyle = jetpackColor;
 			drawText(context, "jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2), 10, 110);
 		}
-		if(player.hasDoublePoints) {
-			context.fillStyle = doublePointsColor;
-			drawText(context, "x2 points: " + ((doublePointsCounterTarget-(gameTimer-player.doublePointsTimer))/60).toFixed(2), 10, 150);
+		if(player.hasMultiPoints) {
+			context.fillStyle = multiPointsColor;
+			drawText(context, "x" + multiPointsValue + " points: " + ((multiPointsCounterTarget-(gameTimer-player.multiPointsTimer))/60).toFixed(2), 10, 150);
 		}
 		//Draws objects//
 		for(var i = 0; i < spawns.length; i++) {

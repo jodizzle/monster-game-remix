@@ -14,7 +14,7 @@ audioMessage = "pause";
 
 //Powerup Colors//
 jetpackColor = "#25E820";
-doublePointsColor = "#FE2C2C";
+multiPointsColor = "#FE2C2C";
 
 //Initialize variables//
 function startValues() {
@@ -62,7 +62,7 @@ function startValues() {
 	player.x = canvas.width/3;
 	player.y = canvas.height/2;
 	player.hasJetpack = false;
-	player.hasDoublePoints = false;
+	player.hasMultiPoints = false;
 
 	//Acceleration//
 	gravity = 0.2;
@@ -90,7 +90,7 @@ function startValues() {
 	powerupCounterUpperBound = 600;
 	powerupCounterTarget = Math.round(getRandomNumber(powerupCounterLowerBound, powerupCounterUpperBound));
 	jetpackCounterTarget = 600;
-	doublePointsCounterTarget = 900;
+	multiPointsCounterTarget = 900;
 
 	//Player movement values//
 	upBigSpeed = -7;
@@ -107,6 +107,7 @@ function startValues() {
 	//Scoring//
 	humanity = 0;
 	humanityWeight = 5; // Multiplier for humanity in score calculation.
+	multiPointsValue = 2; // The amount of points that MultiPoints adds.
 	timeWeight = 1; // Multiplier for time in score calculation,
 	spawnCollected = 0;
 	spawnDead = 0;
