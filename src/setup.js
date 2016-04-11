@@ -15,6 +15,7 @@ audioMessage = "pause";
 //Powerup Colors//
 jetpackColor = "#25E820";
 multiPointsColor = "#FE2C2C";
+freezeColor = "#4402F7";
 
 //Initialize variables//
 function startValues() {
@@ -63,6 +64,7 @@ function startValues() {
 	player.y = canvas.height/2;
 	player.hasJetpack = false;
 	player.hasMultiPoints = false;
+	player.hasFreeze = false;
 
 	//Acceleration//
 	gravity = 0.2;
@@ -91,6 +93,7 @@ function startValues() {
 	powerupCounterTarget = Math.round(getRandomNumber(powerupCounterLowerBound, powerupCounterUpperBound));
 	jetpackCounterTarget = 600;
 	multiPointsCounterTarget = 900;
+	freezeCounterTarget = 300;
 
 	//Player movement values//
 	upBigSpeed = -7;

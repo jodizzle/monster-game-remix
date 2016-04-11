@@ -44,6 +44,10 @@ function draw() {
 			context.fillStyle = multiPointsColor;
 			drawText(context, "x" + multiPointsValue + " points: " + ((multiPointsCounterTarget-(gameTimer-player.multiPointsTimer))/60).toFixed(2), 10, 150);
 		}
+		if(player.hasFreeze) {
+			context.fillStyle = freezeColor;
+			drawText(context, "freeze: " + ((freezeCounterTarget-(gameTimer-player.freezeTimer))/60).toFixed(2), 10, 190);
+		}
 		//Draws objects//
 		for(var i = 0; i < spawns.length; i++) {
 			spawns[i].draw();

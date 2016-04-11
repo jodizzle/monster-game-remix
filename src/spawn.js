@@ -21,7 +21,9 @@ Spawn.prototype.draw = function() {
 Spawn.prototype.update = function() {
 	//Horizontal movement//
 	if(this.onGround) {
-		this.x += spawnScrollSpeed;
+		if(!player.hasFreeze) {
+			this.x += spawnScrollSpeed;
+		}
 	}
 	else {
 		if(this.wobble) {

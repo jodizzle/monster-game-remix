@@ -68,5 +68,7 @@ Platform.prototype.draw = function() {
  	context.fillRect(this.x,this.y,this.width,this.height);
 };
 Platform.prototype.update = function() {
-	this.x += platformScrollSpeed;
+	if(!player.hasFreeze) {
+		this.x += platformScrollSpeed;
+	}
 };

@@ -9,8 +9,10 @@ var player = {
 	onGround: false,
 	hasJetpack: false,
 	hasMultiPoints: false,
+	hasFreeze: false,
 	jetpackTimer: 0,
 	multiPointsTimer: 0,
+	freezeTimer: 0,
 
 	draw: function() {
 		var monsterImage = new Image();
@@ -27,6 +29,10 @@ var player = {
 		if(player.hasMultiPoints && (gameTimer-player.multiPointsTimer) === multiPointsCounterTarget) {
 			player.hasMultiPoints = false;
 			multiPointsValue = 2;
+		}
+		//Freeze//
+		if(player.hasFreeze && (gameTimer-player.freezeTimer) === freezeCounterTarget) {
+			player.hasFreeze = false;
 		}
 
 		//Horizontal movement//
@@ -191,6 +197,15 @@ var player = {
 						player.multiPointsTimer = gameTimer;
 					}
 				}
+				if(powerup instanceof Freeze) {
+					if(player.hasFreeze) {
+						player.freezeTimer += freezeCounterTarget;
+					}
+					else {
+						player.hasFreeze = true;
+						player.freezeTimer = gameTimer;
+					}
+				}
 			}
 		}
 
@@ -205,7 +220,7 @@ var player = {
 			player.vx = -1*playerScrollSpeed; // "Push" against the wall.
 		}
 		//Default horizontal scrolling//
-		else if(player.x + playerScrollSpeed > 0) {
+		else if(!player.hasFreeze && player.x + playerScrollSpeed > 0) {
 			player.x += playerScrollSpeed;
 		}
 		//Bottomside canvas collision detection//
