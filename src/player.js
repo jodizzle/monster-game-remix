@@ -190,7 +190,7 @@ var player = {
 				if(powerup instanceof MultiPoints) {
 					if(player.hasMultiPoints) {
 						player.multiPointsTimer += multiPointsCounterTarget;
-						multiPointsValue *= 2;
+						multiPointsValue += 1;
 					}
 					else {
 						player.hasMultiPoints = true;
