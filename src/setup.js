@@ -143,6 +143,8 @@ function startValues() {
 	drawText(textContext, "space: pause", 525, 150);
 	//Bottom Message//
 	textContext.textAlign = "center";
+	textContext.font = "28px serif";
+	textContext.lineWidth = 2.5;
 	drawText(textContext, "(arrow keys to move; down key to fast-fall)", canvas.width/2, 390);
 	drawText(textContext, "(don't let the army down here get you)", canvas.width/2, 440);
 }
