@@ -45,7 +45,12 @@ Spawn.prototype.update = function() {
 		this.y += spawnTrackYSpeed;
 	}
 	else {
-		this.y += spawnGravity;
+		if(player.hasFreeze) {
+			this.y += 0.25*spawnGravity;
+		}
+		else {
+			this.y += spawnGravity;
+		}
 	}
 
 	//Vertical platform collision detection//
