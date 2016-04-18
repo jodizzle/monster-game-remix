@@ -15,8 +15,9 @@ function draw() {
 		var armyImage = new Image();
 		armyImage.src = 'assets/army.png';
 		context.drawImage(armyImage, armyCos(gameTimer), canvas.height-armySine(gameTimer));
-		drawText(context, "p: " + audioMessage + " music", 525, 30);
-		drawText(context, "track: " + audioIndex, 270, 110);
+		context.font = "30px serif";
+		drawText(context, "p: " + audioMessage + " music", 555, 30);
+		drawText(context, "track: " + audioIndex, 300, 110);
 		context.drawImage(textCanvas, 0, 0);
 	}
 
@@ -33,7 +34,7 @@ function draw() {
 		context.fillText("press r to restart", canvas.width/2, canvas.height-50);
 	}
 	else {
-		context.font = "36px serif";
+		context.font = "30px serif";
 		drawText(context, "humanity: " + humanity, 10, 30);
 		drawText(context, "time: " + (gameTimer/60.0).toFixed(1), 10, 70);
 		if(player.hasJetpack) {

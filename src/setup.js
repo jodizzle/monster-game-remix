@@ -134,13 +134,13 @@ function startValues() {
 	drawText(textContext, "PROVE IT", canvas.width/2, 290);
 	drawText(textContext, "only kill people when they're dead", canvas.width/2, 340);
 	//Controls//
-	textContext.font = "36px serif";
+	textContext.font = "30px serif";
 	textContext.textAlign = "start";
-	drawText(textContext, "z: big jump", 270, 30);
-	drawText(textContext, "x: little jump", 270, 70);
-	drawText(textContext, "c: cycle music", 525, 70);
-	drawText(textContext, "r: restart", 525, 110);
-	drawText(textContext, "space: pause", 525, 150);
+	drawText(textContext, "z: big jump", 300, 30);
+	drawText(textContext, "x: little jump", 300, 70);
+	drawText(textContext, "c: cycle music", 555, 70);
+	drawText(textContext, "r: restart", 555, 110);
+	drawText(textContext, "space: pause", 555, 150);
 	//Bottom Message//
 	textContext.textAlign = "center";
 	textContext.font = "28px serif";
