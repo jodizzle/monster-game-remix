@@ -137,10 +137,10 @@ function startValues() {
 	textContext.font = "30px serif";
 	textContext.textAlign = "start";
 	drawText(textContext, "z: big jump", 300, 30);
-	drawText(textContext, "x: little jump", 300, 70);
-	drawText(textContext, "c: cycle music", 555, 70);
-	drawText(textContext, "r: restart", 555, 110);
-	drawText(textContext, "space: pause", 555, 150);
+	drawText(textContext, "x: little jump", 300, 65);
+	drawText(textContext, "c: cycle music", 555, 65);
+	drawText(textContext, "r: restart", 555, 100);
+	drawText(textContext, "space: pause", 555, 135);
 	//Bottom Message//
 	textContext.textAlign = "center";
 	textContext.font = "28px serif";

@@ -17,7 +17,7 @@ function draw() {
 		context.drawImage(armyImage, armyCos(gameTimer), canvas.height-armySine(gameTimer));
 		context.font = "30px serif";
 		drawText(context, "p: " + audioMessage + " music", 555, 30);
-		drawText(context, "track: " + audioIndex, 300, 110);
+		drawText(context, "track: " + audioIndex, 300, 100);
 		context.drawImage(textCanvas, 0, 0);
 	}
 
@@ -36,18 +36,18 @@ function draw() {
 	else {
 		context.font = "30px serif";
 		drawText(context, "humanity: " + humanity, 10, 30);
-		drawText(context, "time: " + (gameTimer/60.0).toFixed(1), 10, 70);
+		drawText(context, "time: " + (gameTimer/60.0).toFixed(1), 10, 65);
 		if(player.hasJetpack) {
 			context.fillStyle = jetpackColor;
-			drawText(context, "jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2), 10, 110);
+			drawText(context, "jetpack: " + ((jetpackCounterTarget-(gameTimer-player.jetpackTimer))/60).toFixed(2), 10, 100);
 		}
 		if(player.hasMultiPoints) {
 			context.fillStyle = multiPointsColor;
-			drawText(context, "x" + multiPointsValue + " points: " + ((multiPointsCounterTarget-(gameTimer-player.multiPointsTimer))/60).toFixed(2), 10, 150);
+			drawText(context, "x" + multiPointsValue + " points: " + ((multiPointsCounterTarget-(gameTimer-player.multiPointsTimer))/60).toFixed(2), 10, 135);
 		}
 		if(player.hasFreeze) {
 			context.fillStyle = freezeColor;
-			drawText(context, "freeze: " + ((freezeCounterTarget-(gameTimer-player.freezeTimer))/60).toFixed(2), 10, 190);
+			drawText(context, "freeze: " + ((freezeCounterTarget-(gameTimer-player.freezeTimer))/60).toFixed(2), 10, 170);
 		}
 		//Draws objects//
 		for(var i = 0; i < spawns.length; i++) {
