@@ -136,6 +136,7 @@ function startValues() {
 	//Controls//
 	textContext.font = "30px serif";
 	textContext.textAlign = "start";
+	textContext.lineWidth = 2.5;
 	drawText(textContext, "z: big jump", 300, 30);
 	drawText(textContext, "x: little jump", 300, 65);
 	drawText(textContext, "c: cycle music", 555, 65);
@@ -144,7 +145,6 @@ function startValues() {
 	//Bottom Message//
 	textContext.textAlign = "center";
 	textContext.font = "28px serif";
-	textContext.lineWidth = 2.5;
 	drawText(textContext, "(arrow keys to move; down key to fast-fall)", canvas.width/2, 390);
 	drawText(textContext, "(don't let the army down here get you)", canvas.width/2, 440);
 }
