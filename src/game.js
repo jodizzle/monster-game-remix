@@ -17,7 +17,7 @@ function draw() {
 		context.drawImage(armyImage, armyCos(gameTimer), canvas.height-armySine(gameTimer));
 		context.font = "30px serif";
 		drawText(context, "p: " + audioMessage + " music", 555, 30);
-		drawText(context, "track: " + audioIndex, 300, 100);
+		drawText(context, "track: " + audioIndex, 300, 135);
 		context.drawImage(textCanvas, 0, 0);
 	}
 

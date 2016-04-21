@@ -139,12 +139,12 @@ function startValues() {
 	textContext.lineWidth = 2.5;
 	drawText(textContext, "z: big jump", 300, 30);
 	drawText(textContext, "x: little jump", 300, 65);
+	drawText(textContext, "down: fast fall", 300, 100);
 	drawText(textContext, "c: cycle music", 555, 65);
 	drawText(textContext, "r: restart", 555, 100);
 	drawText(textContext, "space: pause", 555, 135);
 	//Bottom Message//
 	textContext.textAlign = "center";
 	textContext.font = "28px serif";
-	drawText(textContext, "(arrow keys to move; down key to fast-fall)", canvas.width/2, 390);
 	drawText(textContext, "(don't let the army down here get you)", canvas.width/2, 440);
 }
