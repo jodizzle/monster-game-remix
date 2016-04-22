@@ -27,13 +27,20 @@ Spawn.prototype.update = function() {
 	}
 	else {
 		if(this.wobble) {
+			// TODO: Tweak for when the player has the freeze powerup
 			this.x += wobbleAmplitude*Math.cos((gameTimer%180)*0.03);
 		}
 		else if(this.track) {
 			if(player.x > this.x + this.width) {
+				if(player.hasFreeze) {
+					this.x += freezeSlowdown*spawnTrackXSpeed;
+				}
 				this.x += spawnTrackXSpeed;
 			}
 			else if(player.x + player.width < this.x) {
+				if(player.hasFreeze) {
+					this.x -= freezeSlowdown*spawnTrackXSpeed;
+				}
 				this.x -= spawnTrackXSpeed;
 			}
 		}
@@ -42,11 +49,14 @@ Spawn.prototype.update = function() {
 	}
 	//Vertical movement//
 	if(this.track && !this.onGround) {
+		if(player.freeze) {
+			this.y += freezeSlowdown*spawnTrackYSpeed;
+		}
 		this.y += spawnTrackYSpeed;
 	}
 	else {
 		if(player.hasFreeze) {
-			this.y += 0.25*spawnGravity;
+			this.y += freezeSlowdown*spawnGravity;
 		}
 		else {
 			this.y += spawnGravity;
