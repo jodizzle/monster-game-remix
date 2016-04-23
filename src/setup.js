@@ -76,7 +76,7 @@ function startValues() {
 	horizFrictionGround = 1;
 	horizFrictionAir = 0.3;
 	vertAcc = -0.5;
-	freezeSlowdown = 0.10 // Decimal that represents the slowdown of spawns during the freeze powerup (e.g., 0.10 slows spawns to 10% of their normal speed).
+	freezeSlowdown = 0.10; // Decimal that represents the slowdown of spawns during the freeze powerup (e.g., 0.10 slows spawns to 10% of their normal speed).
 
 	//Scroll speed//
 	playerScrollSpeed = -1;
