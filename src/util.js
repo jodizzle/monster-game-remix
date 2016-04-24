@@ -183,7 +183,7 @@ function spawnObjects() {
 
 //Despawns (removes) objects that are offscreen//
 function removeObjects(objectArray) {
-	for(var i = 0; i < objectArray.length; i++) {
+	for(var i = 0, j = objectArray.length; i < j; i++) {
 		if(canDespawn(objectArray[i])) {
 			objectArray.splice(i, 1);
 			i--;

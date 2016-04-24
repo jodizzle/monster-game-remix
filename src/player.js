@@ -86,7 +86,7 @@ var player = {
 		player.x += player.vx;
 
 		//Horizontal platform collision detection//
-		for(var i = 0; i < platforms.length; i++) {
+		for(var i = 0, j = platforms.length; i < j; i++) {
 			platform = platforms[i];
 			if(checkCollision(player, platform)) {
 				if(player.vx > 0 && !leftPressed) { //Leftside case
@@ -134,7 +134,7 @@ var player = {
 		player.y += player.vy;
 
 		//Vertical platform collision detection//
-		for(var i = 0; i < platforms.length; i++) {
+		for(var i = 0, j = platforms.length; i < j; i++) {
 			platform = platforms[i];
 			if (checkCollision(player, platform)) {
 				//Topside case
@@ -153,7 +153,7 @@ var player = {
 		}
 
 		//Spawn collision detection//
-		for(var i = 0; i < spawns.length; i++) {
+		for(var i = 0, j = spawns.length; i < j; i++) {
 			spawn = spawns[i];
 			if (checkCollision(player, spawn)) {
 				spawn.touched = true;
@@ -174,7 +174,7 @@ var player = {
 			}
 		}
 		//Powerup collision detection//
-		for(var i = 0; i < powerups.length; i++) {
+		for(var i = 0, j = powerups.length; i < j; i++) {
 			powerup = powerups[i];
 			if (checkCollision(player, powerup)) {
 				powerup.touched = true;

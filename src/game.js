@@ -50,13 +50,13 @@ function draw() {
 			drawText(context, "freeze: " + ((freezeCounterTarget-(gameTimer-player.freezeTimer))/60).toFixed(2), 10, 170);
 		}
 		//Draws objects//
-		for(var i = 0; i < spawns.length; i++) {
+		for(var i = 0, j = spawns.length; i < j; i++) {
 			spawns[i].draw();
 		}
-		for(var i = 0; i < platforms.length; i++) {
+		for(var i = 0, j = platforms.length; i < j; i++) {
 			platforms[i].draw();
 		}
-		for(var i = 0; i < powerups.length; i++) {
+		for(var i = 0, j = powerups.length; i < j; i++) {
 			powerups[i].draw();
 		}
 	}
@@ -90,15 +90,15 @@ function update() {
 	player.update();
 	if(!loseKill && !loseWall) {
 		removeObjects(spawns);
-		for(var i=0; i < spawns.length; i++) {
+		for(var i = 0, j = spawns.length; i < j; i++) {
 			spawns[i].update();
 		}
 		removeObjects(platforms);
-		for(var i=0; i < platforms.length; i++) {
+		for(var i = 0, j = platforms.length; i < j; i++) {
 			platforms[i].update();
 		}
 		removeObjects(powerups);
-		for(var i=0; i < powerups.length; i++) {
+		for(var i = 0, j = powerups.length; i < j; i++) {
 			powerups[i].update();
 		}
 	}

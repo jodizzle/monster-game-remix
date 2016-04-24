@@ -64,7 +64,7 @@ Spawn.prototype.update = function() {
 	}
 
 	//Vertical platform collision detection//
-	for(var i = 0; i < platforms.length; i++) {
+	for(var i = 0, j = platforms.length; i < j; i++) {
 		platform = platforms[i];
 		// Since spawns only fall from the top, should only have to worry about one vertical case.
 		if (checkCollision(this, platform)) {

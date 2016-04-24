@@ -47,7 +47,7 @@ function startValues() {
 	shuffleArray(platformYValues);
 
 	platforms.push(new Platform(canvas.width/3, canvas.height/2 + 50, 80, 10, 'black'));
-	for(var i = 0; i < platformXValues.length; i++) {
+	for(var i = 0, j = platformXValues.length; i < j; i++) {
 		platforms.push(new Platform(platformXValues[i], 
 		                            platformYValues[i], 
 		                            Math.round(getRandomNumber(platformWidthLowerBound, platformWidthUpperBound)), 
