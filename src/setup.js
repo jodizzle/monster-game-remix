@@ -68,7 +68,7 @@ function startValues() {
 
 	//Acceleration//
 	gravity = 0.2;
-	spawnGravity = 2;
+	spawnGravity = 3;
 	horizAccGround = 0.3;
 	horizAccAir = 0.4;
 	// For friction, higher numbers -> more slow down.
