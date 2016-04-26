@@ -141,9 +141,9 @@ function startValues() {
 	drawText(textContext, "z: big jump", 300, 30);
 	drawText(textContext, "x: little jump", 300, 65);
 	drawText(textContext, "down: fast fall", 300, 100);
-	drawText(textContext, "c: cycle music", 555, 65);
-	drawText(textContext, "r: restart", 555, 100);
-	drawText(textContext, "space: pause", 555, 135);
+	drawText(textContext, "c: cycle music", 570, 65);
+	drawText(textContext, "r: restart", 570, 100);
+	drawText(textContext, "space: pause", 570, 135);
 	//Bottom Message//
 	textContext.textAlign = "center";
 	textContext.font = "28px serif";
