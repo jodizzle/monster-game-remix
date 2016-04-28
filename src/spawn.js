@@ -35,24 +35,35 @@ Spawn.prototype.update = function() {
 				if(player.hasFreeze) {
 					this.x += freezeSlowdown*spawnTrackXSpeed;
 				}
-				this.x += spawnTrackXSpeed;
+				else {
+					this.x += spawnTrackXSpeed;
+				}
 			}
 			else if(player.x + player.width < this.x) {
 				if(player.hasFreeze) {
 					this.x -= freezeSlowdown*spawnTrackXSpeed;
 				}
-				this.x -= spawnTrackXSpeed;
+				else {
+					this.x -= spawnTrackXSpeed;
+				}
 			}
 		}
 
-		this.x += this.vx;
+		if(player.hasFreeze) {
+			this.x += freezeSlowdown*this.vx;
+		}
+		else {
+			this.x += this.vx;
+		}
 	}
 	//Vertical movement//
 	if(this.track && !this.onGround) {
-		if(player.freeze) {
+		if(player.hasFreeze) {
 			this.y += freezeSlowdown*spawnTrackYSpeed;
 		}
-		this.y += spawnTrackYSpeed;
+		else {
+			this.y += spawnTrackYSpeed;
+		}
 	}
 	else {
 		if(player.hasFreeze) {
