@@ -17,6 +17,11 @@ jetpackColor = "#25E820";
 multiPointsColor = "#FE2C2C";
 freezeColor = "#4402F7";
 
+//Scoring//
+score = 0;
+prevScore = 0;
+highScore = 0;
+
 //Initialize variables//
 function startValues() {
 	//Keypress values//
@@ -115,9 +120,6 @@ function startValues() {
 	timeWeight = 1; // Multiplier for time in score calculation,
 	spawnCollected = 0;
 	spawnDead = 0;
-	score = 0;
-	prevScore = 0;
-	highScore = 0;
 
 	//Loss conditions//
 	loseKill = false;
