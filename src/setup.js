@@ -94,8 +94,8 @@ function startValues() {
 	gameScalingTargetLong = 600; //10 seconds
 	spawnCounterTarget = 100;
 	platformCounterTarget = 100;
-	powerupCounterLowerBound = 300;
-	powerupCounterUpperBound = 600;
+	powerupCounterLowerBound = 150;
+	powerupCounterUpperBound = 300;
 	powerupCounterTarget = Math.round(getRandomNumber(powerupCounterLowerBound, powerupCounterUpperBound));
 	jetpackCounterTarget = 600;
 	multiPointsCounterTarget = 900;
