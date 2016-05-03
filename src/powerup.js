@@ -17,7 +17,9 @@ Jetpack.prototype.draw = function() {
 Jetpack.prototype.update = function() {
 	//Horizontal movement//
 	if(this.onGround) {
-		this.x += spawnScrollSpeed;
+		if(!player.hasFreeze) {
+			this.x += spawnScrollSpeed;
+		}
 	}
 	else {
 		if(this.wobble) {
@@ -64,7 +66,9 @@ MultiPoints.prototype.draw = function() {
 MultiPoints.prototype.update = function() {
 	//Horizontal movement//
 	if(this.onGround) {
-		this.x += spawnScrollSpeed;
+		if(!player.hasFreeze) {
+			this.x += spawnScrollSpeed;
+		}
 	}
 	else {
 		if(this.wobble) {
@@ -111,7 +115,9 @@ Freeze.prototype.draw = function() {
 Freeze.prototype.update = function() {
 	//Horizontal movement//
 	if(this.onGround) {
-		this.x += spawnScrollSpeed;
+		if(!player.hasFreeze) {
+			this.x += spawnScrollSpeed;
+		}
 	}
 	else {
 		if(this.wobble) {
