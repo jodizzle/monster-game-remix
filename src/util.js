@@ -128,7 +128,7 @@ function canDespawn(object) {
 // TODO: approach spawning with less modulus ('counter targets')?
 function spawnObjects() {
 	// Use '&& gameTimer != 0' to prevent a spawn on the first frame.
-	if(gameTimer % spawnCounterTarget === 0 && gameTimer !== 0 && !player.hasFreeze) {
+	if( ((gameTimer % spawnCounterTarget === 0 && !player.hasFreeze) || (gameTimer % spawnCounterTargetFreeze === 0 && player.hasFreeze)) && gameTimer !== 0) {
 		randX = getRandomNumber(100, canvas.width-100);
 		randY = getRandomNumber(-100, 0);
 		// Generate a possible vx for the spawn based on the randX.  The goal is to

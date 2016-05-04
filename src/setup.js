@@ -93,6 +93,7 @@ function startValues() {
 	gameScalingTargetShort = 300; //5 seconds
 	gameScalingTargetLong = 600; //10 seconds
 	spawnCounterTarget = 100;
+	spawnCounterTargetFreeze = 180;
 	platformCounterTarget = 100;
 	powerupCounterLowerBound = 150;
 	powerupCounterUpperBound = 300;
