@@ -180,7 +180,7 @@ var player = {
 				powerup.touched = true;
 				if(powerup instanceof Jetpack) {
 					if(player.hasJetpack) {
-						player.jetpackTimer += jetpackCounterTarget;
+						player.jetpackTimer += jetpackCounterTarget/2;
 					}
 					else {
 						player.hasJetpack = true;
@@ -189,7 +189,7 @@ var player = {
 				}
 				if(powerup instanceof MultiPoints) {
 					if(player.hasMultiPoints) {
-						player.multiPointsTimer += multiPointsCounterTarget;
+						player.multiPointsTimer += multiPointsCounterTarget/2;
 						multiPointsValue += 1;
 					}
 					else {
@@ -199,7 +199,7 @@ var player = {
 				}
 				if(powerup instanceof Freeze) {
 					if(player.hasFreeze) {
-						player.freezeTimer += freezeCounterTarget;
+						player.freezeTimer += freezeCounterTarget/2;
 					}
 					else {
 						player.hasFreeze = true;
