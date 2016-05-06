@@ -180,7 +180,7 @@ var player = {
 				powerup.touched = true;
 				if(powerup instanceof Jetpack) {
 					if(player.hasJetpack) {
-						player.jetpackTimer += jetpackCounterTarget/2;
+						player.jetpackTimer += jetpackCounterTarget;
 					}
 					else {
 						player.hasJetpack = true;
@@ -199,7 +199,7 @@ var player = {
 				}
 				if(powerup instanceof Freeze) {
 					if(player.hasFreeze) {
-						player.freezeTimer += freezeCounterTarget/2;
+						player.freezeTimer += freezeCounterTarget;
 					}
 					else {
 						player.hasFreeze = true;
