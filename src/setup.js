@@ -112,7 +112,7 @@ function startValues() {
 
 	//Spawn movement values//
 	spawnTrackXSpeed = 1;
-	spawnTrackYSpeed = 2;
+	spawnTrackYSpeed = 1.5;
 
 	//Scoring//
 	humanity = 0;
