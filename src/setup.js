@@ -111,7 +111,7 @@ function startValues() {
 	fastFallMultiplier = 3; // 3 times regular gravity.
 
 	//Spawn movement values//
-	spawnTrackXSpeed = 1;
+	spawnTrackXSpeed = 1.5;
 	spawnTrackYSpeed = 1.5;
 
 	//Scoring//
