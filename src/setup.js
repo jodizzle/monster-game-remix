@@ -100,7 +100,7 @@ function startValues() {
 	powerupCounterTarget = Math.round(getRandomNumber(powerupCounterLowerBound, powerupCounterUpperBound));
 	jetpackCounterTarget = 600;
 	multiPointsCounterTarget = 600;
-	freezeCounterTarget = 300;
+	freezeCounterTarget = 180;
 
 	//Player movement values//
 	upBigSpeed = -7;
