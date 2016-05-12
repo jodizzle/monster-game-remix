@@ -102,7 +102,7 @@ var player = {
 
 		//Vertical movement//
 		if(upPressed && player.onGround && !jumping) {
-			if(upSmallPressed && !player.hasJetpack) {
+			if(upSmallPressed) {
 				player.vy = upSmallSpeed;
 			}
 			if(upBigPressed && !player.hasJetpack) {
@@ -114,7 +114,7 @@ var player = {
 		else {
 			// Controls jetpack behavior.
 			if (player.hasJetpack) {
-				if (upPressed && player.vy > upSmallSpeed) {
+				if(upBigPressed && player.vy > upSmallSpeed) {
 					player.vy += vertAcc;
 				}
 			}

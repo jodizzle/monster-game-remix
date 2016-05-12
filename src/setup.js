@@ -141,7 +141,6 @@ function startValues() {
 	textContext.font = "30px serif";
 	textContext.textAlign = "start";
 	textContext.lineWidth = 2.5;
-	drawText(textContext, "z: big jump", 300, 30);
 	drawText(textContext, "x: little jump", 300, 65);
 	drawText(textContext, "down: fast fall", 300, 100);
 	drawText(textContext, "c: cycle music", 570, 65);
