@@ -116,7 +116,7 @@ function startValues() {
 
 	//Scoring//
 	humanity = 0;
-	humanityWeight = 10; // Multiplier for humanity in score calculation.
+	humanityWeight = 5; // Multiplier for humanity in score calculation.
 	multiPointsValue = 2; // The amount of points that MultiPoints adds.
 	timeWeight = 1.5; // Multiplier for time in score calculation,
 	spawnCollected = 0;
