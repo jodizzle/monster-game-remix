@@ -95,8 +95,8 @@ function startValues() {
 	spawnCounterTarget = 100;
 	spawnCounterTargetFreeze = 180;
 	platformCounterTarget = 100;
-	powerupCounterLowerBound = 150;
-	powerupCounterUpperBound = 300;
+	powerupCounterLowerBound = 100;
+	powerupCounterUpperBound = 360;
 	powerupCounterTarget = Math.round(getRandomNumber(powerupCounterLowerBound, powerupCounterUpperBound));
 	jetpackCounterTarget = 600;
 	multiPointsCounterTarget = 600;
