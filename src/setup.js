@@ -104,7 +104,7 @@ function startValues() {
 
 	//Player movement values//
 	upBigSpeed = -7;
-	upSmallSpeed = -5;
+	upSmallSpeed = -4;
 	leftSpeed = -5;
 	rightSpeed = 5;
 	terminalVelocity = 5;
