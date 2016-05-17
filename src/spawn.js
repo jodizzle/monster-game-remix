@@ -27,8 +27,12 @@ Spawn.prototype.update = function() {
 	}
 	else {
 		if(this.wobble) {
-			// TODO: Tweak for when the player has the freeze powerup
-			this.x += wobbleAmplitude*Math.cos((gameTimer%180)*0.03);
+			if(player.hasFreeze) {
+				this.x += freezeSlowdown*wobbleAmplitude*Math.cos((gameTimer%180)*0.03);
+			}
+			else {
+				this.x += wobbleAmplitude*Math.cos((gameTimer%180)*0.03);
+			}
 		}
 		else if(this.track) {
 			if(player.x > this.x + this.width) {
