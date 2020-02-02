@@ -1,3 +1,6 @@
+// TODO: Audio doesn't play on initial load of game, have to press the pause or
+// cycle music buttons in order to start the music.
+
 audioList = ['assets/bu-an-ogres-knight-fixed.ogg',
 			   'assets/bu-pear-of-the-report-fixed.ogg',
 			   'assets/bu-a-garden-and-a-knight-fixed.ogg',
